@@ -1,0 +1,9 @@
+{
+    "name": "domain-auth-feature",
+    "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/domain/auth/feature/src",
+    "prefix": "barter",
+    "tags": [],
+    "projectType": "library",
+    "targets": {}
+}

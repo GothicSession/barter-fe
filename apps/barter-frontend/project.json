@@ -2,7 +2,7 @@
   "name": "barter-frontend",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "barter",
   "sourceRoot": "apps/barter-frontend/src",
   "tags": [],
   "targets": {
@@ -22,7 +22,7 @@
             "input": "apps/barter-frontend/public"
           }
         ],
-        "styles": ["apps/barter-frontend/src/styles.scss"],
+        "styles": ["libs/styles/src/lib/index.scss"],
         "scripts": []
       },
       "configurations": {

@@ -1,0 +1,29 @@
+@use 'sass:map';
+
+@mixin base-theme-custom($koobiq-theme) {
+    $foreground: map.get($koobiq-theme, foreground);
+    $warning: map.get($koobiq-theme, warning);
+    $background: map.get($koobiq-theme, background);
+    $icon: map.get($koobiq-theme, icon);
+    $line: map.get($koobiq-theme, line);
+
+    .text-success {
+        color: map.get($foreground, success);
+    }
+
+    .text-contrast {
+        color: map.get($foreground, contrast);
+    }
+
+    .text-warning {
+        color: map.get($foreground, warning);
+    }
+
+    .text-error {
+        color: map.get($foreground, error);
+    }
+
+    .text-less-contrast {
+        color: map.get($foreground, contrast-secondary);
+    }
+}

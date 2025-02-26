@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@libs/core": ["libs/core/src/index.ts"],
+      "@libs/domains/auth/core": ["libs/domains/auth/core/src/index.ts"],
+      "@libs/domains/auth/feature": ["libs/domains/auth/feature/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

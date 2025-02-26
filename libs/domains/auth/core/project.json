@@ -1,0 +1,9 @@
+{
+    "name": "domain-core-feature",
+    "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/domain/core/feature/src",
+    "prefix": "barter",
+    "tags": [],
+    "projectType": "library",
+    "targets": {}
+}
