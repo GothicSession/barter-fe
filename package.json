@@ -1,5 +1,5 @@
 {
-  "name": "@angular-monorepo/source",
+  "name": "@barter-webview/source",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
