@@ -15,13 +15,13 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome barter-frontend'
+      'Welcome barter-fe'
     );
   });
 
-  it(`should have as title 'barter-frontend'`, () => {
+  it(`should have as title 'barter-webview'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('barter-frontend');
+    expect(app.title).toEqual('barter-fe');
   });
 });

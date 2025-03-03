@@ -1,8 +1,8 @@
 export default {
-  displayName: 'barter-frontend',
+  displayName: 'barter-fe',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/barter-frontend',
+  coverageDirectory: '../../coverage/apps/barter-fe',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

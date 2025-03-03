@@ -1,10 +1,17 @@
 {
-  "name": "@barter-webview/source",
+  "name": "@barter-fe/source",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run barter-frontend:serve",
-    "build": "nx run barter-frontend:build"
+    "start": "nx run barter-webview:serve",
+    "build": "nx run barter-webview:build",
+    "lint": "nx run-many --all --target=lint --exclude=mc-styles",
+    "lint:fix": "nx run-many --all --target=lint --fix --verbose --exclude=styles",
+    "lint:styles": "stylelint \"**/*.scss\"",
+    "barter-webview:lint": "nx run barter-webview:lint --cache",
+    "barter-webview:lint:fix": "nx run barter-webview:lint --cache --fix",
+    "barter-webview:lint:errors": "nx run barter-webview:lint --cache --quiet",
+    "barter-webview-bundle-report": "nx build barter-webview --stats-json && webpack-bundle-analyzer dist/apps/barter-webview/stats.json"
   },
   "private": true,
   "dependencies": {

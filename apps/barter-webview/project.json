@@ -1,25 +1,25 @@
 {
-  "name": "barter-frontend",
+  "name": "barter-webview",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "barter",
-  "sourceRoot": "apps/barter-frontend/src",
+  "sourceRoot": "apps/barter-webview/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/barter-frontend",
-        "index": "apps/barter-frontend/src/index.html",
-        "main": "apps/barter-frontend/src/main.ts",
+        "outputPath": "dist/apps/barter-webview",
+        "index": "apps/barter-webview/src/index.html",
+        "main": "apps/barter-webview/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/barter-frontend/tsconfig.app.json",
+        "tsConfig": "apps/barter-webview/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/barter-frontend/public"
+            "input": "apps/barter-webview/public"
           }
         ],
         "styles": ["libs/styles/src/lib/index.scss"],
@@ -56,10 +56,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "barter-frontend:build:production"
+          "buildTarget": "barter-webview:build:production"
         },
         "development": {
-          "buildTarget": "barter-frontend:build:development"
+          "buildTarget": "barter-webview:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -67,7 +67,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "barter-frontend:build"
+        "buildTarget": "barter-webview:build"
       }
     },
     "lint": {
@@ -77,13 +77,13 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/barter-frontend/jest.config.ts"
+        "jestConfig": "apps/barter-webview/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "barter-frontend:build",
+        "buildTarget": "barter-webview:build",
         "spa": true
       }
     }

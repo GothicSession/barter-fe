@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   standalone: true,
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginPageComponent {
 }
