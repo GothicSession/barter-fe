@@ -9,5 +9,4 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthenticatedLayoutComponent {
-}
+export class AuthenticatedLayoutComponent {}

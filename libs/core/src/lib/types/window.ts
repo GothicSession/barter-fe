@@ -1,4 +1,5 @@
-export {}
+/* eslint-disable max-lines */
+export {};
 // https://stackoverflow.com/a/12709880
 // Расширение интерфейса Window
 declare global {
@@ -36,7 +37,7 @@ interface WebApp {
    * The color scheme currently used in the Telegram app. Either “light” or
    * “dark”. Also available as the CSS variable var(--tg-color-scheme).
    */
-  colorScheme: "light" | "dark";
+  colorScheme: 'light' | 'dark';
   /**
    * An object containing the current theme settings used in the Telegram app.
    */
@@ -142,17 +143,27 @@ interface WebApp {
    * also use keywords bg_color and secondary_bg_color.
    */
   // string & {} prevents this from eagerly collapsing into just string
-  setHeaderColor(color: "bg_color" | "secondary_bg_color" | (string & {})): void;
+  setHeaderColor(
+    color: 'bg_color' | 'secondary_bg_color' | (string & {}),
+  ): void;
   /**
    * A method that sets the app background color in the `#RRGGBB` format or
    * you can use keywords bg_color, secondary_bg_color instead.
    */
-  setBackgroundColor(color: "bg_color" | "secondary_bg_color" | "bottom_bar_bg_color" | (string & {})): void;
+  setBackgroundColor(
+    color:
+      | 'bg_color'
+      | 'secondary_bg_color'
+      | 'bottom_bar_bg_color'
+      | (string & {}),
+  ): void;
   /**
    * A method that sets the app's bottom bar color in the #RRGGBB format.
    * You can also use the keywords bg_color, secondary_bg_color and bottom_bar_bg_color.
    */
-  setBottomBarColor(color: "bg_color" | "secondary_bg_color" | (string & {})): void;
+  setBottomBarColor(
+    color: 'bg_color' | 'secondary_bg_color' | (string & {}),
+  ): void;
   /**
    * A method that enables a confirmation dialog while the user is trying to
    * close the Web App.
@@ -167,39 +178,120 @@ interface WebApp {
    * A method that sets the app event handler. Check the list of available
    * events.
    */
-  onEvent(eventType: "themeChanged", eventHandler: ThemeChangedCallback): void;
-  onEvent(eventType: "mainButtonClicked", eventHandler: MainButtonClickedCallback): void;
-  onEvent(eventType: "secondaryButtonClicked", eventHandler: SecondaryButtonClickedCallback): void;
-  onEvent(eventType: "backButtonClicked", eventHandler: BackButtonClickedCallback): void;
-  onEvent(eventType: "settingsButtonClicked", eventHandler: SettingsButtonClickedCallback): void;
-  onEvent(eventType: "popupClosed", eventHandler: PopupClosedCallback): void;
-  onEvent(eventType: "viewportChanged", eventHandler: ViewportChangedCallback): void;
-  onEvent(eventType: "invoiceClosed", eventHandler: InvoiceClosedCallback): void;
-  onEvent(eventType: "qrTextReceived", eventHandler: QrTextReceivedCallback): void;
-  onEvent(eventType: "scanQrPopupClosed", eventHandler: ScanQrPopupClosedCallback): void;
-  onEvent(eventType: "clipboardTextReceived", eventHandler: ClipboardTextReceivedCallback): void;
-  onEvent(eventType: "writeAccessRequested", eventHandler: WriteAccessRequestedCallback): void;
-  onEvent(eventType: "contactRequested", eventHandler: ContactRequestedCallback): void;
-  onEvent(eventType: "biometricManagerUpdated", eventHandler: BiometricManagerUpdatedCallback): void;
-  onEvent(eventType: "biometricAuthRequested", eventHandler: BiometricAuthRequestedCallback): void;
-  onEvent(eventType: "biometricTokenUpdated", eventHandler: BiometricTokenUpdatedCallback): void;
+  onEvent(eventType: 'themeChanged', eventHandler: ThemeChangedCallback): void;
+  onEvent(
+    eventType: 'mainButtonClicked',
+    eventHandler: MainButtonClickedCallback,
+  ): void;
+  onEvent(
+    eventType: 'secondaryButtonClicked',
+    eventHandler: SecondaryButtonClickedCallback,
+  ): void;
+  onEvent(
+    eventType: 'backButtonClicked',
+    eventHandler: BackButtonClickedCallback,
+  ): void;
+  onEvent(
+    eventType: 'settingsButtonClicked',
+    eventHandler: SettingsButtonClickedCallback,
+  ): void;
+  onEvent(eventType: 'popupClosed', eventHandler: PopupClosedCallback): void;
+  onEvent(
+    eventType: 'viewportChanged',
+    eventHandler: ViewportChangedCallback,
+  ): void;
+  onEvent(
+    eventType: 'invoiceClosed',
+    eventHandler: InvoiceClosedCallback,
+  ): void;
+  onEvent(
+    eventType: 'qrTextReceived',
+    eventHandler: QrTextReceivedCallback,
+  ): void;
+  onEvent(
+    eventType: 'scanQrPopupClosed',
+    eventHandler: ScanQrPopupClosedCallback,
+  ): void;
+  onEvent(
+    eventType: 'clipboardTextReceived',
+    eventHandler: ClipboardTextReceivedCallback,
+  ): void;
+  onEvent(
+    eventType: 'writeAccessRequested',
+    eventHandler: WriteAccessRequestedCallback,
+  ): void;
+  onEvent(
+    eventType: 'contactRequested',
+    eventHandler: ContactRequestedCallback,
+  ): void;
+  onEvent(
+    eventType: 'biometricManagerUpdated',
+    eventHandler: BiometricManagerUpdatedCallback,
+  ): void;
+  onEvent(
+    eventType: 'biometricAuthRequested',
+    eventHandler: BiometricAuthRequestedCallback,
+  ): void;
+  onEvent(
+    eventType: 'biometricTokenUpdated',
+    eventHandler: BiometricTokenUpdatedCallback,
+  ): void;
 
   /** A method that deletes a previously set event handler. */
-  offEvent(eventType: "themeChanged", eventHandler: ThemeChangedCallback): void;
-  offEvent(eventType: "mainButtonClicked", eventHandler: MainButtonClickedCallback): void;
-  offEvent(eventType: "backButtonClicked", eventHandler: BackButtonClickedCallback): void;
-  offEvent(eventType: "settingsButtonClicked", eventHandler: SettingsButtonClickedCallback): void;
-  offEvent(eventType: "popupClosed", eventHandler: PopupClosedCallback): void;
-  offEvent(eventType: "viewportChanged", eventHandler: ViewportChangedCallback): void;
-  offEvent(eventType: "invoiceClosed", eventHandler: InvoiceClosedCallback): void;
-  offEvent(eventType: "qrTextReceived", eventHandler: QrTextReceivedCallback): void;
-  offEvent(eventType: "scanQrPopupClosed", eventHandler: ScanQrPopupClosedCallback): void;
-  offEvent(eventType: "clipboardTextReceived", eventHandler: ClipboardTextReceivedCallback): void;
-  offEvent(eventType: "writeAccessRequested", eventHandler: WriteAccessRequestedCallback): void;
-  offEvent(eventType: "contactRequested", eventHandler: ContactRequestedCallback): void;
-  offEvent(eventType: "biometricManagerUpdated", eventHandler: BiometricManagerUpdatedCallback): void;
-  offEvent(eventType: "biometricAuthRequested", eventHandler: BiometricAuthRequestedCallback): void;
-  offEvent(eventType: "biometricTokenUpdated", eventHandler: BiometricTokenUpdatedCallback): void;
+  offEvent(eventType: 'themeChanged', eventHandler: ThemeChangedCallback): void;
+  offEvent(
+    eventType: 'mainButtonClicked',
+    eventHandler: MainButtonClickedCallback,
+  ): void;
+  offEvent(
+    eventType: 'backButtonClicked',
+    eventHandler: BackButtonClickedCallback,
+  ): void;
+  offEvent(
+    eventType: 'settingsButtonClicked',
+    eventHandler: SettingsButtonClickedCallback,
+  ): void;
+  offEvent(eventType: 'popupClosed', eventHandler: PopupClosedCallback): void;
+  offEvent(
+    eventType: 'viewportChanged',
+    eventHandler: ViewportChangedCallback,
+  ): void;
+  offEvent(
+    eventType: 'invoiceClosed',
+    eventHandler: InvoiceClosedCallback,
+  ): void;
+  offEvent(
+    eventType: 'qrTextReceived',
+    eventHandler: QrTextReceivedCallback,
+  ): void;
+  offEvent(
+    eventType: 'scanQrPopupClosed',
+    eventHandler: ScanQrPopupClosedCallback,
+  ): void;
+  offEvent(
+    eventType: 'clipboardTextReceived',
+    eventHandler: ClipboardTextReceivedCallback,
+  ): void;
+  offEvent(
+    eventType: 'writeAccessRequested',
+    eventHandler: WriteAccessRequestedCallback,
+  ): void;
+  offEvent(
+    eventType: 'contactRequested',
+    eventHandler: ContactRequestedCallback,
+  ): void;
+  offEvent(
+    eventType: 'biometricManagerUpdated',
+    eventHandler: BiometricManagerUpdatedCallback,
+  ): void;
+  offEvent(
+    eventType: 'biometricAuthRequested',
+    eventHandler: BiometricAuthRequestedCallback,
+  ): void;
+  offEvent(
+    eventType: 'biometricTokenUpdated',
+    eventHandler: BiometricTokenUpdatedCallback,
+  ): void;
 
   /**
    * A method used to send data to the bot. When this method is called, a
@@ -221,7 +313,7 @@ interface WebApp {
    * chats the user will be able to choose from. It can be one or more of the
    * following types: users, bots, groups, channels.
    */
-  switchInlineQuery(query: string, choose_chat_types?: Array<"users" | "bots" | "groups" | "channels">): void;
+  switchInlineQuery(query: string, choose_chat_types?: any[]): void;
   /**
    * A method that opens a link in an external browser. The Web App will not
    * be closed. If the optional options parameter is passed with the field
@@ -246,7 +338,7 @@ interface WebApp {
    */
   openInvoice(
     url: string,
-    callback: (status: "paid" | "cancelled" | "failed" | "pending") => void,
+    callback: (status: 'paid' | 'cancelled' | 'failed' | 'pending') => void,
   ): void;
   /**
    * A method that shows a native popup described by the params argument of
@@ -281,7 +373,10 @@ interface WebApp {
    * the Mini App will receive the scanQrPopupClosed event if the user closes
    * the native popup for scanning a QR code.
    */
-  showScanQrPopup(params: ScanQrPopupParams, callback?: (data: string) => void): void;
+  showScanQrPopup(
+    params: ScanQrPopupParams,
+    callback?: (data: string) => void,
+  ): void;
   /**
    * A method that closes the native popup for scanning a QR code opened with
    * the showScanQrPopup method. Run it if you received valid data in the
@@ -366,21 +461,48 @@ interface WebApp {
 }
 
 type ThemeChangedCallback = () => void;
+
 type ViewportChangedCallback = (eventData: { isStateStable: boolean }) => void;
+
 type MainButtonClickedCallback = () => void;
+
 type SecondaryButtonClickedCallback = () => void;
+
 type BackButtonClickedCallback = () => void;
+
 type SettingsButtonClickedCallback = () => void;
-type InvoiceClosedCallback = (eventData: { url: string; status: "paid" | "cancelled" | "failed" | "pending" }) => void;
+
+type InvoiceClosedCallback = (eventData: {
+  url: string;
+  status: 'paid' | 'cancelled' | 'failed' | 'pending';
+}) => void;
+
 type PopupClosedCallback = (eventData: { button_id: string | null }) => void;
+
 type QrTextReceivedCallback = (eventData: { data: string }) => void;
+
 type ScanQrPopupClosedCallback = () => void;
-type ClipboardTextReceivedCallback = (eventData: { data: string | null }) => void;
-type WriteAccessRequestedCallback = (eventData: { status: "allowed" | "cancelled" }) => void;
+
+type ClipboardTextReceivedCallback = (eventData: {
+  data: string | null;
+}) => void;
+
+type WriteAccessRequestedCallback = (eventData: {
+  status: 'allowed' | 'cancelled';
+}) => void;
+
 type ContactRequestedCallback = (eventData: RequestContactResponse) => void;
+
 type BiometricManagerUpdatedCallback = () => void;
-type BiometricAuthRequestedCallback = (eventData: { isAuthenticated: boolean; biometricToken?: string }) => void;
-type BiometricTokenUpdatedCallback = (eventData: { isUpdated: boolean }) => void;
+
+type BiometricAuthRequestedCallback = (eventData: {
+  isAuthenticated: boolean;
+  biometricToken?: string;
+}) => void;
+
+type BiometricTokenUpdatedCallback = (eventData: {
+  isUpdated: boolean;
+}) => void;
 
 /**
  * Web Apps can adjust the appearance of the interface to match the Telegram
@@ -488,41 +610,39 @@ interface PopupParams {
 /**
  * This object describes the native popup button.
  */
-type PopupButton =
-  & {
-    /**
-     * Identifier of the button, 0-64 characters. Set to empty string by
-     * default. If the button is pressed, its id is returned in the callback
-     * and the popupClosed event.
-     */
-    id?: string;
-    /**
-     * Type of the button. Set to default by default. Can be one of these
-     * values:
-     * - `default`, a button with the default style,
-     * - `ok`, a button with the localized text “OK”,
-     * - `close`, a button with the localized text “Close”,
-     * - `cancel`, a button with the localized text “Cancel”,
-     * - `destructive`, a button with a style that indicates a destructive
-     *   action (e.g. “Remove”, “Delete”, etc.).
-     */
-    type?: "default" | "ok" | "close" | "cancel" | "destructive";
-    /**
-     * The text to be displayed on the button, 0-64 characters. Required if
-     * type is default or destructive. Irrelevant for other types.
-     */
-    text?: string;
-  }
-  & (
-  | {
-  type: "default" | "destructive";
-  text: string;
-}
-  | {
-  type: "ok" | "close" | "cancel";
+type PopupButton = {
+  /**
+   * Identifier of the button, 0-64 characters. Set to empty string by
+   * default. If the button is pressed, its id is returned in the callback
+   * and the popupClosed event.
+   */
+  id?: string;
+  /**
+   * Type of the button. Set to default by default. Can be one of these
+   * values:
+   * - `default`, a button with the default style,
+   * - `ok`, a button with the localized text “OK”,
+   * - `close`, a button with the localized text “Close”,
+   * - `cancel`, a button with the localized text “Cancel”,
+   * - `destructive`, a button with a style that indicates a destructive
+   *   action (e.g. “Remove”, “Delete”, etc.).
+   */
+  type?: 'default' | 'ok' | 'close' | 'cancel' | 'destructive';
+  /**
+   * The text to be displayed on the button, 0-64 characters. Required if
+   * type is default or destructive. Irrelevant for other types.
+   */
   text?: string;
-}
-  );
+} & (
+  | {
+      type: 'default' | 'destructive';
+      text: string;
+    }
+  | {
+      type: 'ok' | 'close' | 'cancel';
+      text?: string;
+    }
+);
 
 /**
  * This object controls the back button, which can be displayed in the header of
@@ -582,7 +702,7 @@ interface BottomButton {
    *  - top, displayed above the main button,
    *  - bottom, displayed below the main button.
    */
-  position?: "left" | "right" | "top" | "bottom";
+  position?: 'left' | 'right' | 'top' | 'bottom';
   /** Readonly. Shows whether the button is displaying a loading indicator. */
   isProgressVisible: boolean;
   /** A method to set the button text. */
@@ -639,7 +759,7 @@ interface MainButtonParams {
   /** enable shine effect */
   has_shine_effect?: boolean;
   /** position of the secondary button */
-  position?: "left" | "right" | "top" | "bottom";
+  position?: 'left' | 'right' | 'top' | 'bottom';
   /** enable the button */
   is_active?: boolean;
   /** show the button */
@@ -693,7 +813,9 @@ interface HapticFeedback {
    * - rigid, indicates a collision between hard or inflexible UI objects,
    * - soft, indicates a collision between soft or flexible UI objects.
    */
-  impactOccurred(style: "light" | "medium" | "heavy" | "rigid" | "soft"): () => void;
+  impactOccurred(
+    style: 'light' | 'medium' | 'heavy' | 'rigid' | 'soft',
+  ): () => void;
   /**
    * A method tells that a task or action has succeeded, failed, or produced a
    * warning. The Telegram app may play the appropriate haptics based on type
@@ -702,7 +824,7 @@ interface HapticFeedback {
    * - success, indicates that a task or action has completed successfully,
    * - warning, indicates that a task or action produced a warning.
    */
-  notificationOccurred(type: "error" | "success" | "warning"): () => void;
+  notificationOccurred(type: 'error' | 'success' | 'warning'): () => void;
   /**
    * A method tells that the user has changed a selection. The Telegram app
    * may play the appropriate haptics.
@@ -728,7 +850,11 @@ interface CloudStorage {
    * null and the second argument will be a boolean indicating whether the
    * value was stored.
    */
-  setItem(key: string, value: string, callback?: CloudStorageSetItemCallback): CloudStorage;
+  setItem(
+    key: string,
+    value: string,
+    callback?: CloudStorageSetItemCallback,
+  ): CloudStorage;
   /**
    * A method that receives a value from the cloud storage using the specified
    * key.
@@ -752,7 +878,10 @@ interface CloudStorage {
    * the first argument will be null and the values will be passed as the
    * second argument.
    */
-  getItems(keys: string[], callback?: CloudStorageGetItemsCallback): CloudStorage;
+  getItems(
+    keys: string[],
+    callback?: CloudStorageGetItemsCallback,
+  ): CloudStorage;
   /**
    * A method that removes a value from the cloud storage using the specified
    * key.
@@ -765,7 +894,10 @@ interface CloudStorage {
    * null and the second argument will be a boolean indicating whether the
    * value was removed.
    */
-  removeItem(key: string, callback?: CloudStorageRemoveItemCallback): CloudStorage;
+  removeItem(
+    key: string,
+    callback?: CloudStorageRemoveItemCallback,
+  ): CloudStorage;
   /**
    * A method that removes values from the cloud storage using the specified
    * keys.
@@ -778,7 +910,10 @@ interface CloudStorage {
    * null and the second argument will be a boolean indicating whether the
    * values were removed.
    */
-  removeItems(keys: string[], callback?: CloudStorageRemoveItemsCallback): CloudStorage;
+  removeItems(
+    keys: string[],
+    callback?: CloudStorageRemoveItemsCallback,
+  ): CloudStorage;
   /**
    * A method that receives the list of all keys stored in the cloud storage.
    *
@@ -790,12 +925,35 @@ interface CloudStorage {
   getKeys(callback?: CloudStorageGetKeysCallback): CloudStorage;
 }
 
-type CloudStorageSetItemCallback = (error: string | null, success: null | true) => void;
-type CloudStorageGetItemCallback = (error: string | null, value: null | string) => void;
-type CloudStorageGetItemsCallback = (error: string | null, values: null | Record<string, string>) => void;
-type CloudStorageRemoveItemCallback = (error: string | null, success: null | true) => void;
-type CloudStorageRemoveItemsCallback = (error: string | null, success: null | true) => void;
-type CloudStorageGetKeysCallback = (error: string | null, keys: null | string[]) => void;
+type CloudStorageSetItemCallback = (
+  error: string | null,
+  success: null | true,
+) => void;
+
+type CloudStorageGetItemCallback = (
+  error: string | null,
+  value: null | string,
+) => void;
+
+type CloudStorageGetItemsCallback = (
+  error: string | null,
+  values: null | Record<string, string>,
+) => void;
+
+type CloudStorageRemoveItemCallback = (
+  error: string | null,
+  success: null | true,
+) => void;
+
+type CloudStorageRemoveItemsCallback = (
+  error: string | null,
+  success: null | true,
+) => void;
+
+type CloudStorageGetKeysCallback = (
+  error: string | null,
+  keys: null | string[],
+) => void;
 
 /**
  * This object controls biometrics on the device. Before the first use of this
@@ -817,7 +975,7 @@ interface BiometricManager {
    * - face, face-based biometrics,
    * - unknown, biometrics of an unknown type.
    */
-  biometricType: "finger" | "face" | "unkown";
+  biometricType: 'finger' | 'face' | 'unkown';
   /**
    * Shows whether permission to use biometrics has been requested.
    */
@@ -890,7 +1048,12 @@ interface BiometricManager {
 }
 
 type BiometricRequestAccessCallback = (isAccessGranted: boolean) => void;
-type BiometricAuthenticateCallback = (isAuthenticated: boolean, biometricToken?: string) => void;
+
+type BiometricAuthenticateCallback = (
+  isAuthenticated: boolean,
+  biometricToken?: string,
+) => void;
+
 type BiometricUpdateBiometricTokenCallback = (applied: boolean) => void;
 
 /**
@@ -948,7 +1111,7 @@ interface WebAppInitData {
    * “group”, “supergroup”, or “channel”. Returned only for Web Apps launched
    * from direct links.
    */
-  chat_type?: "sender" | "private" | "group" | "supergroup" | "channel";
+  chat_type?: 'sender' | 'private' | 'group' | 'supergroup' | 'channel';
   /**
    * Global identifier, uniquely corresponding to the chat from which the Web
    * App was opened. Returned only for Web Apps launched from a direct link.
@@ -1024,7 +1187,7 @@ interface WebAppChat {
   /**
    * Type of chat, can be either “group”, “supergroup” or “channel”
    */
-  type: "group" | "supergroup" | "channel";
+  type: 'group' | 'supergroup' | 'channel';
   /**
    * Title of the chat
    */
@@ -1039,6 +1202,7 @@ interface WebAppChat {
    */
   photo_url?: string;
 }
+
 /**
  * This object describes the native popup for scanning QR codes.
  */
@@ -1055,7 +1219,7 @@ interface ScanQrPopupParams {
  */
 interface RequestContactResponseSent {
   /** Status 'sent' indicates that contact information has been shared. */
-  status: "sent";
+  status: 'sent';
   /** A status message or result as a string. */
   response: string;
   /** Contains sensitive information shared upon user consent. WARNING: Data
@@ -1086,10 +1250,12 @@ interface RequestContactResponseSent {
 interface RequestContactResponseCancelled {
   /** Status 'cancelled', indicates that user cancelled the contact share
    * request. */
-  status: "cancelled";
+  status: 'cancelled';
 }
 
-type RequestContactResponse = RequestContactResponseSent | RequestContactResponseCancelled;
+type RequestContactResponse =
+  | RequestContactResponseSent
+  | RequestContactResponseCancelled;
 
 /** This object describes additional sharing settings for the native story
  * editor. */
@@ -1109,4 +1275,4 @@ interface StoryWidgetLink {
   /** The name to be displayed for the widget link, 0-48 characters. */
   name?: string;
 }
-
+/* eslint-enable max-lines */

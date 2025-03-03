@@ -1,0 +1,105 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["import", "@nx"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["tsconfig.*?.json"]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": ["libs/*/tsconfig.json", "../*/tsconfig.json"]
+      }
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    }
+  },
+  "extends": [
+    "plugin:import/typescript",
+    "@tinkoff/eslint-config/app",
+    "@tinkoff/eslint-config-angular",
+    "@tinkoff/eslint-config-angular/rxjs",
+    "@tinkoff/eslint-config-angular/promise",
+    "@tinkoff/eslint-config-angular/imports",
+    "@tinkoff/eslint-config-angular/line-statements",
+    "@tinkoff/eslint-config-angular/member-ordering",
+    "@tinkoff/eslint-config-angular/decorator-position",
+    "@tinkoff/eslint-config-angular/function-return-type"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@typescript-eslint/naming-convention": ["off"],
+        "complexity": ["error", 6],
+        "max-lines": ["error", 200],
+        "no-magic-numbers": ["error"],
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "rules": {
+        "strict": "off",
+        "lines-around-directive": "off",
+        "import/no-deprecated": "off"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "env": {
+        "jest": true
+      },
+      "rules": {
+        "import/no-cycle": "off"
+      }
+    },
+    {
+      "files": ["*.component.html"],
+      "extends": ["plugin:@nx/angular-template"],
+      "rules": {
+        "@angular-eslint/template/prefer-self-closing-tags": ["error"],
+        "@angular-eslint/template/attributes-order": [
+          "error",
+          {
+            "order": [
+              "STRUCTURAL_DIRECTIVE",
+              "TEMPLATE_REFERENCE",
+              "ATTRIBUTE_BINDING",
+              "INPUT_BINDING",
+              "TWO_WAY_BINDING",
+              "OUTPUT_BINDING"
+            ]
+          }
+        ],
+        "@angular-eslint/template/eqeqeq": ["error"],
+        "@angular-eslint/template/no-any": ["error"]
+      }
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+
 import { NonAuthenticatedLayoutComponent } from './containers/non-authenticated-layout/non-authenticated-layout.component';
 
 export const appRoutes: Route[] = [
@@ -8,7 +9,8 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: '',
-        loadComponent: () => import('@libs/domains/auth/feature').then((m) => m.LoginPageComponent),
+        loadComponent: async () =>
+          import('@libs/domain/auth/feature').then((m) => m.LoginPageComponent),
       },
     ],
   },

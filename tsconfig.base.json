@@ -3,6 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
+    "strict": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -16,8 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@libs/core": ["libs/core/src/index.ts"],
-      "@libs/domains/auth/core": ["libs/domains/auth/core/src/index.ts"],
-      "@libs/domains/auth/feature": ["libs/domains/auth/feature/src/index.ts"]
+      "@libs/domain/auth/core": ["libs/domain/auth/core/src/index.ts"],
+      "@libs/domain/auth/feature": ["libs/domain/auth/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
