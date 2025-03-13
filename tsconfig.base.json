@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@libs/core": ["libs/core/src/index.ts"],
+      "@libs/api": ["libs/api/src/index.ts"],
       "@libs/domain/auth/core": ["libs/domain/auth/core/src/index.ts"],
       "@libs/domain/auth/feature": ["libs/domain/auth/feature/src/index.ts"]
     }
