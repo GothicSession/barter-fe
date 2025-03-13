@@ -17,8 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@libs/core": ["libs/core/src/index.ts"],
-      "@libs/domain/auth/core": ["libs/domain/auth/core/src/index.ts"],
-      "@libs/domain/auth/feature": ["libs/domain/auth/feature/src/index.ts"]
+      "@libs/domain/user": ["libs/domain/user/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

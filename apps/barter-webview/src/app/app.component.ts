@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TuiRoot } from '@taiga-ui/core';
 
 @Component({
-  imports: [RouterModule],
+  imports: [RouterModule, TuiRoot],
   selector: 'barter-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'barter-fe';
-}
+export class AppComponent {}

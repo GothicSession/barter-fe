@@ -7,6 +7,7 @@ out-tsc
 
 # dependencies
 node_modules
+**/node_modules
 
 # IDEs and editors
 /.idea
@@ -25,6 +26,7 @@ node_modules
 !.vscode/extensions.json
 
 # misc
+/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage
@@ -40,5 +42,10 @@ Thumbs.db
 
 .nx/cache
 .nx/workspace-data
-
 .angular
+.eslintcache
+**/.eslintcache
+
+#firebase
+.firebaserc
+firebase.json

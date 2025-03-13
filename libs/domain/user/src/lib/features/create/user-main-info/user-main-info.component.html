@@ -1,0 +1,55 @@
+<h1 tuiTitle="m" class="onboarding__title">Укажите данные профиля</h1>
+<form class="form" [formGroup]="userInfoForm">
+    <div class="form__control control">
+        <span class="tui-text_body-l-2 control__name"> Имя </span>
+        <tui-input [formControl]="userInfoForm.controls.firstName">
+            Укажите имя
+            <input tuiTextfieldLegacy type="text" />
+        </tui-input>
+    </div>
+    <div class="form__control control">
+        <span class="tui-text_body-l-2 control__name"> Дата рождения </span>
+        <tui-input-date
+            [formControl]="userInfoForm.controls.birthDate"
+            [max]="max"
+            [min]="min"
+        >
+            Укажите дату рождения
+        </tui-input-date>
+    </div>
+    <div class="form__control control">
+        <span class="tui-text_body-l-2 control__name"> Пол </span>
+        <tui-select
+            *tuiLet="sexItems"
+            tuiTextfieldSize="l"
+            [formControl]="userInfoForm.controls.sex"
+            [valueContent]="stringify(sexItems)"
+            [tuiTextfieldLabelOutside]="true"
+        >
+            Выберите пол
+            <input placeholder="Выберите пол" tuiTextfieldLegacy />
+            <ng-template tuiDataList>
+                <tui-data-list>
+                    @for (item of sexItems; track item.sex) {
+                        <button tuiOption type="button" [value]="item.sex">
+                            {{ item.displayText }}
+                        </button>
+                    }
+                </tui-data-list>
+            </ng-template>
+        </tui-select>
+    </div>
+    <div class="form__control control">
+        <span class="tui-text_body-l-2 control__name"> Расскажите о себе </span>
+        <tui-textarea
+            #textarea
+            [formControl]="userInfoForm.controls.about"
+            [expandable]="textarea.focused"
+        >
+            Расскажите о своих интересах...
+        </tui-textarea>
+    </div>
+</form>
+<button class="onboarding__button" tuiButton (click)="onBtnClick()">
+    Продолжить
+</button>

@@ -1,7 +1,8 @@
 /* eslint-disable max-lines */
-export {};
+
 // https://stackoverflow.com/a/12709880
 // Расширение интерфейса Window
+// @ts-expect-error window extension
 declare global {
   interface Window {
     Telegram: Telegram;
@@ -309,9 +310,9 @@ interface WebApp {
    * the bot's username will be inserted. If an optional choose_chat_types
    * parameter was passed, the client prompts the user to choose a specific
    * chat, then opens that chat and inserts the bot's username and the
-   * specified inline query in the input field. You can specify which types of
+   * specified inline query in the input field. You can specify which model of
    * chats the user will be able to choose from. It can be one or more of the
-   * following types: users, bots, groups, channels.
+   * following model: users, bots, groups, channels.
    */
   switchInlineQuery(query: string, choose_chat_types?: any[]): void;
   /**
@@ -630,7 +631,7 @@ type PopupButton = {
   type?: 'default' | 'ok' | 'close' | 'cancel' | 'destructive';
   /**
    * The text to be displayed on the button, 0-64 characters. Required if
-   * type is default or destructive. Irrelevant for other types.
+   * type is default or destructive. Irrelevant for other model.
    */
   text?: string;
 } & (
