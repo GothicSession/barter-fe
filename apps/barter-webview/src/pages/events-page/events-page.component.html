@@ -1,0 +1,5 @@
+<div class="events__list">
+    @for (event of events(); track event.id) {
+        <barter-event-card [event]="event" />
+    }
+</div>

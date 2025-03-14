@@ -8,4 +8,11 @@ import { TuiRoot } from '@taiga-ui/core';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  protected platform = '';
+
+  constructor() {
+    // window.Telegram?.WebApp?.requestFullscreen();
+    this.platform = window.Telegram?.WebApp?.platform;
+  }
+}

@@ -8,5 +8,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './authenticated-layout.component.scss',
   imports: [RouterOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'page-container',
+  },
 })
 export class AuthenticatedLayoutComponent {}

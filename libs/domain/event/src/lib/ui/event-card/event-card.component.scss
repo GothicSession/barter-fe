@@ -1,0 +1,53 @@
+.event {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px 4px rgba(0, 0, 0, 0.24);
+
+  &__info-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__participants {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+  }
+}
+
+.cover {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &__date {
+    position: absolute;
+    width: 52px;
+    backdrop-filter: blur(6px);
+    height: 42px;
+    background-color: rgba(78, 73, 73, 0.64);
+    top: 4px;
+    left: 4px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

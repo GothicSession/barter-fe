@@ -2,18 +2,17 @@
 
 // https://stackoverflow.com/a/12709880
 // Расширение интерфейса Window
-// @ts-expect-error window extension
 declare global {
   interface Window {
     Telegram: Telegram;
   }
 }
 
-interface Telegram {
+export interface Telegram {
   WebApp: WebApp;
 }
 
-interface WebApp {
+export interface WebApp {
   /**
    * A string with raw data transferred to the Web App, convenient for
    * validating data. WARNING: Validate data from this field before using it
@@ -459,6 +458,12 @@ interface WebApp {
    * the app.
    */
   disableVerticalSwipes(): void;
+
+  requestFullscreen(): void;
+
+  exitFullscreen(): void;
+
+  isFullscreen: boolean;
 }
 
 type ThemeChangedCallback = () => void;

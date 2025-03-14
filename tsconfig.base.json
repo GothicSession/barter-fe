@@ -18,6 +18,7 @@
     "paths": {
       "@libs/core": ["libs/core/src/index.ts"],
       "@libs/domain/user": ["libs/domain/user/src/index.ts"],
+      "@libs/domain/event": ["libs/domain/event/src/index.ts"],
       "@libs/api": ["libs/api/src/index.ts"]
     }
   },
