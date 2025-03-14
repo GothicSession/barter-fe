@@ -2,14 +2,15 @@ import { Route } from '@angular/router';
 
 import { AuthenticatedLayoutComponent } from './containers/authenticated-layout/authenticated-layout.component';
 import { NonAuthenticatedLayoutComponent } from './containers/non-authenticated-layout/non-authenticated-layout.component';
+import { Routes } from './types';
 
 export const appRoutes: Route[] = [
   {
-    path: '',
+    path: Routes.MAIN,
     component: NonAuthenticatedLayoutComponent,
     children: [
       {
-        path: '',
+        path: Routes.MAIN,
         loadComponent: async () =>
           import('../pages').then((m) => m.OnboardingPageComponent),
       },
@@ -17,11 +18,11 @@ export const appRoutes: Route[] = [
   },
   // TODO: Сменить path на '' и покрыть guard'ом как будет готов бекенд
   {
-    path: 'events',
+    path: Routes.EVENTS,
     component: AuthenticatedLayoutComponent,
     children: [
       {
-        path: '',
+        path: Routes.EVENTS,
         loadComponent: async () =>
           import('../pages').then((m) => m.EventsPageComponent),
       },
