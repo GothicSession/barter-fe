@@ -18,7 +18,7 @@ export const appRoutes: Route[] = [
   },
   // TODO: Сменить path на '' и покрыть guard'ом как будет готов бекенд
   {
-    path: Routes.EVENTS,
+    path: Routes.MAIN,
     component: AuthenticatedLayoutComponent,
     children: [
       {
