@@ -1,0 +1,15 @@
+@switch (activePage()) {
+    @case (ActivePageEnum.WELCOME) {
+        <barter-onboarding-welcome
+            (continueEvent)="changeActiveScreen(ActivePageEnum.USER_MAIN_INFO)"
+        />
+    }
+    @case (ActivePageEnum.USER_MAIN_INFO) {
+        <barter-user-main-info
+            (continueEvent)="changeActiveScreen(ActivePageEnum.PHOTO)"
+        />
+    }
+    @case (ActivePageEnum.PHOTO) {
+        <barter-user-photos-upload />
+    }
+}

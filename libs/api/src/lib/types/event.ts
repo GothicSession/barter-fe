@@ -1,3 +1,5 @@
+// MOCKS
+// eslint-disable-next-line import/no-cycle
 import { User } from './user';
 
 export interface Event {

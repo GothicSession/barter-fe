@@ -10,7 +10,7 @@ export const appRoutes: Route[] = [
       {
         path: '',
         loadComponent: async () =>
-          import('@libs/domain/auth/feature').then((m) => m.LoginPageComponent),
+          import('../pages').then((m) => m.OnboardingPageComponent),
       },
     ],
   },

@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+}

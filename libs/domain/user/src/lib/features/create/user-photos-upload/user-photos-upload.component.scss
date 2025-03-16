@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.photo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__list {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &__item {
+    height: 106px;
+  }
+}
+
+.onboarding__button {
+  width: 100%;
+}
+

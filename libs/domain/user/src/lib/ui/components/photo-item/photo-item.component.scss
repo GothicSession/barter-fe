@@ -1,0 +1,22 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.photo__item {
+  height: 100%;
+  &_upload {
+  }
+}
+
+.item {
+  &__loader[data-appearance=file]  {
+    border: none;
+    background-color: var(--tui-background-neutral-2);
+
+    &:active {
+      background-color: var(--tui-background-neutral-2-hover);
+    }
+  }
+}

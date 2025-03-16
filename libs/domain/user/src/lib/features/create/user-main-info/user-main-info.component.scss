@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.form {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  gap: 24px;
+
+  &__control {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.control {
+  &__name {
+    padding-left: 4px;
+  }
+}
+
+.onboarding__button {
+  width: 100%;
+}
+
