@@ -1,5 +1,12 @@
-<div class="events__list">
-    @for (event of events(); track event.id) {
-        <barter-event-card [event]="event" />
-    }
-</div>
+@if ({ events: eventFacade.getEvents() }; as tplData) {
+    <div class="events">
+        <div class="events__list-wrapper">
+            <span class="events__title tui-text_h6"> Ближайшие события </span>
+            <div class="events__list">
+                @for (event of tplData.events(); track event.id) {
+                    <barter-event-card class="events__item" [event]="event" />
+                }
+            </div>
+        </div>
+    </div>
+}

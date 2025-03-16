@@ -4,8 +4,25 @@
   height: 100%;
 }
 
-.events__list {
+.events {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  height: 100%;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__title {
+    padding-left: 10px;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+
+  &__list-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
 }

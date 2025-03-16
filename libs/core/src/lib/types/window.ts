@@ -848,7 +848,7 @@ interface CloudStorage {
    *
    * @param key The key should contain 1-128 characters, only A-Z, a-z, 0-9, _
    * and - are allowed.
-   * @param value The value should contain 0-4096 characters. You can store up
+   * @param value The value should contain 0-4096 characters. You can state up
    * to 1024 keys in the cloud storage.
    * @param callback If an optional callback parameter was passed, the
    * callback function will be called. In case of an error, the first argument
