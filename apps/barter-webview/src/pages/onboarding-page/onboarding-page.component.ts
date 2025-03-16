@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import {
+  CreateUserService,
   UserMainInfoComponent,
   UserPhotosUploadComponent,
 } from '@libs/domain/user';
@@ -30,6 +31,7 @@ enum ActivePageEnum {
     UserMainInfoComponent,
     UserPhotosUploadComponent,
   ],
+  providers: [CreateUserService],
 })
 export class OnboardingPageComponent {
   protected readonly ActivePageEnum = ActivePageEnum;
