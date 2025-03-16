@@ -12,7 +12,12 @@ export class AppComponent {
   protected platform = '';
 
   constructor() {
-    // window.Telegram?.WebApp?.requestFullscreen();
+    try {
+      window.Telegram?.WebApp?.requestFullscreen();
+    } catch (e) {
+      console.error('Run app via Telegram');
+    }
+
     this.platform = window.Telegram?.WebApp?.platform;
   }
 }

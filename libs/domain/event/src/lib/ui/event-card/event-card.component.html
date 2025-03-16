@@ -3,20 +3,20 @@
         <div class="cover__date">
             <span
                 class="tui-text_body-xs"
-                [innerHTML]="event?.date | eventDate"
+                [innerHTML]="event.date | eventDate"
             ></span>
         </div>
-        <img class="cover__img" alt="cover" [src]="event?.photos?.[0] || ''" />
+        <img class="cover__img" alt="cover" [src]="event.photos[0] || ''" />
     </div>
     <div class="event__info-wrapper">
         <div class="event__info">
             <span class="event__name tui-text_body-xl">
-                {{ event?.name }}
+                {{ event.name }}
             </span>
             <div class="event__participants">
                 <tui-avatar-stack [direction]="'left'">
                     @for (
-                        participant of event?.participants;
+                        participant of event.participants;
                         track participant.id
                     ) {
                         <tui-avatar
@@ -33,7 +33,7 @@
                     [icon]="'@tui.map-pin'"
                     [style.color]="'var(--tui-background-accent-1)'"
                 />
-                {{ event?.geolocation }}
+                {{ event.geolocation }}
             </div>
         </div>
         <button tuiButton>Хочу</button>
