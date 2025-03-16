@@ -1,7 +1,7 @@
 import { Directive, EventEmitter, Output } from '@angular/core';
 
 @Directive()
-export class SlideScreen {
+export abstract class SlideScreen {
   @Output()
   continueEvent: EventEmitter<void> = new EventEmitter();
 

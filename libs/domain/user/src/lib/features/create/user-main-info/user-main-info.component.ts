@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
-  FormControl,
-  FormGroup,
+  NonNullableFormBuilder,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -43,34 +42,19 @@ type SexData = { sex: Sex; displayText: string };
     ReactiveFormsModule,
     TuiInputDateModule,
     TuiSelectModule,
-    TuiTextfieldControllerModule,
-    TuiTextareaModule,
     TuiLet,
+    TuiTextareaModule,
+    TuiTextfieldControllerModule,
   ],
 })
 export class UserMainInfoComponent extends SlideScreen {
-  protected readonly userInfoForm: FormGroup<{
-    firstName: FormControl<string>;
-    birthDate: FormControl<TuiDay | null>;
-    sex: FormControl<Sex | null>;
-    about: FormControl<string>;
-  }> = new FormGroup({
-    firstName: new FormControl<string>('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    birthDate: new FormControl<null | TuiDay>(null, {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    sex: new FormControl<Sex | null>(null, {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    about: new FormControl<string>('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
+  protected readonly fb = inject(NonNullableFormBuilder);
+
+  protected readonly userInfoForm = this.fb.group({
+    firstName: this.fb.control<string>('', [Validators.required]),
+    birthDate: this.fb.control<null | TuiDay>(null, [Validators.required]),
+    sex: this.fb.control<null | Sex>(null, [Validators.required]),
+    about: this.fb.control<string>('', [Validators.required]),
   });
 
   protected readonly sexItems: SexData[] = [
@@ -91,9 +75,7 @@ export class UserMainInfoComponent extends SlideScreen {
     items: readonly SexData[],
   ): TuiStringHandler<TuiContext<string>> {
     const map = new Map(
-      items.map(
-        ({ displayText, sex }) => [sex, displayText] as [string, string],
-      ),
+      items.map(({ displayText, sex }) => [String(sex), displayText]),
     );
 
     return ({ $implicit }: TuiContext<string>) => map.get($implicit) || '';

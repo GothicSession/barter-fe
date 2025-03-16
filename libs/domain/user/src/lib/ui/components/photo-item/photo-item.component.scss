@@ -11,8 +11,8 @@
 }
 
 .item {
-  &__loader {
-    border: none !important;
+  &__loader[data-appearance=file]  {
+    border: none;
     background-color: var(--tui-background-neutral-2);
 
     &:active {
