@@ -11,11 +11,11 @@ import { TuiIcon } from '@taiga-ui/core';
 })
 export class OnboardingListItemComponent {
   @Input({ required: true })
-  title: string;
+  title!: string;
 
   @Input({ required: true })
-  icon: string;
+  icon!: string;
 
   @Input({ required: true })
-  description: string;
+  description!: string;
 }
