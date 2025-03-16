@@ -1,17 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import {
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SlideScreen } from '@libs/core';
-import {
-  TuiContext,
-  TuiDay,
-  TuiLet,
-  tuiPure,
-  TuiStringHandler,
-} from '@taiga-ui/cdk';
+import { TuiContext, TuiLet, tuiPure, TuiStringHandler } from '@taiga-ui/cdk';
 import { TuiButton, TuiTitle } from '@taiga-ui/core';
 import {
   TuiInputDateModule,
@@ -21,13 +11,8 @@ import {
   TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 
-import { Sex } from '../../../entity';
-
-const MIN_DATE_YEAR = 1925;
-const MIN_DATE_MONTH = 0;
-const MIN_DATE_DAY = 1;
-
-type SexData = { sex: Sex; displayText: string };
+import { CreateUserService } from '../create-user.service';
+import { SexFormData } from '../types';
 
 @Component({
   selector: 'barter-user-main-info',
@@ -48,31 +33,11 @@ type SexData = { sex: Sex; displayText: string };
   ],
 })
 export class UserMainInfoComponent extends SlideScreen {
-  protected readonly fb = inject(NonNullableFormBuilder);
-
-  protected readonly userInfoForm = this.fb.group({
-    firstName: this.fb.control<string>('', [Validators.required]),
-    birthDate: this.fb.control<null | TuiDay>(null, [Validators.required]),
-    sex: this.fb.control<null | Sex>(null, [Validators.required]),
-    about: this.fb.control<string>('', [Validators.required]),
-  });
-
-  protected readonly sexItems: SexData[] = [
-    { sex: 'male', displayText: 'Мужской' },
-    { sex: 'female', displayText: 'Женский' },
-  ];
-
-  protected readonly min = new TuiDay(
-    MIN_DATE_YEAR,
-    MIN_DATE_MONTH,
-    MIN_DATE_DAY,
-  );
-
-  protected readonly max = TuiDay.currentLocal();
+  protected readonly createUserService = inject(CreateUserService);
 
   @tuiPure
   protected stringify(
-    items: readonly SexData[],
+    items: readonly SexFormData[],
   ): TuiStringHandler<TuiContext<string>> {
     const map = new Map(
       items.map(({ displayText, sex }) => [String(sex), displayText]),

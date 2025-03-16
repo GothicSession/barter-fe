@@ -5,6 +5,7 @@ import {
   WritableSignal,
 } from '@angular/core';
 import {
+  CreateUserService,
   UserMainInfoComponent,
   UserPhotosUploadComponent,
 } from '@libs/domain/user';
@@ -28,6 +29,7 @@ enum ActivePageEnum {
     UserMainInfoComponent,
     UserPhotosUploadComponent,
   ],
+  providers: [CreateUserService],
 })
 export class OnboardingPageComponent {
   protected readonly ActivePageEnum = ActivePageEnum;

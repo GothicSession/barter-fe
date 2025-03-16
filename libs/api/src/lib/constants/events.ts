@@ -1,4 +1,4 @@
-import { Event } from '../services/event.service';
+import { Event } from '../types/event';
 import { USER_ARTEM, USER_DAN, USER_ERIK, USER_RUSIK } from './users';
 
 export const BUHLO_EVENT: Event = {
