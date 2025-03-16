@@ -13,6 +13,6 @@ import { TuiAvatar, TuiAvatarStack } from '@taiga-ui/kit';
   imports: [TuiIcon, TuiButton, TuiAvatar, TuiAvatarStack, EventDatePipe],
 })
 export class EventCardComponent {
-  @Input()
-  event?: Event;
+  @Input({ required: true })
+  event!: Event;
 }
