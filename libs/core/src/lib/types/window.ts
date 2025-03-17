@@ -2,6 +2,7 @@
 
 // https://stackoverflow.com/a/12709880
 // Расширение интерфейса Window
+// @ts-expect-error window extension
 declare global {
   interface Window {
     Telegram: Telegram;

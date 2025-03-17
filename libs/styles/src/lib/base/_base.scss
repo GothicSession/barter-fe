@@ -47,6 +47,10 @@ body {
   color: var(--tui-background-accent-1);
 }
 
+.text-secondary {
+  color: var(--tui-text-secondary);
+}
+
 .page-container {
   width: 100%;
   height: 100%;
@@ -61,6 +65,10 @@ tui-root.ios, tui-root.android {
   font: var(--tui-font-text-ui-s);
   line-height: 8px;
   font-weight: 700;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 * {
