@@ -12,6 +12,7 @@ import {
   UserPhotosUploadComponent,
 } from '@libs/domain/user';
 
+import { Routes } from '../../app/types';
 import { OnboardingWelcomeComponent } from '../../ui';
 
 enum ActivePageEnum {
@@ -45,6 +46,6 @@ export class OnboardingPageComponent {
   }
 
   redirectToEventPage(): void {
-    void this.router.navigate(['events']);
+    void this.router.navigate([Routes.EVENTS]);
   }
 }

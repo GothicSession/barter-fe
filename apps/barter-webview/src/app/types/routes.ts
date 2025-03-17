@@ -1,5 +1,5 @@
 export enum Routes {
-  USER = 'user',
+  PROFILE = 'profile/:id',
   EVENTS = 'events',
   MAIN = '',
 }

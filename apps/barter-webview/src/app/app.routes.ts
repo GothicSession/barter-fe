@@ -26,6 +26,11 @@ export const appRoutes: Route[] = [
         loadComponent: async () =>
           import('../pages').then((m) => m.EventsPageComponent),
       },
+      {
+        path: Routes.PROFILE,
+        loadComponent: async () =>
+          import('../pages').then((m) => m.ProfilePageComponent),
+      },
     ],
   },
 ];
