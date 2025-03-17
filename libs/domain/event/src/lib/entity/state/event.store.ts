@@ -6,14 +6,14 @@ import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
 
-interface EventStore {
+interface EventEntityStore {
   events: Event[];
   isLoading: boolean;
   error: HttpErrorResponse | null;
 }
 
-export const EventStore = signalStore(
-  withState<EventStore>(() => ({
+export const EventEntityStore = signalStore(
+  withState<EventEntityStore>(() => ({
     isLoading: false,
     error: null,
     events: [],

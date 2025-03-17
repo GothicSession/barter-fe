@@ -2,21 +2,21 @@ import { inject, Injectable, Signal } from '@angular/core';
 import { Event } from '@libs/api';
 import { Unsubscribable } from 'rxjs';
 
-import { EventStore } from './event.store';
+import { EventEntityStore } from './event.store';
 
 @Injectable()
-export class EventFacade {
-  private readonly eventStore = inject(EventStore);
+export class EventEntityFacade {
+  private readonly eventEntityStore = inject(EventEntityStore);
 
   getEvents(): Signal<Event[]> {
-    return this.eventStore.events;
+    return this.eventEntityStore.events;
   }
 
   getIsLoading(): Signal<boolean> {
-    return this.eventStore.isLoading;
+    return this.eventEntityStore.isLoading;
   }
 
   loadEvents(): Unsubscribable {
-    return this.eventStore.loadEvents();
+    return this.eventEntityStore.loadEvents();
   }
 }
