@@ -15,5 +15,5 @@
             }
         }
     },
-    "implicitDependencies": ["barter"]
+    "implicitDependencies": ["barter-webview"]
 }
