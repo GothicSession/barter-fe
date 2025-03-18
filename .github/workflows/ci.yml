@@ -33,7 +33,7 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm ci
       - name: Cache node modules
         uses: actions/cache@v4
         with:
@@ -73,7 +73,7 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
-        run: npm ci --legacy-peer-deps
+        run: npm ci
       - name: Run lint
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
@@ -111,7 +111,7 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
-        run: npm ci --legacy-peer-deps
+        run: npm ci
       - name: Build
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
