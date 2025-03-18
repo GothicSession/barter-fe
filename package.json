@@ -5,8 +5,8 @@
   "scripts": {
     "start": "nx run barter-webview:serve",
     "build": "nx run barter-webview:build",
-    "lint": "nx run-many --all --target=lint --exclude=styles",
-    "lint:fix": "nx run-many --all --target=lint --fix --verbose --exclude=styles",
+    "lint": "nx run-many --all --target=lint --skip-nx-cache --exclude=styles",
+    "lint:fix": "nx run-many --all --target=lint --skip-nx-cache --fix --verbose --exclude=styles",
     "lint:styles": "stylelint \"**/*.scss\"",
     "barter-webview:lint": "nx run barter-webview:lint --cache",
     "barter-webview:lint:fix": "nx run barter-webview:lint --cache --fix",
