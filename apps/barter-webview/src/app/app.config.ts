@@ -1,5 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { provideHttpClient } from '@angular/common/http';
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  LOCALE_ID,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { NG_EVENT_PLUGINS } from '@taiga-ui/event-plugins';
@@ -13,5 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     provideHttpClient(),
     NG_EVENT_PLUGINS,
+    DatePipe,
+    { provide: LOCALE_ID, useValue: 'ru-RU' },
   ],
 };

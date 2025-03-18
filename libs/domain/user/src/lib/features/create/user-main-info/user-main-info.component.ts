@@ -11,7 +11,7 @@ import {
   TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 
-import { CreateUserService } from '../create-user.service';
+import { CreateUserFeatureService } from '../create-user.service';
 import { SexFormData } from '../types';
 
 @Component({
@@ -33,7 +33,9 @@ import { SexFormData } from '../types';
   ],
 })
 export class UserMainInfoComponent extends SlideScreen {
-  protected readonly createUserService = inject(CreateUserService);
+  protected readonly createUserFeatureService = inject(
+    CreateUserFeatureService,
+  );
 
   @tuiPure
   protected stringify(

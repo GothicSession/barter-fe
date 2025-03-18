@@ -1,9 +1,11 @@
 <h1 tuiTitle="m" class="onboarding__title">Укажите данные профиля</h1>
-<form class="form" [formGroup]="createUserService.userInfoForm">
+<form class="form" [formGroup]="createUserFeatureService.userInfoForm">
     <div class="form__control control">
         <span class="tui-text_body-l-2 control__name"> Имя </span>
         <tui-input
-            [formControl]="createUserService.userInfoForm.controls.firstName"
+            [formControl]="
+                createUserFeatureService.userInfoForm.controls.firstName
+            "
         >
             Укажите имя
             <input tuiTextfieldLegacy type="text" />
@@ -12,9 +14,11 @@
     <div class="form__control control">
         <span class="tui-text_body-l-2 control__name"> Дата рождения </span>
         <tui-input-date
-            [formControl]="createUserService.userInfoForm.controls.birthDate"
-            [max]="createUserService.max"
-            [min]="createUserService.min"
+            [formControl]="
+                createUserFeatureService.userInfoForm.controls.birthDate
+            "
+            [max]="createUserFeatureService.max"
+            [min]="createUserFeatureService.min"
         >
             Укажите дату рождения
         </tui-input-date>
@@ -22,17 +26,20 @@
     <div class="form__control control">
         <span class="tui-text_body-l-2 control__name"> Пол </span>
         <tui-select
-            *tuiLet="createUserService.sexItems"
+            *tuiLet="createUserFeatureService.sexItems"
             tuiTextfieldSize="l"
-            [formControl]="createUserService.userInfoForm.controls.sex"
-            [valueContent]="stringify(createUserService.sexItems)"
+            [formControl]="createUserFeatureService.userInfoForm.controls.sex"
+            [valueContent]="stringify(createUserFeatureService.sexItems)"
             [tuiTextfieldLabelOutside]="true"
         >
             Выберите пол
             <input placeholder="Выберите пол" tuiTextfieldLegacy />
             <ng-template tuiDataList>
                 <tui-data-list>
-                    @for (item of createUserService.sexItems; track item.sex) {
+                    @for (
+                        item of createUserFeatureService.sexItems;
+                        track item.sex
+                    ) {
                         <button tuiOption type="button" [value]="item.sex">
                             {{ item.displayText }}
                         </button>
@@ -45,7 +52,7 @@
         <span class="tui-text_body-l-2 control__name"> Расскажите о себе </span>
         <tui-textarea
             #textarea
-            [formControl]="createUserService.userInfoForm.controls.about"
+            [formControl]="createUserFeatureService.userInfoForm.controls.about"
             [expandable]="textarea.focused"
         >
             Расскажите о своих интересах...

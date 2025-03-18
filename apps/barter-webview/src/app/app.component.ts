@@ -8,4 +8,16 @@ import { TuiRoot } from '@taiga-ui/core';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  protected platform = '';
+
+  constructor() {
+    try {
+      window.Telegram?.WebApp?.requestFullscreen();
+    } catch (e) {
+      console.error('Run app via Telegram');
+    }
+
+    this.platform = window.Telegram?.WebApp?.platform;
+  }
+}

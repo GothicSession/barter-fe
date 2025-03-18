@@ -11,7 +11,7 @@ const MIN_DATE_MONTH = 0;
 const MIN_DATE_DAY = 1;
 
 @Injectable()
-export class CreateUserService {
+export class CreateUserFeatureService {
   protected readonly fb = inject(FormBuilder);
 
   readonly sexItems: SexFormData[] = [

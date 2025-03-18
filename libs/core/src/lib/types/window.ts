@@ -2,18 +2,17 @@
 
 // https://stackoverflow.com/a/12709880
 // Расширение интерфейса Window
-// @ts-expect-error window extension
 declare global {
   interface Window {
     Telegram: Telegram;
   }
 }
 
-interface Telegram {
+export interface Telegram {
   WebApp: WebApp;
 }
 
-interface WebApp {
+export interface WebApp {
   /**
    * A string with raw data transferred to the Web App, convenient for
    * validating data. WARNING: Validate data from this field before using it
@@ -459,6 +458,12 @@ interface WebApp {
    * the app.
    */
   disableVerticalSwipes(): void;
+
+  requestFullscreen(): void;
+
+  exitFullscreen(): void;
+
+  isFullscreen: boolean;
 }
 
 type ThemeChangedCallback = () => void;
@@ -843,7 +848,7 @@ interface CloudStorage {
    *
    * @param key The key should contain 1-128 characters, only A-Z, a-z, 0-9, _
    * and - are allowed.
-   * @param value The value should contain 0-4096 characters. You can store up
+   * @param value The value should contain 0-4096 characters. You can state up
    * to 1024 keys in the cloud storage.
    * @param callback If an optional callback parameter was passed, the
    * callback function will be called. In case of an error, the first argument

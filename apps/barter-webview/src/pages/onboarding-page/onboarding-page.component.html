@@ -10,6 +10,6 @@
         />
     }
     @case (ActivePageEnum.PHOTO) {
-        <barter-user-photos-upload />
+        <barter-user-photos-upload (continueEvent)="redirectToEventPage()" />
     }
 }

@@ -1,4 +1,4 @@
-import { Event } from '../types/event';
+import { Event } from '../types';
 import { USER_ARTEM, USER_DAN, USER_ERIK, USER_RUSIK } from './users';
 
 export const BUHLO_EVENT: Event = {
@@ -11,14 +11,14 @@ export const BUHLO_EVENT: Event = {
     'Приходите все бухать в бар! Попьем пивка, познакомимся. Собираемся небольшой компанией! С меня закуски и алкоголь, с вас хорошее настроение)',
   people_count: 6,
   date: '2025-03-20T13:24:09.430Z',
-  geolocation: 'Бар Сыто Пьяно на Юго-Западной',
+  geolocation: 'Бар Сыто Пьяно',
   creator_id: 1,
-  participants: [USER_ARTEM, USER_RUSIK],
+  participants: [USER_ERIK, USER_RUSIK, USER_ARTEM, USER_DAN],
 };
 
 export const GAMING_EVENT: Event = {
   id: 2,
-  name: 'Собираемся в компах (PUBG)',
+  name: 'Собираемся в PUBG',
   photos: [
     'https://upload.wikimedia.org/wikipedia/ru/7/7e/PlayerUnknown%27s_Battlegrounds_Mobile.jpg',
   ],
@@ -28,7 +28,7 @@ export const GAMING_EVENT: Event = {
   date: '2025-03-14T13:24:09.430Z',
   geolocation: 'Collizeum на Курской',
   creator_id: 3,
-  participants: [USER_DAN, USER_ERIK],
+  participants: [USER_ERIK, USER_RUSIK, USER_ARTEM, USER_DAN],
 };
 
 export const DANCING_EVENT: Event = {
@@ -41,9 +41,9 @@ export const DANCING_EVENT: Event = {
     'Приглашаю всех желающих на мастер класс по танцам! Потанцуем К-поп, Хип-Хоп, и все что захотите!',
   people_count: 4,
   date: '2025-03-14T13:24:09.430Z',
-  geolocation: 'PVDL на Электрозаводской!',
+  geolocation: 'PVDL на Электрозаводской',
   creator_id: 20,
-  participants: [USER_ERIK, USER_RUSIK],
+  participants: [USER_ERIK, USER_RUSIK, USER_ARTEM, USER_DAN],
 };
 
 export const EVENTS: Event[] = [DANCING_EVENT, GAMING_EVENT, BUHLO_EVENT];
