@@ -57,12 +57,16 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - name: Restore cached node modules
+        id: cache-modules
         uses: actions/cache@v4
         with:
           path: |
             node_modules
             .nx/cache
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: npm ci --legacy-peer-deps
       - name: Run lint
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
@@ -89,12 +93,16 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - name: Restore cached node modules
+        id: cache-modules
         uses: actions/cache@v4
         with:
           path: |
             node_modules
             .nx/cache
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: npm ci --legacy-peer-deps
       - name: Build
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
