@@ -13,6 +13,12 @@ barter-root {
   }
 }
 
+tui-avatar[data-size=xxl] {
+  width: 134px;
+  height: 134px;
+  border-radius: 50%;
+}
+
 .tg-btn {
   background-color: var(--tg-theme-button-color);
   cursor: pointer;

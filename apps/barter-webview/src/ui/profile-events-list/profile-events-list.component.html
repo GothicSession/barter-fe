@@ -1,0 +1,27 @@
+<span class="tui-text_h6">События</span>
+<tui-tabs class="events__tab" [(activeItemIndex)]="activeItemIndex">
+    <button tuiTab type="button" (click)="changeTabIndex(0)">Активные</button>
+    <button tuiTab type="button" (click)="changeTabIndex(1)">
+        Завершенные
+    </button>
+</tui-tabs>
+<div class="events__list">
+    @if (currentEvents.length) {
+        @for (event of currentEvents; track event.id) {
+            <barter-event-card [event]="event" />
+        }
+    } @else {
+        <ng-container *ngTemplateOutlet="emptyEventsListTpl" />
+    }
+</div>
+
+<ng-template #emptyEventsListTpl>
+    <div class="events__list_empty">
+        <tui-icon
+            [icon]="'@tui.calendar-range'"
+            [style.color]="'var(--tui-background-accent-1)'"
+            [style.font-size.rem]="8"
+        />
+        <span class="tui-text_body-xl"> Пока нет мероприятий </span>
+    </div>
+</ng-template>

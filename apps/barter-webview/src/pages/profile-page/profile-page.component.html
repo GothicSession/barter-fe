@@ -1,0 +1,11 @@
+@if ({ currentUser: userEntityFacade.getCurrentUser() }; as tplData) {
+    <barter-avatar
+        [name]="tplData.currentUser()?.name"
+        [src]="tplData.currentUser()?.photos?.[0] || ''"
+    />
+    <barter-edit-user-button class="edit__button" />
+    <barter-profile-events-list
+        [activeEvents]="tplData.currentUser()?.createdEvents || []"
+        [passedEvents]="tplData.currentUser()?.createdEvents || []"
+    />
+}
