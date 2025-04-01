@@ -150,7 +150,14 @@ jobs:
       - name: Build
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            npx nx affected -t build --parallel=3 --configuration=production --base=origin/main --head=HEAD --skip-nx-cache
+            echo "Checking TypeScript version:"
+            npx tsc --version
+            echo "Checking file existence:"
+            ls -la libs/domain/user/src/lib/entity/state/user.facade.ts
+            echo "Checking exports:"
+            cat libs/domain/user/src/lib/entity/index.ts
+            echo "Starting build..."
+            npx nx affected -t build --parallel=3 --configuration=production --base=origin/main --head=HEAD --skip-nx-cache --verbose
           else
             npx nx run-many -t build --parallel=3 --configuration=production --all --skip-nx-cache
           fi
