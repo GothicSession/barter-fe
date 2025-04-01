@@ -51,7 +51,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          fetch-tags: true
+          ref: ${{ github.event.pull_request.head.sha }} # Checkout PR head
       - name: Fetch branches
         run: |
           git fetch origin main:main
@@ -85,7 +85,8 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             # Get list of changed files in PR only
-            CHANGED_FILES=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep '\.scss$' || true)
+            git fetch origin ${{ github.base_ref }}
+            CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.scss$' || true)
             if [ -n "$CHANGED_FILES" ]; then
               npx stylelint $CHANGED_FILES
             else
@@ -99,7 +100,7 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             # Get list of changed files in PR only
-            CHANGED_FILES=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep -E '\.(js|jsx|ts|tsx|css|scss|html|json|md)$' || true)
+            CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -E '\.(js|jsx|ts|tsx|css|scss|html|json|md)$' || true)
             if [ -n "$CHANGED_FILES" ]; then
               npx prettier --check $CHANGED_FILES
             else
