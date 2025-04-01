@@ -152,12 +152,14 @@ jobs:
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             echo "Checking TypeScript version:"
             npx tsc --version
-            echo "Checking module resolution:"
-            npx tsc --traceResolution | grep -A 5 "user.facade"
+            echo "Checking project structure:"
+            ls -R libs/domain/user/src/lib/
+            echo "Checking tsconfig paths:"
+            cat tsconfig.base.json
             echo "Checking file contents:"
             cat libs/domain/user/src/lib/entity/index.ts
             cat libs/domain/user/src/lib/entity/state/index.ts
-            echo "Starting build..."
+            echo "Starting build with verbose logging:"
             npx nx affected -t build --parallel=3 --configuration=production --base=origin/main --head=HEAD --skip-nx-cache --verbose
           else
             npx nx run-many -t build --parallel=3 --configuration=production --all --skip-nx-cache
