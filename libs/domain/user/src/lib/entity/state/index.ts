@@ -1,2 +1,2 @@
-export * from './user.facade';
-export * from './user.store';
+export { UserEntityFacade } from './user.facade';
+export { UserEntityStore } from './user.store';
