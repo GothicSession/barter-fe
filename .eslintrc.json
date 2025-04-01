@@ -40,6 +40,7 @@
         ],
         "max-lines": ["error", 200],
         "no-magic-numbers": ["error"],
+        "dot-notation": ["off"],
         "@nx/enforce-module-boundaries": [
           "error",
           {
@@ -66,7 +67,9 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+      "rules": {
+        "dot-notation": "off"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
