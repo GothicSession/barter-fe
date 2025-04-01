@@ -1,10 +1,9 @@
 barter-root {
+  background-color: var(--tg-theme-bg-color);
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: var(--tg-theme-bg-color);
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
 
@@ -35,14 +34,15 @@ tui-avatar[data-size=xxl] {
 }
 
 * {
-  padding: 0;
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 body {
-  width: 100vw;
   height: var(--tg-viewport-height);
   overflow: hidden;
+  width: 100vw;
 }
 
 .text-secondary {
@@ -53,30 +53,19 @@ body {
   color: var(--tui-background-accent-1);
 }
 
-.text-secondary {
-  color: var(--tui-text-secondary);
-}
-
 .page-container {
-  width: 100%;
-  height: 100%;
   display: block;
+  height: 100%;
+  width: 100%;
 }
 
-tui-root.ios, tui-root.android {
+tui-root.ios,
+tui-root.android {
   padding-top: 64px;
 }
 
 .date__text {
   font: var(--tui-font-text-ui-s);
-  line-height: 8px;
   font-weight: 700;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-* {
-  box-sizing: border-box;
+  line-height: 8px;
 }
