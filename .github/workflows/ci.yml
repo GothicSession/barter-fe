@@ -32,6 +32,11 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+      - name: Clean npm cache
+        run: |
+          npm cache clean --force
+          rm -rf node_modules
+          rm -rf .nx/cache
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
       - name: Cache node modules
@@ -142,7 +147,12 @@ jobs:
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: npm ci --legacy-peer-deps
       - name: Build
-        run: npm run build
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            npx nx affected -t build --parallel=3 --configuration=production --base=origin/main --head=HEAD --skip-nx-cache
+          else
+            npx nx run-many -t build --parallel=3 --configuration=production --all --skip-nx-cache
+          fi
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
