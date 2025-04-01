@@ -87,7 +87,7 @@ jobs:
             # Get list of changed files
             CHANGED_FILES=$(git diff --name-only origin/main...HEAD | grep '\.scss$' || true)
             if [ -n "$CHANGED_FILES" ]; then
-              echo "$CHANGED_FILES" | xargs npm run lint:styles --
+              npx stylelint $CHANGED_FILES
             else
               echo "No SCSS files changed"
               exit 0
@@ -101,7 +101,7 @@ jobs:
             # Get list of changed files
             CHANGED_FILES=$(git diff --name-only origin/main...HEAD | grep -E '\.(js|jsx|ts|tsx|css|scss|html|json|md)$' || true)
             if [ -n "$CHANGED_FILES" ]; then
-              echo "$CHANGED_FILES" | xargs npm run format:check --
+              npx prettier --check $CHANGED_FILES
             else
               echo "No files to check for formatting"
               exit 0
