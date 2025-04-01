@@ -84,8 +84,8 @@ jobs:
       - name: Run Stylelint
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            # Get list of changed files
-            CHANGED_FILES=$(git diff --name-only origin/main...HEAD | grep '\.scss$' || true)
+            # Get list of changed files in PR only
+            CHANGED_FILES=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep '\.scss$' || true)
             if [ -n "$CHANGED_FILES" ]; then
               npx stylelint $CHANGED_FILES
             else
@@ -98,8 +98,8 @@ jobs:
       - name: Check Prettier formatting
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            # Get list of changed files
-            CHANGED_FILES=$(git diff --name-only origin/main...HEAD | grep -E '\.(js|jsx|ts|tsx|css|scss|html|json|md)$' || true)
+            # Get list of changed files in PR only
+            CHANGED_FILES=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep -E '\.(js|jsx|ts|tsx|css|scss|html|json|md)$' || true)
             if [ -n "$CHANGED_FILES" ]; then
               npx prettier --check $CHANGED_FILES
             else
