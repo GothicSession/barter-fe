@@ -12,10 +12,10 @@ barter-root {
   }
 }
 
-tui-avatar[data-size=xxl] {
-  width: 134px;
-  height: 134px;
+tui-avatar[data-size='xxl'] {
   border-radius: 50%;
+  height: 134px;
+  width: 134px;
 }
 
 .tg-btn {
