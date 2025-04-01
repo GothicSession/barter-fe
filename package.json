@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nx run barter-webview:serve",
-    "build": "nx run barter-webview:build",
+    "build": "nx run barter-webview:build --skip-nx-cache",
     "lint": "nx run-many --all --target=lint --skip-nx-cache --exclude=styles",
     "lint:fix": "nx run-many --all --target=lint --skip-nx-cache --fix --verbose --exclude=styles",
     "lint:styles": "stylelint \"apps/**/*.scss\" \"libs/**/*.scss\"",
