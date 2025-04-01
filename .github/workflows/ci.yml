@@ -82,9 +82,31 @@ jobs:
             npx nx run-many -t lint --parallel=3 --all --skip-nx-cache
           fi
       - name: Run Stylelint
-        run: npm run lint:styles
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            # Get list of changed files
+            CHANGED_FILES=$(git diff --name-only origin/main...HEAD | grep '\.scss$' || true)
+            if [ -n "$CHANGED_FILES" ]; then
+              echo "$CHANGED_FILES" | xargs stylelint
+            else
+              echo "No SCSS files changed"
+            fi
+          else
+            npm run lint:styles
+          fi
       - name: Check Prettier formatting
-        run: npm run format:check
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            # Get list of changed files
+            CHANGED_FILES=$(git diff --name-only origin/main...HEAD | grep -E '\.(js|jsx|ts|tsx|css|scss|html|json|md)$' || true)
+            if [ -n "$CHANGED_FILES" ]; then
+              echo "$CHANGED_FILES" | xargs prettier --check
+            else
+              echo "No files to check for formatting"
+            fi
+          else
+            npm run format:check
+          fi
 
   build:
     needs: [lint, setup]
