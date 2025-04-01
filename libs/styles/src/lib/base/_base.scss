@@ -2,7 +2,6 @@ barter-root {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: var(--tg-theme-bg-color);
   overflow-x: hidden;
   overflow-y: auto;
   -ms-overflow-style: none;
@@ -11,6 +10,14 @@ barter-root {
   ::-webkit-scrollbar {
     display: none;
   }
+}
+
+.t-root-content {
+  background-color: var(--tui-background-base-alt);
+}
+
+tui-root {
+  height: 100%;
 }
 
 tui-avatar[data-size=xxl] {
@@ -64,7 +71,9 @@ body {
 }
 
 tui-root.ios, tui-root.android {
-  padding-top: 64px;
+  barter-non-authenticated-layout {
+    padding-top: 64px;
+  }
 }
 
 .date__text {
