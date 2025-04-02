@@ -2,7 +2,7 @@ import { Route } from '@angular/router';
 
 import { AuthenticatedLayoutComponent } from './containers/authenticated-layout/authenticated-layout.component';
 import { NonAuthenticatedLayoutComponent } from './containers/non-authenticated-layout/non-authenticated-layout.component';
-import { Routes } from './types';
+import { Routes } from './shared';
 
 export const appRoutes: Route[] = [
   {

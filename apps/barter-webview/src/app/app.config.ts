@@ -10,6 +10,8 @@ import { provideRouter } from '@angular/router';
 import { NG_EVENT_PLUGINS } from '@taiga-ui/event-plugins';
 
 import { appRoutes } from './app.routes';
+import { provideRoutesState } from '@libs/core';
+import { Routes, PlatformSharedStore, PlatformSharedFacade } from './shared';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +22,8 @@ export const appConfig: ApplicationConfig = {
     NG_EVENT_PLUGINS,
     DatePipe,
     { provide: LOCALE_ID, useValue: 'ru-RU' },
+    provideRoutesState<Routes>(),
+    PlatformSharedFacade,
+    PlatformSharedStore,
   ],
 };

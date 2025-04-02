@@ -1,11 +1,21 @@
 :host {
-  padding: 24px 18px 24px 18px;
+  padding: 48px 18px 24px 18px;
   display: block;
 }
 
 .events {
   display: flex;
   height: 100%;
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 0 10px;
+  }
 
   &__list {
     display: flex;
@@ -14,8 +24,6 @@
   }
 
   &__title {
-    padding-left: 10px;
-    margin-bottom: 16px;
     display: inline-block;
   }
 

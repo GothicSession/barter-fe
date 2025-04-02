@@ -4,7 +4,9 @@ import {
   EventCardComponent,
   EventEntityFacade,
   EventEntityStore,
+  EventsSearchInputComponent,
 } from '@libs/domain/event';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'barter-events-page',
@@ -13,7 +15,7 @@ import {
   styleUrl: './events-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [EventService, EventEntityStore, EventEntityFacade],
-  imports: [EventCardComponent],
+  imports: [EventCardComponent, EventsSearchInputComponent, FormsModule],
 })
 export class EventsPageComponent {
   protected readonly eventEntityFacade = inject(EventEntityFacade);

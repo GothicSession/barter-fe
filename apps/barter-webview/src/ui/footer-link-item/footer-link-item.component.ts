@@ -4,7 +4,7 @@ import {
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
-import { Routes } from '../../app/types';
+import { Routes } from '../../app/shared';
 import { TuiIcon } from '@taiga-ui/core';
 
 @Component({
