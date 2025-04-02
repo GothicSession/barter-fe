@@ -49,76 +49,76 @@ jobs:
   #         restore-keys: |
   #           ${{ runner.os }}-node-
 
-  # lint:
-  #   needs: setup
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         fetch-depth: 0
-  #         ref: ${{ github.event.pull_request.head.sha }} # Checkout PR head
-  #     - name: Fetch branches
-  #       run: |
-  #         git fetch origin main:main
-  #         git fetch origin ${{ github.head_ref }}:${{ github.head_ref }} || true
-  #     - name: Use Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20'
-  #         cache: 'npm'
-  #     - name: Restore cached node modules
-  #       id: cache-modules
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: |
-  #           node_modules
-  #           .nx/cache
-  #         key: ${{ needs.setup.outputs.cache-key }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-node-
-  #     - name: Install dependencies
-  #       if: steps.cache-modules.outputs.cache-hit != 'true'
-  #       run: npm ci --legacy-peer-deps
-  #     - name: Run ESLint
-  #       run: |
-  #         if [ "${{ github.event_name }}" == "pull_request" ]; then
-  #           npx nx affected -t lint --parallel=3 --base=origin/main --head=HEAD --skip-nx-cache
-  #         else
-  #           npx nx run-many -t lint --parallel=3 --all --skip-nx-cache
-  #         fi
-  #     - name: Run Stylelint
-  #       run: |
-  #         if [ "${{ github.event_name }}" == "pull_request" ]; then
-  #           # Get list of changed files in PR only
-  #           git fetch origin ${{ github.base_ref }}
-  #           CHANGED_FILES=$(git diff --name-only --diff-filter=d origin/${{ github.base_ref }}...HEAD | grep '\.scss$' || true)
-  #           if [ -n "$CHANGED_FILES" ]; then
-  #             npx stylelint $CHANGED_FILES
-  #           else
-  #             echo "No SCSS files changed"
-  #             exit 0
-  #           fi
-  #         else
-  #           npm run lint:styles
-  #         fi
-  #     - name: Check Prettier formatting
-  #       run: |
-  #         if [ "${{ github.event_name }}" == "pull_request" ]; then
-  #           # Get list of changed files in PR only
-  #           git fetch origin ${{ github.base_ref }}
-  #           CHANGED_FILES=$(git diff --name-only --diff-filter=d origin/${{ github.base_ref }}...HEAD | grep -E '\.(js|jsx|ts|tsx|css|scss|html|json|md)$' || true)
-  #           if [ -n "$CHANGED_FILES" ]; then
-  #             npx prettier --check $CHANGED_FILES
-  #           else
-  #             echo "No files to check for formatting"
-  #             exit 0
-  #           fi
-  #         else
-  #           npm run format:check
-  #         fi
+  lint:
+    # needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }} # Checkout PR head
+      - name: Fetch branches
+        run: |
+          git fetch origin main:main
+          git fetch origin ${{ github.head_ref }}:${{ github.head_ref }} || true
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      # - name: Restore cached node modules
+      #   id: cache-modules
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: |
+      #       node_modules
+      #       .nx/cache
+      #     key: ${{ needs.setup.outputs.cache-key }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-node-
+      - name: Install dependencies
+        # if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: npm ci --legacy-peer-deps
+      - name: Run ESLint
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            npx nx affected -t lint --parallel=3 --base=origin/main --head=HEAD --skip-nx-cache
+          else
+            npx nx run-many -t lint --parallel=3 --all --skip-nx-cache
+          fi
+      - name: Run Stylelint
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            # Get list of changed files in PR only
+            git fetch origin ${{ github.base_ref }}
+            CHANGED_FILES=$(git diff --name-only --diff-filter=d origin/${{ github.base_ref }}...HEAD | grep '\.scss$' || true)
+            if [ -n "$CHANGED_FILES" ]; then
+              npx stylelint $CHANGED_FILES
+            else
+              echo "No SCSS files changed"
+              exit 0
+            fi
+          else
+            npm run lint:styles
+          fi
+      - name: Check Prettier formatting
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            # Get list of changed files in PR only
+            git fetch origin ${{ github.base_ref }}
+            CHANGED_FILES=$(git diff --name-only --diff-filter=d origin/${{ github.base_ref }}...HEAD | grep -E '\.(js|jsx|ts|tsx|css|scss|html|json|md)$' || true)
+            if [ -n "$CHANGED_FILES" ]; then
+              npx prettier --check $CHANGED_FILES
+            else
+              echo "No files to check for formatting"
+              exit 0
+            fi
+          else
+            npm run format:check
+          fi
 
   build:
-    # needs: [lint, setup]
+    needs: [lint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
