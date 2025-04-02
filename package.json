@@ -13,7 +13,8 @@
     "barter-webview:lint": "nx run barter-webview:lint --cache",
     "barter-webview:lint:fix": "nx run barter-webview:lint --cache --fix",
     "barter-webview:lint:errors": "nx run barter-webview:lint --cache --quiet",
-    "barter-webview-bundle-report": "nx build barter-webview --stats-json && webpack-bundle-analyzer dist/apps/barter-webview/stats.json"
+    "barter-webview-bundle-report": "nx build barter-webview --stats-json && webpack-bundle-analyzer dist/apps/barter-webview/stats.json",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -36,13 +37,14 @@
     "@ng-web-apis/platform": "^4.11.1",
     "@ng-web-apis/resize-observer": "^4.11.1",
     "@ng-web-apis/screen-orientation": "^4.11.1",
+    "@ngrx/operators": "^17.1.1",
+    "@ngrx/signals": "^17.1.1",
     "@taiga-ui/cdk": "^4.26.1",
     "@taiga-ui/core": "^4.26.1",
     "@taiga-ui/event-plugins": "^4.0.2",
     "@taiga-ui/i18n": "^4.26.1",
     "@taiga-ui/icons": "^4.26.1",
-    "@ngrx/signals": "^17.1.1",
-    "@ngrx/operators": "^17.1.1",
+    "@taiga-ui/icons-fontawesome": "^4.30.0",
     "@taiga-ui/kit": "^4.26.1",
     "@taiga-ui/legacy": "^4.26.1",
     "@taiga-ui/polymorpheus": "^4.8.0",

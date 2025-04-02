@@ -1,0 +1,18 @@
+:host {
+  border-radius: 32px;
+  bottom: 24px;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.footer {
+  align-items: center;
+  background-color: var(--tui-background-base);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 60px;
+  padding: 0 16px;
+  width: 60vw;
+}

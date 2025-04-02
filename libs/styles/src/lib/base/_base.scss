@@ -18,6 +18,14 @@ tui-avatar[data-size='xxl'] {
   width: 134px;
 }
 
+.t-root-content {
+  background-color: var(--tui-background-base-alt);
+}
+
+tui-root {
+  height: 100%;
+}
+
 .tg-btn {
   background-color: var(--tg-theme-button-color);
   cursor: pointer;
@@ -61,7 +69,9 @@ body {
 
 tui-root.ios,
 tui-root.android {
-  padding-top: 64px;
+  barter-non-authenticated-layout {
+    padding-top: 64px;
+  }
 }
 
 .date__text {
