@@ -1,9 +1,9 @@
 :host {
-  display: flex;
   align-items: center;
+  display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
+  justify-content: space-between;
 }
 
 .photo {
@@ -25,4 +25,3 @@
 .onboarding__button {
   width: 100%;
 }
-

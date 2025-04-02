@@ -1,19 +1,17 @@
 :host {
+  display: block;
   height: 100%;
   width: 100%;
-  display: block;
 }
 
 .photo__item {
   height: 100%;
-  &_upload {
-  }
 }
 
 .item {
-  &__loader[data-appearance=file]  {
-    border: none;
+  &__loader[data-appearance='file'] {
     background-color: var(--tui-background-neutral-2);
+    border: none;
 
     &:active {
       background-color: var(--tui-background-neutral-2-hover);

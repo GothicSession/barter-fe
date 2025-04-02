@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,8 +8,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './authenticated-layout.component.scss',
   imports: [RouterOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    class: 'page-container',
-  },
 })
-export class AuthenticatedLayoutComponent {}
+export class AuthenticatedLayoutComponent {
+  @HostBinding('class')
+  hostClass = 'page-container';
+}

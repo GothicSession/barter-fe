@@ -313,7 +313,7 @@ export interface WebApp {
    * chats the user will be able to choose from. It can be one or more of the
    * following model: users, bots, groups, channels.
    */
-  switchInlineQuery(query: string, choose_chat_types?: any[]): void;
+  switchInlineQuery(query: string, choose_chat_types?: unknown[]): void;
   /**
    * A method that opens a link in an external browser. The Web App will not
    * be closed. If the optional options parameter is passed with the field
