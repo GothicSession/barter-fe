@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TuiRoot } from '@taiga-ui/core';
+import { PlatformSharedFacade } from './shared';
 
 import { PlatformSharedFacade } from './shared';
 
