@@ -13,7 +13,8 @@
     "barter-webview:lint": "nx run barter-webview:lint --cache",
     "barter-webview:lint:fix": "nx run barter-webview:lint --cache --fix",
     "barter-webview:lint:errors": "nx run barter-webview:lint --cache --quiet",
-    "barter-webview-bundle-report": "nx build barter-webview --stats-json && webpack-bundle-analyzer dist/apps/barter-webview/stats.json"
+    "barter-webview-bundle-report": "nx build barter-webview --stats-json && webpack-bundle-analyzer dist/apps/barter-webview/stats.json",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
