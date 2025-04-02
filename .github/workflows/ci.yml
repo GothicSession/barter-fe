@@ -36,26 +36,37 @@ jobs:
           rm -rf .nx/cache
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
-      - name: Cache node modules
+      - name: Cache node modules for lint
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            .nx/cache
+          key: lint-${{ steps.set-cache-key.outputs.cache-key }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ github.run_id }}-
+            ${{ runner.os }}-node-
+
+      - name: Cache node modules for build
         uses: actions/cache@v4
         with:
           path: |
             node_modules
             .nx/cache
             dist
-          key: ${{ steps.set-cache-key.outputs.cache-key }}
+          key: build-${{ steps.set-cache-key.outputs.cache-key }}
           restore-keys: |
             ${{ runner.os }}-node-${{ github.run_id }}-
             ${{ runner.os }}-node-
 
   lint:
-    needs: setup
+    needs: [setup]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head.sha }} # Checkout PR head
       - name: Fetch branches
         run: |
           git fetch origin main:main
@@ -72,10 +83,10 @@ jobs:
           path: |
             node_modules
             .nx/cache
-          key: ${{ needs.setup.outputs.cache-key }}-lint
+          key: lint-${{ needs.setup.outputs.cache-key }}
           restore-keys: |
-            ${{ runner.os }}-node-${{ github.run_id }}-lint-
-            ${{ runner.os }}-node-${{ needs.setup.outputs.cache-key }}
+            ${{ runner.os }}-node-${{ github.run_id }}-
+            ${{ runner.os }}-node-
       - name: Install dependencies if cache miss
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: npm ci --legacy-peer-deps
@@ -118,7 +129,7 @@ jobs:
           fi
 
   build:
-    needs: [lint, setup]
+    needs: [setup]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -142,10 +153,10 @@ jobs:
             node_modules
             .nx/cache
             dist
-          key: ${{ needs.setup.outputs.cache-key }}-build
+          key: build-${{ needs.setup.outputs.cache-key }}
           restore-keys: |
-            ${{ runner.os }}-node-${{ github.run_id }}-build-
-            ${{ runner.os }}-node-${{ needs.setup.outputs.cache-key }}
+            ${{ runner.os }}-node-${{ github.run_id }}-
+            ${{ runner.os }}-node-
       - name: Install dependencies if cache miss
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: npm ci --legacy-peer-deps
