@@ -11,46 +11,43 @@ env:
   CI: true
 
 jobs:
-  # setup:
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     cache-key: ${{ steps.set-cache-key.outputs.cache-key }}
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         fetch-depth: 0
-  #         fetch-tags: true
-  #     - name: Set cache key
-  #       id: set-cache-key
-  #       run: echo "cache-key=${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}" >> $GITHUB_OUTPUT
-  #     - name: Fetch branches
-  #       run: |
-  #         git fetch origin main:main
-  #         git fetch origin ${{ github.head_ref }}:${{ github.head_ref }} || true
-  #     - name: Use Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20'
-  #         cache: 'npm'
-  #     - name: Clean npm cache
-  #       run: |
-  #         npm cache clean --force
-  #         rm -rf node_modules
-  #         rm -rf .nx/cache
-  #     - name: Install dependencies
-  #       run: npm ci --legacy-peer-deps
-  #     - name: Cache node modules
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: |
-  #           node_modules
-  #           .nx/cache
-  #         key: ${{ steps.set-cache-key.outputs.cache-key }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-node-
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.set-cache-key.outputs.cache-key }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - name: Set cache key
+        id: set-cache-key
+        run: echo "cache-key=${{ runner.os }}-node-${{ github.run_id }}-${{ hashFiles('**/package-lock.json') }}" >> $GITHUB_OUTPUT
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Clean npm cache
+        run: |
+          npm cache clean --force
+          rm -rf node_modules
+          rm -rf .nx/cache
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            .nx/cache
+          key: ${{ steps.set-cache-key.outputs.cache-key }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ github.run_id }}-
+            ${{ runner.os }}-node-
 
   lint:
-    # needs: setup
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -66,18 +63,19 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-      # - name: Restore cached node modules
-      #   id: cache-modules
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       node_modules
-      #       .nx/cache
-      #     key: ${{ needs.setup.outputs.cache-key }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
-      - name: Install dependencies
-        # if: steps.cache-modules.outputs.cache-hit != 'true'
+      - name: Restore cached node modules
+        id: cache-modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            .nx/cache
+          key: ${{ needs.setup.outputs.cache-key }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ github.run_id }}-
+            ${{ runner.os }}-node-
+      - name: Install dependencies if cache miss
+        if: steps.cache-modules.outputs.cache-hit != 'true'
         run: npm ci --legacy-peer-deps
       - name: Run ESLint
         run: |
@@ -118,7 +116,7 @@ jobs:
           fi
 
   build:
-    needs: [lint]
+    needs: [lint, setup]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -134,32 +132,23 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-      # - name: Restore cached node modules
-      #   id: cache-modules
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       node_modules
-      #       .nx/cache
-      #     key: ${{ needs.setup.outputs.cache-key }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
-      - name: Install dependencies
-        # if: steps.cache-modules.outputs.cache-hit != 'true'
+      - name: Restore cached node modules
+        id: cache-modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            .nx/cache
+          key: ${{ needs.setup.outputs.cache-key }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ github.run_id }}-
+            ${{ runner.os }}-node-
+      - name: Install dependencies if cache miss
+        if: steps.cache-modules.outputs.cache-hit != 'true'
         run: npm ci --legacy-peer-deps
       - name: Build
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            echo "Checking TypeScript version:"
-            npx tsc --version
-            echo "Checking project structure:"
-            ls -R libs/domain/user/src/lib/
-            echo "Checking tsconfig paths:"
-            cat tsconfig.base.json
-            echo "Checking file contents:"
-            cat libs/domain/user/src/lib/entity/index.ts
-            cat libs/domain/user/src/lib/entity/state/index.ts
-            echo "Starting build with verbose logging:"
             npx nx affected -t build --parallel=3 --configuration=production --base=origin/main --head=HEAD --skip-nx-cache --verbose
           else
             npx nx run-many -t build --parallel=3 --configuration=production --all --skip-nx-cache
