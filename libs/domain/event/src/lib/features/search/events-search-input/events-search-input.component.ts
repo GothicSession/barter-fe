@@ -1,7 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TuiInputModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
-import { ReactiveFormsModule } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  WritableSignal,
+} from '@angular/core';
+import { TuiSheetDialog, TuiSheetDialogOptions } from '@taiga-ui/addon-mobile';
 import { TuiIcon } from '@taiga-ui/core';
+
+import { EventsSearchDialogComponent } from '../events-search-dialog/events-search-dialog.component';
 
 @Component({
   selector: 'barter-user-events-search-input',
@@ -9,11 +15,13 @@ import { TuiIcon } from '@taiga-ui/core';
   templateUrl: './events-search-input.component.html',
   styleUrl: './events-search-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    TuiInputModule,
-    ReactiveFormsModule,
-    TuiTextfieldControllerModule,
-    TuiIcon,
-  ],
+  imports: [TuiIcon, EventsSearchDialogComponent, TuiSheetDialog],
 })
-export class EventsSearchInputComponent {}
+export class EventsSearchInputComponent {
+  protected readonly openedDialog: WritableSignal<boolean> = signal(false);
+  protected readonly dialogOptions: Partial<TuiSheetDialogOptions> = {
+    closeable: true,
+    offset: 96,
+    fullscreen: true,
+  };
+}

@@ -1,6 +1,12 @@
-<tui-icon [icon]="'@tui.search'" [style.color]="'var(--tui-background-accent-1)'"/>
-<!--<tui-input [tuiTextfieldLabelOutside]="true" tuiTextfieldIconLeft="@tui.search"-->
-<!--           [formControl]="searchEventsService.searchControl">-->
-<!--  Поиск...-->
-<!--  <input tuiTextfieldLegacy type="text" />-->
-<!--</tui-input>-->
+<tui-icon
+    [icon]="'@tui.search'"
+    [style.color]="'var(--tui-background-accent-1)'"
+    (click)="openedDialog.set(true)"
+/>
+<ng-template
+    [tuiSheetDialog]="openedDialog()"
+    [tuiSheetDialogOptions]="dialogOptions"
+    (tuiSheetDialogChange)="openedDialog.set($event)"
+>
+    <barter-user-events-search-dialog (cancelEvent)="openedDialog.set(false)" />
+</ng-template>
