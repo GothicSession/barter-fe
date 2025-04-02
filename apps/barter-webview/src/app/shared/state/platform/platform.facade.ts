@@ -1,6 +1,7 @@
 import { inject, Injectable, Signal } from '@angular/core';
-import { PlatformSharedStore } from './platform.store';
+
 import { Platform } from '../../enums';
+import { PlatformSharedStore } from './platform.store';
 
 @Injectable()
 export class PlatformSharedFacade {

@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 
 @Injectable()
 export class SearchEventsFeatureService {
-  private fb = inject(FormBuilder);
+  private readonly fb = inject(FormBuilder);
 
   searchControl = this.fb.nonNullable.control('');
 }

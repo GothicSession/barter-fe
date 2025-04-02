@@ -1,3 +1,4 @@
+import { computed } from '@angular/core';
 import {
   patchState,
   signalStore,
@@ -5,8 +6,8 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
+
 import { Platform } from '../../enums';
-import { computed } from '@angular/core';
 
 export interface PlatformStore {
   currentPlatform: Platform;

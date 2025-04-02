@@ -4,9 +4,9 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
-import { TuiChip } from '@taiga-ui/kit';
-import { TuiRepeatTimes } from '@taiga-ui/cdk';
 import { FormsModule } from '@angular/forms';
+import { TuiRepeatTimes } from '@taiga-ui/cdk';
+import { TuiChip } from '@taiga-ui/kit';
 
 interface EventChip {
   checked: boolean;
@@ -36,7 +36,8 @@ export class EventChipsComponent {
     },
   ];
 
-  @Output() selectedChip = new EventEmitter<string>();
+  @Output()
+  selectedChip = new EventEmitter<string>();
 
   onChipSelected(eventChip: EventChip): void {
     this.chipsValues.forEach((chip) => {

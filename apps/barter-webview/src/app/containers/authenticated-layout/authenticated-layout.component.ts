@@ -1,7 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  ElementRef,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from '../../../ui';
-import { HeaderComponent } from '../../../ui';
+import { RouteFacade } from '@libs/core';
+
+import { FooterComponent, HeaderComponent } from '../../../ui';
 
 @Component({
   selector: 'barter-authenticated-layout',
@@ -14,4 +24,22 @@ import { HeaderComponent } from '../../../ui';
     class: 'page-container',
   },
 })
-export class AuthenticatedLayoutComponent {}
+export class AuthenticatedLayoutComponent implements OnInit {
+  protected readonly routeFacade = inject(RouteFacade);
+  protected readonly destroyRef = inject(DestroyRef);
+
+  @ViewChild('content', { static: true })
+  contentBlock!: ElementRef<HTMLDivElement>;
+
+  ngOnInit(): void {
+    this.routeFacade
+      .getNavigationEndEvents$()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.contentBlock.nativeElement.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      });
+  }
+}

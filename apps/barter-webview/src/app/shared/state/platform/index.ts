@@ -1,2 +1,2 @@
-export * from './platform.store';
 export * from './platform.facade';
+export * from './platform.store';

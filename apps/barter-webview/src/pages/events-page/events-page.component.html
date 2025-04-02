@@ -1,10 +1,12 @@
 @if ({ events: eventEntityFacade.getEvents() }; as tplData) {
     <div class="events">
         <div class="events__list-wrapper">
-          <div class="events__top">
-            <span class="events__title tui-text_h6"> Ближайшие события </span>
-            <barter-user-events-search-input />
-          </div>
+            <div class="events__top">
+                <span class="events__title tui-text_h6">
+                    Ближайшие события
+                </span>
+                <barter-user-events-search-input />
+            </div>
             <div class="events__list">
                 @for (event of tplData.events(); track event.id) {
                     <barter-event-card class="events__item" [event]="event" />

@@ -1,14 +1,14 @@
 <label
-  *tuiRepeatTimes="let i of chipsValues.length"
-  tuiChip
-  [style.border-radius.rem]="5"
->
-  {{ chipsValues[i].label }}
-  <input
-    [appearance]="chipsValues[i].checked ? 'primary' : 'secondary'"
+    *tuiRepeatTimes="let i of chipsValues.length"
     tuiChip
-    type="checkbox"
-    [(ngModel)]="chipsValues[i].checked"
-    (click)="onChipSelected(chipsValues[i])"
-  />
+    [style.border-radius.rem]="5"
+>
+    {{ chipsValues[i].label }}
+    <input
+        tuiChip
+        type="checkbox"
+        [appearance]="chipsValues[i].checked ? 'primary' : 'secondary'"
+        [(ngModel)]="chipsValues[i].checked"
+        (click)="onChipSelected(chipsValues[i])"
+    />
 </label>

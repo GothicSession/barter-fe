@@ -1,7 +1,8 @@
 import { inject, Injectable, Signal } from '@angular/core';
-import { RouteStore } from './route.store';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Observable } from 'rxjs';
+
+import { RouteStore } from './route.store';
 
 @Injectable()
 export class RouteFacade<T> {
@@ -12,6 +13,10 @@ export class RouteFacade<T> {
 
   constructor() {
     this.routeStore.observeRoutes(this.navigationEndEvents$);
+  }
+
+  getNavigationEndEvents$(): Observable<NavigationEnd> {
+    return this.navigationEndEvents$;
   }
 
   getActiveRoute(): Signal<T | null> {
