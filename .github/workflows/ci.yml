@@ -175,7 +175,7 @@ jobs:
           retention-days: 7
 
   status-check:
-    needs: [build]
+    needs: [lint, build]
     runs-on: ubuntu-latest
     steps:
       - name: Status Check
