@@ -22,7 +22,8 @@ jobs:
           fetch-tags: true
       - name: Set cache key
         id: set-cache-key
-        run: echo "cache-key=${{ runner.os }}-node-${{ github.run_id }}-${{ hashFiles('**/package-lock.json') }}" >> $GITHUB_OUTPUT
+        run: |
+          echo "cache-key=${{ runner.os }}-node-${{ github.run_id }}-${{ hashFiles('**/package-lock.json', '**/nx.json') }}" >> $GITHUB_OUTPUT
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
@@ -41,6 +42,7 @@ jobs:
           path: |
             node_modules
             .nx/cache
+            dist
           key: ${{ steps.set-cache-key.outputs.cache-key }}
           restore-keys: |
             ${{ runner.os }}-node-${{ github.run_id }}-
@@ -139,6 +141,7 @@ jobs:
           path: |
             node_modules
             .nx/cache
+            dist
           key: ${{ needs.setup.outputs.cache-key }}
           restore-keys: |
             ${{ runner.os }}-node-${{ github.run_id }}-
@@ -149,9 +152,9 @@ jobs:
       - name: Build
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            npx nx affected -t build --parallel=3 --configuration=production --base=origin/main --head=HEAD --skip-nx-cache --verbose
+            npx nx affected -t build --parallel=3 --configuration=production --base=origin/main --head=HEAD --skip-nx-cache --verbose --max-memory=4096
           else
-            npx nx run-many -t build --parallel=3 --configuration=production --all --skip-nx-cache
+            npx nx run-many -t build --parallel=3 --configuration=production --all --skip-nx-cache --max-memory=4096
           fi
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
