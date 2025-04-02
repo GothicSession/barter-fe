@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from '../../../ui';
-import { HeaderComponent } from '../../../ui';
+
+import { FooterComponent, HeaderComponent } from '../../../ui';
 
 @Component({
   selector: 'barter-authenticated-layout',

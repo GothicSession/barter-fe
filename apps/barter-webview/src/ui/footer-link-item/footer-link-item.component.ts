@@ -4,8 +4,9 @@ import {
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
-import { Routes } from '../../app/types';
 import { TuiIcon } from '@taiga-ui/core';
+
+import { Routes } from '../../app/types';
 
 @Component({
   selector: 'barter-footer-link-item',
@@ -16,16 +17,16 @@ import { TuiIcon } from '@taiga-ui/core';
   imports: [RouterLink, TuiIcon, RouterLinkActive],
 })
 export class FooterLinkItemComponent {
-  @Input({ required: true })
-  route!: Routes | string;
-
-  @Input({ required: true })
-  icon!: string;
-
   protected linkItemActiveOptionsParams: IsActiveMatchOptions = {
     queryParams: 'ignored',
     fragment: 'exact',
     paths: 'exact',
     matrixParams: 'exact',
   };
+
+  @Input({ required: true })
+  route!: Routes | string;
+
+  @Input({ required: true })
+  icon!: string;
 }
