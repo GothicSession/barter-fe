@@ -35,7 +35,6 @@
       "rules": {
         "@typescript-eslint/naming-convention": ["off"],
         "complexity": ["error", 6],
-        "dot-notation": ["ignore"],
         "max-lines": ["error", 200],
         "no-magic-numbers": ["error"],
         "dot-notation": ["off"],
@@ -65,9 +64,7 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nx/typescript"],
-      "rules": {
-        "dot-notation": "off"
-      }
+      "rules": {}
     },
     {
       "files": ["*.js", "*.jsx"],
