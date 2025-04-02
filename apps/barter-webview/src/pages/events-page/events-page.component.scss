@@ -1,6 +1,7 @@
 :host {
-  padding: 24px 18px 24px 18px;
   display: block;
+  height: 100%;
+  padding: 24px 18px;
 }
 
 .events {
@@ -14,9 +15,9 @@
   }
 
   &__title {
-    padding-left: 10px;
-    margin-bottom: 16px;
     display: inline-block;
+    margin-bottom: 16px;
+    padding-left: 10px;
   }
 
   &__list-wrapper {
