@@ -13,7 +13,6 @@ import { EventsSearchDialogComponent } from '../events-search-dialog/events-sear
   selector: 'barter-user-events-search-input',
   standalone: true,
   templateUrl: './events-search-input.component.html',
-  styleUrl: './events-search-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TuiIcon, EventsSearchDialogComponent, TuiSheetDialog],
 })

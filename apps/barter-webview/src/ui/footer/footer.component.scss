@@ -1,18 +1,18 @@
 :host {
-  position: absolute;
-  bottom: 24px;
-  overflow: hidden;
   border-radius: 32px;
+  bottom: 24px;
   left: 50%;
+  overflow: hidden;
+  position: absolute;
   transform: translateX(-50%);
 }
 
 .footer {
-  display: grid;
+  align-items: center;
   background-color: var(--tui-background-base);
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  width: 60vw;
   height: 60px;
   padding: 0 16px;
-  align-items: center;
+  width: 60vw;
 }

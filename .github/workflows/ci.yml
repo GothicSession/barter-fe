@@ -1,0 +1,184 @@
+name: CI
+
+on:
+  push:
+    branches: [main, release/*]
+  pull_request:
+    branches: [main, release/*]
+    types: [opened, synchronize, reopened]
+
+env:
+  CI: true
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.set-cache-key.outputs.cache-key }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - name: Set cache key
+        id: set-cache-key
+        run: |
+          echo "cache-key=${{ runner.os }}-node-${{ github.run_id }}-${{ hashFiles('**/package-lock.json', '**/nx.json') }}" >> $GITHUB_OUTPUT
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Clean npm cache
+        run: |
+          npm cache clean --force
+          rm -rf node_modules
+          rm -rf .nx/cache
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Cache node modules for lint
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            .nx/cache
+          key: lint-${{ steps.set-cache-key.outputs.cache-key }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ github.run_id }}-
+            ${{ runner.os }}-node-
+
+      - name: Cache node modules for build
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            .nx/cache
+            dist
+          key: build-${{ steps.set-cache-key.outputs.cache-key }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ github.run_id }}-
+            ${{ runner.os }}-node-
+
+  lint:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Fetch branches
+        run: |
+          git fetch origin main:main
+          git fetch origin ${{ github.head_ref }}:${{ github.head_ref }} || true
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Restore cached node modules
+        id: cache-modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            .nx/cache
+          key: lint-${{ needs.setup.outputs.cache-key }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ github.run_id }}-
+            ${{ runner.os }}-node-
+      - name: Install dependencies if cache miss
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: npm ci --legacy-peer-deps
+      - name: Run ESLint
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            npx nx affected -t lint --parallel=3 --base=origin/main --head=HEAD --skip-nx-cache
+          else
+            npx nx run-many -t lint --parallel=3 --all --skip-nx-cache
+          fi
+      - name: Run Stylelint
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            # Get list of changed files in PR only
+            git fetch origin ${{ github.base_ref }}
+            CHANGED_FILES=$(git diff --name-only --diff-filter=d origin/${{ github.base_ref }}...HEAD | grep '\.scss$' || true)
+            if [ -n "$CHANGED_FILES" ]; then
+              npx stylelint $CHANGED_FILES
+            else
+              echo "No SCSS files changed"
+              exit 0
+            fi
+          else
+            npm run lint:styles
+          fi
+      - name: Check Prettier formatting
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            # Get list of changed files in PR only
+            git fetch origin ${{ github.base_ref }}
+            CHANGED_FILES=$(git diff --name-only --diff-filter=d origin/${{ github.base_ref }}...HEAD | grep -E '\.(js|jsx|ts|tsx|css|scss|html|json|md)$' || true)
+            if [ -n "$CHANGED_FILES" ]; then
+              npx prettier --check $CHANGED_FILES
+            else
+              echo "No files to check for formatting"
+              exit 0
+            fi
+          else
+            npm run format:check
+          fi
+
+  build:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - name: Fetch branches
+        run: |
+          git fetch origin main:main
+          git fetch origin ${{ github.head_ref }}:${{ github.head_ref }} || true
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Restore cached node modules
+        id: cache-modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            .nx/cache
+            dist
+          key: build-${{ needs.setup.outputs.cache-key }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ github.run_id }}-
+            ${{ runner.os }}-node-
+      - name: Install dependencies if cache miss
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: npm ci --legacy-peer-deps
+      - name: Build
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            npx nx affected -t build --parallel=3 --configuration=production --base=origin/main --head=HEAD --skip-nx-cache
+          else
+            npx nx run-many -t build --parallel=3 --configuration=production --all --skip-nx-cache
+          fi
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
+
+  status-check:
+    needs: [lint, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Status Check
+        run: |
+          echo "All checks completed successfully!"
+          exit 0

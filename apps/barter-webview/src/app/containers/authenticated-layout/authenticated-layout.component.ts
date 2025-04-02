@@ -3,6 +3,7 @@ import {
   Component,
   DestroyRef,
   ElementRef,
+  HostBinding,
   inject,
   OnInit,
   ViewChild,
@@ -20,13 +21,13 @@ import { FooterComponent, HeaderComponent } from '../../../ui';
   styleUrl: './authenticated-layout.component.scss',
   imports: [RouterOutlet, FooterComponent, HeaderComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    class: 'page-container',
-  },
 })
 export class AuthenticatedLayoutComponent implements OnInit {
   protected readonly routeFacade = inject(RouteFacade);
   protected readonly destroyRef = inject(DestroyRef);
+
+  @HostBinding('class')
+  hostClass = 'page-container';
 
   @ViewChild('content', { static: true })
   contentBlock!: ElementRef<HTMLDivElement>;

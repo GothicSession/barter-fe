@@ -1,9 +1,9 @@
 barter-root {
+  background-color: var(--tg-theme-bg-color);
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
 
@@ -12,18 +12,18 @@ barter-root {
   }
 }
 
+tui-avatar[data-size='xxl'] {
+  border-radius: 50%;
+  height: 134px;
+  width: 134px;
+}
+
 .t-root-content {
   background-color: var(--tui-background-base-alt);
 }
 
 tui-root {
   height: 100%;
-}
-
-tui-avatar[data-size=xxl] {
-  width: 134px;
-  height: 134px;
-  border-radius: 50%;
 }
 
 .tg-btn {
@@ -42,14 +42,15 @@ tui-avatar[data-size=xxl] {
 }
 
 * {
-  padding: 0;
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 body {
-  width: 100vw;
   height: var(--tg-viewport-height);
   overflow: hidden;
+  width: 100vw;
 }
 
 .text-secondary {
@@ -60,17 +61,14 @@ body {
   color: var(--tui-background-accent-1);
 }
 
-.text-secondary {
-  color: var(--tui-text-secondary);
-}
-
 .page-container {
-  width: 100%;
-  height: 100%;
   display: block;
+  height: 100%;
+  width: 100%;
 }
 
-tui-root.ios, tui-root.android {
+tui-root.ios,
+tui-root.android {
   barter-non-authenticated-layout {
     padding-top: 64px;
   }
@@ -78,14 +76,6 @@ tui-root.ios, tui-root.android {
 
 .date__text {
   font: var(--tui-font-text-ui-s);
-  line-height: 8px;
   font-weight: 700;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-* {
-  box-sizing: border-box;
+  line-height: 8px;
 }

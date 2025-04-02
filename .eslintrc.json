@@ -35,11 +35,9 @@
       "rules": {
         "@typescript-eslint/naming-convention": ["off"],
         "complexity": ["error", 6],
-        "dot-notation": [
-          0
-        ],
         "max-lines": ["error", 200],
         "no-magic-numbers": ["error"],
+        "dot-notation": ["off"],
         "@nx/enforce-module-boundaries": [
           "error",
           {
