@@ -1,0 +1,28 @@
+<div class="dialog">
+    <div class="dialog__top">
+        <tui-input
+            tuiTextfieldSize="s"
+            class="top__search"
+            tuiTextfieldIconLeft="@tui.search"
+            [tuiTextfieldCleaner]="true"
+            [tuiTextfieldLabelOutside]="true"
+            [formControl]="searchEventsService.searchControl"
+        >
+            Поиск...
+            <input
+                tuiTextfieldLegacy
+                type="text"
+                enterkeyhint="search"
+                [formControl]="searchEventsService.searchControl"
+            />
+        </tui-input>
+        <button
+            tuiButton
+            appearance="flat"
+            [size]="'s'"
+            (click)="emitCancelEvent()"
+        >
+            Отмена
+        </button>
+    </div>
+</div>

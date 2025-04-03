@@ -1,9 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { EventService } from '@libs/api';
 import {
   EventCardComponent,
   EventEntityFacade,
   EventEntityStore,
+  SearchEventsFeatureService,
+  SearchEventsInputComponent,
 } from '@libs/domain/event';
 
 @Component({
@@ -12,8 +15,13 @@ import {
   templateUrl: './events-page.component.html',
   styleUrl: './events-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [EventService, EventEntityStore, EventEntityFacade],
-  imports: [EventCardComponent],
+  providers: [
+    EventService,
+    EventEntityStore,
+    EventEntityFacade,
+    SearchEventsFeatureService,
+  ],
+  imports: [EventCardComponent, SearchEventsInputComponent, FormsModule],
 })
 export class EventsPageComponent {
   protected readonly eventEntityFacade = inject(EventEntityFacade);

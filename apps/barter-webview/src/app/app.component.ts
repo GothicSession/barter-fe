@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TuiRoot } from '@taiga-ui/core';
+
+import { PlatformSharedFacade } from './shared';
 
 @Component({
   imports: [RouterModule, TuiRoot],
@@ -9,7 +11,7 @@ import { TuiRoot } from '@taiga-ui/core';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  protected platform = '';
+  protected platformFacade = inject(PlatformSharedFacade);
 
   constructor() {
     try {
@@ -17,7 +19,5 @@ export class AppComponent {
     } catch (e) {
       console.error('Run app via Telegram');
     }
-
-    this.platform = window.Telegram?.WebApp?.platform;
   }
 }

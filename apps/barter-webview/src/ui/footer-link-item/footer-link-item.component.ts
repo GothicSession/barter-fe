@@ -6,7 +6,7 @@ import {
 } from '@angular/router';
 import { TuiIcon } from '@taiga-ui/core';
 
-import { Routes } from '../../app/types';
+import { Routes } from '../../app/shared';
 
 @Component({
   selector: 'barter-footer-link-item',

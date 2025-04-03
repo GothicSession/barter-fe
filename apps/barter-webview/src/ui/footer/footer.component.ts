@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TuiIconPipe } from '@taiga-ui/core';
 
-import { Routes } from '../../app/types';
+import { Routes } from '../../app/shared';
 import { FooterLinkItemComponent } from '../footer-link-item/footer-link-item.component';
 
 @Component({

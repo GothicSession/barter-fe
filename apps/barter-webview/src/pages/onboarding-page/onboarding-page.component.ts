@@ -12,7 +12,7 @@ import {
   UserPhotosUploadComponent,
 } from '@libs/domain/user';
 
-import { Routes } from '../../app/types';
+import { Routes } from '../../app/shared';
 import { OnboardingWelcomeComponent } from '../../ui';
 
 enum ActivePageEnum {
