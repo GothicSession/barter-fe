@@ -12,10 +12,10 @@ import { TuiInputModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 import { SearchEventsFeatureService } from '../search-events.service';
 
 @Component({
-  selector: 'barter-user-events-search-dialog',
+  selector: 'barter-search-events-dialog',
   standalone: true,
-  templateUrl: './events-search-dialog.component.html',
-  styleUrl: './events-search-dialog.component.scss',
+  templateUrl: './search-events-dialog.component.html',
+  styleUrl: './search-events-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     TuiInputModule,
@@ -24,7 +24,7 @@ import { SearchEventsFeatureService } from '../search-events.service';
     TuiButton,
   ],
 })
-export class EventsSearchDialogComponent {
+export class SearchEventsDialogComponent {
   protected readonly searchEventsService = inject(SearchEventsFeatureService);
 
   @Output()

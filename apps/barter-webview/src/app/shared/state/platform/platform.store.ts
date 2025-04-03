@@ -19,9 +19,13 @@ export const PlatformSharedStore = signalStore(
   })),
   withMethods((store) => ({
     initCurrentPlatform: () => {
+      const platform = window.Telegram?.WebApp.platform;
+
       patchState(store, {
         currentPlatform:
-          (window.Telegram?.WebApp.platform as Platform) || Platform.UNKNOWN,
+          platform && Object.values(Platform).includes(platform as Platform)
+            ? (platform as Platform)
+            : Platform.UNKNOWN,
       });
     },
   })),

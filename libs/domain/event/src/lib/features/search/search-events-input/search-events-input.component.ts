@@ -7,16 +7,16 @@ import {
 import { TuiSheetDialog, TuiSheetDialogOptions } from '@taiga-ui/addon-mobile';
 import { TuiIcon } from '@taiga-ui/core';
 
-import { EventsSearchDialogComponent } from '../events-search-dialog/events-search-dialog.component';
+import { SearchEventsDialogComponent } from '../search-events-dialog/search-events-dialog.component';
 
 @Component({
-  selector: 'barter-user-events-search-input',
+  selector: 'barter-search-events-input',
   standalone: true,
-  templateUrl: './events-search-input.component.html',
+  templateUrl: './search-events-input.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TuiIcon, EventsSearchDialogComponent, TuiSheetDialog],
+  imports: [TuiIcon, SearchEventsDialogComponent, TuiSheetDialog],
 })
-export class EventsSearchInputComponent {
+export class SearchEventsInputComponent {
   protected readonly openedDialog: WritableSignal<boolean> = signal(false);
   protected readonly dialogOptions: Partial<TuiSheetDialogOptions> = {
     closeable: true,

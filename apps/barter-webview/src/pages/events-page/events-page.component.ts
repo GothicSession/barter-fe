@@ -5,8 +5,8 @@ import {
   EventCardComponent,
   EventEntityFacade,
   EventEntityStore,
-  EventsSearchInputComponent,
   SearchEventsFeatureService,
+  SearchEventsInputComponent,
 } from '@libs/domain/event';
 
 @Component({
@@ -21,7 +21,7 @@ import {
     EventEntityFacade,
     SearchEventsFeatureService,
   ],
-  imports: [EventCardComponent, EventsSearchInputComponent, FormsModule],
+  imports: [EventCardComponent, SearchEventsInputComponent, FormsModule],
 })
 export class EventsPageComponent {
   protected readonly eventEntityFacade = inject(EventEntityFacade);
