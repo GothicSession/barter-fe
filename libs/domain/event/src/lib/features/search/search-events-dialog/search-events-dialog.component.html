@@ -9,6 +9,7 @@
                 tuiTextfieldSize="s"
                 class="form__search"
                 tuiTextfieldIconLeft="@tui.search"
+                tuiAutoFocus
                 formControlName="search"
                 [tuiTextfieldCleaner]="true"
                 [tuiTextfieldLabelOutside]="true"
@@ -32,6 +33,25 @@
                 Отмена
             </button>
         </div>
-        <div class="form__history"></div>
+        <div class="form__history">
+            @for (search of recentSearches(); track search) {
+                <tui-chip
+                    class="form__chip"
+                    (click)="handleSearchChipClick(search)"
+                >
+                    <div tuiFade>
+                        {{ search }}
+                    </div>
+                    <button
+                        (click)="
+                            removeSearchChip(search); $event.stopPropagation()
+                        "
+                        iconStart="@tui.x"
+                        tuiIconButton
+                        type="button"
+                    ></button>
+                </tui-chip>
+            }
+        </div>
     </form>
 </div>

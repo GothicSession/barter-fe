@@ -19,8 +19,6 @@ import { SearchEventsDialogComponent } from '../search-events-dialog/search-even
 export class SearchEventsInputComponent {
   protected readonly openedDialog: WritableSignal<boolean> = signal(false);
   protected readonly dialogOptions: Partial<TuiSheetDialogOptions> = {
-    closeable: true,
-    offset: 96,
-    fullscreen: true,
+    bar: false,
   };
 }
