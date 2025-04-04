@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TuiButton } from '@taiga-ui/core';
 import { TuiInputModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 
+import { EventEntityFacade } from '../../../entity';
 import { SearchEventsFeatureService } from '../search-events.service';
 
 @Component({
@@ -26,11 +27,24 @@ import { SearchEventsFeatureService } from '../search-events.service';
 })
 export class SearchEventsDialogComponent {
   protected readonly searchEventsService = inject(SearchEventsFeatureService);
+  protected readonly eventEntityFacade = inject(EventEntityFacade);
 
   @Output()
-  cancelEvent: EventEmitter<void> = new EventEmitter();
+  closeEvent: EventEmitter<void> = new EventEmitter();
 
-  emitCancelEvent(): void {
-    this.cancelEvent.emit();
+  handleCancel(): void {
+    const searchDefaultValue =
+      this.searchEventsService.form.getRawValue().searchDefault;
+
+    this.searchEventsService.form.controls.search.setValue(searchDefaultValue);
+    this.closeEvent.emit();
+  }
+
+  handleSubmit(): void {
+    const searchValue = this.searchEventsService.form.getRawValue().search;
+
+    this.searchEventsService.form.controls.searchDefault.setValue(searchValue);
+    this.eventEntityFacade.loadEvents(searchValue);
+    this.closeEvent.emit();
   }
 }

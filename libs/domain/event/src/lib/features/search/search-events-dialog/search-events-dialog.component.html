@@ -1,28 +1,37 @@
 <div class="dialog">
-    <div class="dialog__top">
-        <tui-input
-            tuiTextfieldSize="s"
-            class="top__search"
-            tuiTextfieldIconLeft="@tui.search"
-            [tuiTextfieldCleaner]="true"
-            [tuiTextfieldLabelOutside]="true"
-            [formControl]="searchEventsService.searchControl"
-        >
-            Поиск...
-            <input
-                tuiTextfieldLegacy
-                type="text"
-                enterkeyhint="search"
-                [formControl]="searchEventsService.searchControl"
-            />
-        </tui-input>
-        <button
-            tuiButton
-            appearance="flat"
-            [size]="'s'"
-            (click)="emitCancelEvent()"
-        >
-            Отмена
-        </button>
-    </div>
+    <form
+        class="dialog__form form"
+        [formGroup]="searchEventsService.form"
+        (ngSubmit)="handleSubmit()"
+    >
+        <div class="form__top">
+            <tui-input
+                tuiTextfieldSize="s"
+                class="form__search"
+                tuiTextfieldIconLeft="@tui.search"
+                formControlName="search"
+                [tuiTextfieldCleaner]="true"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Поиск...
+                <input
+                    tuiTextfieldLegacy
+                    type="text"
+                    enterkeyhint="search"
+                    (keydown.enter)="handleSubmit()"
+                />
+            </tui-input>
+            <button
+                type="button"
+                tuiButton
+                appearance="flat"
+                class="form__cancel"
+                [size]="'s'"
+                (click)="handleCancel()"
+            >
+                Отмена
+            </button>
+        </div>
+        <div class="form__history"></div>
+    </form>
 </div>

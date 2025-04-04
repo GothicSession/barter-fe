@@ -16,7 +16,7 @@ export class EventEntityFacade {
     return this.eventEntityStore.isLoading;
   }
 
-  loadEvents(): Unsubscribable {
-    return this.eventEntityStore.loadEvents();
+  loadEvents(search?: string): Unsubscribable {
+    return this.eventEntityStore.loadEvents({ search });
   }
 }

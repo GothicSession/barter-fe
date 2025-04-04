@@ -49,5 +49,6 @@ Thumbs.db
 **/.eslintcache
 
 #firebase
+/.firebase
 .firebaserc
 firebase.json
