@@ -57,7 +57,10 @@ export class SearchEventsDialogComponent {
     this.context.completeWith(false);
   }
 
-  protected handleSubmit(): void {
+  protected handleSubmit(event: Event): void {
+    event.preventDefault();
+    event.stopPropagation();
+
     const searchValue = this.searchEventsService.form
       .getRawValue()
       .search.trim();
@@ -68,9 +71,9 @@ export class SearchEventsDialogComponent {
     this.context.completeWith(false);
   }
 
-  protected handleSearchChipClick(search: string): void {
+  protected handleSearchChipClick(search: string, event: Event): void {
     this.searchEventsService.form.controls.search.setValue(search);
-    this.handleSubmit();
+    this.handleSubmit(event);
   }
 
   protected removeSearchChip(search: string): void {

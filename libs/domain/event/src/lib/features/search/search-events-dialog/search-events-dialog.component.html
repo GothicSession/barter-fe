@@ -5,7 +5,7 @@
     <form
         class="dialog__form form"
         [formGroup]="searchEventsService.form"
-        (ngSubmit)="handleSubmit()"
+        (ngSubmit)="handleSubmit($event)"
     >
         <div class="form__top">
             <tui-input
@@ -22,7 +22,7 @@
                     tuiTextfieldLegacy
                     type="text"
                     enterkeyhint="search"
-                    (keydown.enter)="handleSubmit()"
+                    (keydown.enter)="handleSubmit($event)"
                 />
             </tui-input>
             <button
@@ -40,7 +40,7 @@
             @for (search of recentSearches(); track search) {
                 <tui-chip
                     class="form__chip"
-                    (click)="handleSearchChipClick(search)"
+                    (click)="handleSearchChipClick(search, $event)"
                 >
                     <div tuiFade>
                         {{ search }}
