@@ -20,8 +20,6 @@ import { EventsSearchDialogComponent } from '../events-search-dialog/events-sear
 export class EventsSearchInputComponent {
   protected readonly openedDialog: WritableSignal<boolean> = signal(false);
   protected readonly dialogOptions: Partial<TuiSheetDialogOptions> = {
-    closeable: true,
-    offset: 96,
-    fullscreen: true,
+    bar: false,
   };
 }
