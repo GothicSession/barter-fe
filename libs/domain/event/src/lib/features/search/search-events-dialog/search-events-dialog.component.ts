@@ -1,21 +1,21 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   inject,
-  Output,
   signal,
   WritableSignal,
 } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LocalStorageService } from '@libs/core';
 import { TuiAutoFocus } from '@taiga-ui/cdk';
-import { TuiButton } from '@taiga-ui/core';
+import { TuiButton, TuiDialogContext } from '@taiga-ui/core';
 import { TuiChip, TuiFade } from '@taiga-ui/kit';
 import { TuiInputModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
+import { injectContext } from '@taiga-ui/polymorpheus';
 
 import { EventEntityFacade } from '../../../entity';
 import { SearchEventsFeatureService } from '../search-events.service';
+import { SearchEventsDialogDataEXAMPLE } from '../types';
 
 const RECENT_SEARCHES_KEY = 'recent_searches';
 const MAX_RECENT_SEARCHES = 15;
@@ -40,10 +40,10 @@ export class SearchEventsDialogComponent {
   protected readonly searchEventsService = inject(SearchEventsFeatureService);
   protected readonly eventEntityFacade = inject(EventEntityFacade);
   protected readonly localStorageService = inject(LocalStorageService);
-  protected readonly recentSearches: WritableSignal<string[]> = signal([]);
+  protected readonly context =
+    injectContext<TuiDialogContext<boolean, SearchEventsDialogDataEXAMPLE>>();
 
-  @Output()
-  closeEvent: EventEmitter<void> = new EventEmitter();
+  protected readonly recentSearches: WritableSignal<string[]> = signal([]);
 
   constructor() {
     this.loadRecentSearches();
@@ -54,7 +54,7 @@ export class SearchEventsDialogComponent {
       this.searchEventsService.form.getRawValue().searchDefault;
 
     this.searchEventsService.form.controls.search.setValue(searchDefaultValue);
-    this.closeEvent.emit();
+    this.context.completeWith(false);
   }
 
   protected handleSubmit(): void {
@@ -65,7 +65,7 @@ export class SearchEventsDialogComponent {
     this.searchEventsService.form.controls.searchDefault.setValue(searchValue);
     this.eventEntityFacade.loadEvents(searchValue);
     this.saveRecentSearches(searchValue);
-    this.closeEvent.emit();
+    this.context.completeWith(false);
   }
 
   protected handleSearchChipClick(search: string): void {

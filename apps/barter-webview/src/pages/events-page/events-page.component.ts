@@ -5,9 +5,9 @@ import {
   EventCardComponent,
   EventEntityFacade,
   EventEntityStore,
-  SearchEventsFeatureService,
-  SearchEventsInputComponent,
+  SearchEventsFeatureDirective,
 } from '@libs/domain/event';
+import { TuiButton } from '@taiga-ui/core';
 
 @Component({
   selector: 'barter-events-page',
@@ -15,13 +15,13 @@ import {
   templateUrl: './events-page.component.html',
   styleUrl: './events-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    EventService,
-    EventEntityStore,
-    EventEntityFacade,
-    SearchEventsFeatureService,
+  providers: [EventService, EventEntityStore, EventEntityFacade],
+  imports: [
+    EventCardComponent,
+    SearchEventsFeatureDirective,
+    FormsModule,
+    TuiButton,
   ],
-  imports: [EventCardComponent, SearchEventsInputComponent, FormsModule],
 })
 export class EventsPageComponent {
   protected readonly eventEntityFacade = inject(EventEntityFacade);

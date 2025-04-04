@@ -5,7 +5,21 @@
                 <span class="events__title tui-text_h6">
                     Ближайшие события
                 </span>
-                <barter-search-events-input />
+                <!-- TODO: убрать после того как темыч заценит -->
+                <!-- тут тоже все строго типизировано -->
+                <button
+                    class="events__search-button"
+                    iconStart="@tui.search"
+                    tuiIconButton
+                    appearance="flat"
+                    size="m"
+                    type="button"
+                    [searchEvents]="{
+                        dialogOptions: {
+                            data: { helloThereArtem: 'asd' },
+                        },
+                    }"
+                ></button>
             </div>
             <div class="events__list">
                 @for (event of tplData.events(); track event.id) {
