@@ -6,14 +6,12 @@ import {
 } from '@libs/core';
 import { TuiSheetDialogOptions } from '@taiga-ui/addon-mobile';
 
-import { SearchEventsFeatureService } from './search-events.service';
 import { SearchEventsDialogComponent } from './search-events-dialog/search-events-dialog.component';
 import { SearchEventsDialogDataEXAMPLE } from './types';
 
 @Directive({
   selector: 'button[searchEvents]',
   standalone: true,
-  providers: [SearchEventsFeatureService],
 })
 export class SearchEventsFeatureDirective extends BaseSheetDialogDirective<
   SearchEventsDialogComponent,

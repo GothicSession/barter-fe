@@ -5,7 +5,7 @@ import {
   signal,
   WritableSignal,
 } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { LocalStorageService } from '@libs/core';
 import { TuiAutoFocus } from '@taiga-ui/cdk';
 import { TuiButton, TuiDialogContext } from '@taiga-ui/core';
@@ -14,7 +14,6 @@ import { TuiInputModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 import { injectContext } from '@taiga-ui/polymorpheus';
 
 import { EventEntityFacade } from '../../../entity';
-import { SearchEventsFeatureService } from '../search-events.service';
 import { SearchEventsDialogDataEXAMPLE } from '../types';
 
 const RECENT_SEARCHES_KEY = 'recent_searches';
@@ -37,7 +36,7 @@ const MAX_RECENT_SEARCHES = 15;
   ],
 })
 export class SearchEventsDialogComponent {
-  protected readonly searchEventsService = inject(SearchEventsFeatureService);
+  private readonly fb = inject(NonNullableFormBuilder);
   protected readonly eventEntityFacade = inject(EventEntityFacade);
   protected readonly localStorageService = inject(LocalStorageService);
   protected readonly context =
@@ -45,15 +44,19 @@ export class SearchEventsDialogComponent {
 
   protected readonly recentSearches: WritableSignal<string[]> = signal([]);
 
+  protected readonly form = this.fb.group({
+    search: this.fb.control<string>(''),
+    searchDefault: this.fb.control<string>(''),
+  });
+
   constructor() {
     this.loadRecentSearches();
   }
 
   protected handleCancel(): void {
-    const searchDefaultValue =
-      this.searchEventsService.form.getRawValue().searchDefault;
+    const searchDefaultValue = this.form.getRawValue().searchDefault;
 
-    this.searchEventsService.form.controls.search.setValue(searchDefaultValue);
+    this.form.controls.search.setValue(searchDefaultValue);
     this.context.completeWith(false);
   }
 
@@ -61,18 +64,16 @@ export class SearchEventsDialogComponent {
     event.preventDefault();
     event.stopPropagation();
 
-    const searchValue = this.searchEventsService.form
-      .getRawValue()
-      .search.trim();
+    const searchValue = this.form.getRawValue().search.trim();
 
-    this.searchEventsService.form.controls.searchDefault.setValue(searchValue);
+    this.form.controls.searchDefault.setValue(searchValue);
     this.eventEntityFacade.loadEvents(searchValue);
     this.saveRecentSearches(searchValue);
     this.context.completeWith(false);
   }
 
   protected handleSearchChipClick(search: string, event: Event): void {
-    this.searchEventsService.form.controls.search.setValue(search);
+    this.form.controls.search.setValue(search);
     this.handleSubmit(event);
   }
 

@@ -33,7 +33,7 @@ export abstract class BaseSheetDialogDirective<
   private readonly destroyRef = inject(DestroyRef);
   private readonly sheetDialogService = inject(TuiSheetDialogService);
   private readonly injector = inject(Injector);
-  private readonly clickSubject = new Subject<
+  private readonly clickSubject$ = new Subject<
     BaseDialogConfig<TuiSheetDialogOptions<TData>>
   >();
 
@@ -47,12 +47,12 @@ export abstract class BaseSheetDialogDirective<
     event.stopPropagation();
 
     if (this.config) {
-      this.clickSubject.next(this.config);
+      this.clickSubject$.next(this.config);
     }
   }
 
   ngOnInit(): void {
-    this.clickSubject
+    this.clickSubject$
       .pipe(
         switchMap((config) => {
           const options: Partial<TuiSheetDialogOptions<TData>> = {
@@ -72,7 +72,7 @@ export abstract class BaseSheetDialogDirective<
   }
 
   ngOnDestroy(): void {
-    this.clickSubject.complete();
+    this.clickSubject$.complete();
   }
 
   private isTemplateConfig(
