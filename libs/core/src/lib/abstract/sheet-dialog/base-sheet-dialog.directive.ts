@@ -16,6 +16,7 @@ import { Subject, switchMap } from 'rxjs';
 
 import {
   BaseDialogConfig,
+  DialogConfig,
   TemplateDialogConfig,
 } from './base-sheet-dialog.types';
 
@@ -37,18 +38,28 @@ export abstract class BaseSheetDialogDirective<
     BaseDialogConfig<TuiSheetDialogOptions<TData>>
   >();
 
-  protected abstract get config():
-    | BaseDialogConfig<TuiSheetDialogOptions<TData>>
-    | undefined;
+  protected abstract get inputConfig(): DialogConfig<
+    TuiSheetDialogOptions<TData>
+  >;
+
+  protected get normalizedConfig(): BaseDialogConfig<
+    TuiSheetDialogOptions<TData>
+  > {
+    const config = this.inputConfig;
+
+    if (!config || typeof config === 'string') {
+      return { dialogOptions: {} };
+    }
+
+    return config;
+  }
 
   @HostListener('click', ['$event'])
   onClick(event: Event): void {
     event.preventDefault();
     event.stopPropagation();
 
-    if (this.config) {
-      this.clickSubject$.next(this.config);
-    }
+    this.clickSubject$.next(this.normalizedConfig);
   }
 
   ngOnInit(): void {

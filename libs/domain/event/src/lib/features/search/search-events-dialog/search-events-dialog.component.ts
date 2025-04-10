@@ -5,7 +5,7 @@ import {
   signal,
   WritableSignal,
 } from '@angular/core';
-import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { LocalStorageService } from '@libs/core';
 import { TuiAutoFocus } from '@taiga-ui/cdk';
 import { TuiButton, TuiDialogContext } from '@taiga-ui/core';
@@ -14,7 +14,7 @@ import { TuiInputModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 import { injectContext } from '@taiga-ui/polymorpheus';
 
 import { EventEntityFacade } from '../../../entity';
-import { SearchEventsDialogDataEXAMPLE } from '../types';
+import { SearchEventsFeatureService } from '../search-events.service';
 
 const RECENT_SEARCHES_KEY = 'recent_searches';
 const MAX_RECENT_SEARCHES = 15;
@@ -36,18 +36,13 @@ const MAX_RECENT_SEARCHES = 15;
   ],
 })
 export class SearchEventsDialogComponent {
-  private readonly fb = inject(NonNullableFormBuilder);
+  protected readonly form = inject(SearchEventsFeatureService).form;
+
   protected readonly eventEntityFacade = inject(EventEntityFacade);
   protected readonly localStorageService = inject(LocalStorageService);
-  protected readonly context =
-    injectContext<TuiDialogContext<boolean, SearchEventsDialogDataEXAMPLE>>();
+  protected readonly context = injectContext<TuiDialogContext>();
 
   protected readonly recentSearches: WritableSignal<string[]> = signal([]);
-
-  protected readonly form = this.fb.group({
-    search: this.fb.control<string>(''),
-    searchDefault: this.fb.control<string>(''),
-  });
 
   constructor() {
     this.loadRecentSearches();
@@ -57,7 +52,7 @@ export class SearchEventsDialogComponent {
     const searchDefaultValue = this.form.getRawValue().searchDefault;
 
     this.form.controls.search.setValue(searchDefaultValue);
-    this.context.completeWith(false);
+    this.context.completeWith();
   }
 
   protected handleSubmit(event: Event): void {
@@ -69,7 +64,7 @@ export class SearchEventsDialogComponent {
     this.form.controls.searchDefault.setValue(searchValue);
     this.eventEntityFacade.loadEvents(searchValue);
     this.saveRecentSearches(searchValue);
-    this.context.completeWith(false);
+    this.context.completeWith();
   }
 
   protected handleSearchChipClick(search: string, event: Event): void {

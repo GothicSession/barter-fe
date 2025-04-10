@@ -5,8 +5,6 @@
                 <span class="events__title tui-text_h6">
                     Ближайшие события
                 </span>
-                <!-- TODO: убрать после того как темыч заценит -->
-                <!-- тут тоже все строго типизировано -->
                 <button
                     class="events__search-button"
                     iconStart="@tui.search"
@@ -14,11 +12,7 @@
                     appearance="flat"
                     size="m"
                     type="button"
-                    [searchEvents]="{
-                        dialogOptions: {
-                            data: { helloThereArtem: 'asd' },
-                        },
-                    }"
+                    searchEvents
                 ></button>
             </div>
             <div class="events__list">

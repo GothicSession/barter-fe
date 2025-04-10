@@ -7,3 +7,9 @@ export interface BaseDialogConfig<T> {
 export interface TemplateDialogConfig<T> extends BaseDialogConfig<T> {
   template: TemplateRef<unknown>;
 }
+
+export type DialogConfig<T> =
+  | BaseDialogConfig<T>
+  | TemplateDialogConfig<T>
+  | string
+  | undefined;
