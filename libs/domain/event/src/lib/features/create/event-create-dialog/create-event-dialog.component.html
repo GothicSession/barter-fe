@@ -26,7 +26,12 @@
                 <input tuiTextfieldLegacy type="text" />
             </tui-input-date>
         </div>
-        <ng-content />
+        <ng-container
+            *ngTemplateOutlet="
+                context.data.placesTpl;
+                context: { $implicit: logPlace }
+            "
+        ></ng-container>
     </div>
     <div class="create-dialog__footer">
         <button class="footer__button" tuiButton size="m">

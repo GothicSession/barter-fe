@@ -1,8 +1,9 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PlaceService } from '@libs/api';
-import { PlaceEntityFacade, PlaceEntityStore } from '@libs/domain/place';
-import { TuiButton } from '@taiga-ui/core';
+import { Place } from '@libs/api';
+import { PlaceEntityFacade } from '@libs/domain/place';
+import { TuiButton, TuiDialogContext } from '@taiga-ui/core';
 import {
   TuiInputDateModule,
   TuiInputModule,
@@ -10,8 +11,10 @@ import {
   TuiTextareaModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
+import { injectContext } from '@taiga-ui/polymorpheus';
 
 import { EventPhotoItemComponent } from '../../../ui';
+import { CreateEventDialogData } from '../types/create-event-dialog-data';
 
 @Component({
   selector: 'barter-create-event-dialog',
@@ -28,12 +31,19 @@ import { EventPhotoItemComponent } from '../../../ui';
     TuiTextfieldControllerModule,
     TuiTextareaModule,
     TuiInputDateModule,
+    NgTemplateOutlet,
   ],
 })
 export class CreateEventDialogComponent {
   protected readonly placeFacade = inject(PlaceEntityFacade);
+  protected readonly context =
+    injectContext<TuiDialogContext<boolean, CreateEventDialogData>>();
 
   constructor() {
     this.placeFacade.loadPlaces();
+  }
+
+  logPlace(place: Place): void {
+    console.log(place);
   }
 }

@@ -4,6 +4,7 @@ import { TuiSheetDialogOptions } from '@taiga-ui/addon-mobile';
 
 import { CreateEventService } from './create-event.service';
 import { CreateEventDialogComponent } from './event-create-dialog/create-event-dialog.component';
+import { CreateEventDialogData } from './types/create-event-dialog-data';
 
 @Directive({
   selector: '[createEvent]',
@@ -12,21 +13,23 @@ import { CreateEventDialogComponent } from './event-create-dialog/create-event-d
 })
 export class CreateEventsDirective extends BaseSheetDialogDirective<
   CreateEventDialogComponent,
-  never,
+  CreateEventDialogData,
   boolean
 > {
   protected override readonly defaultComponent = CreateEventDialogComponent;
 
   protected override readonly defaultDialogOptions: Partial<
-    TuiSheetDialogOptions<never>
+    TuiSheetDialogOptions<CreateEventDialogData>
   > = {
     bar: false,
   };
 
   @Input({ required: true })
-  createEvent!: DialogConfig<TuiSheetDialogOptions>;
+  createEvent!: DialogConfig<TuiSheetDialogOptions<CreateEventDialogData>>;
 
-  protected get inputConfig(): DialogConfig<TuiSheetDialogOptions> {
+  protected get inputConfig(): DialogConfig<
+    TuiSheetDialogOptions<CreateEventDialogData>
+  > {
     return this.createEvent;
   }
 }

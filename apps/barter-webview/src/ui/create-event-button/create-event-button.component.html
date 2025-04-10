@@ -1,11 +1,19 @@
 <button
     tuiButton
     appearance="primary"
-    [createEvent]="{ template: templateRef }"
+    [createEvent]="{
+        dialogOptions: {
+            data: {
+                placesTpl: choosePlaceTpl,
+            },
+        },
+    }"
 >
     <tui-icon [icon]="'@tui.plus'" />
 </button>
 
-<ng-template #templateRef>
-    <barter-create-event-dialog />
+<ng-template #choosePlaceTpl let-changeActiveCardHandler>
+    <barter-choose-place
+        (changeActivePlace)="changeActiveCardHandler($event)"
+    />
 </ng-template>

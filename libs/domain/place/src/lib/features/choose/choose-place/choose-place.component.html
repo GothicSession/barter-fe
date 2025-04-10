@@ -7,6 +7,9 @@
                 [icon]="'@tui.plus'"
             />
         </div>
-        <barter-choose-place-control [places]="tplData.places()" />
+        <barter-choose-place-control
+            [places]="tplData.places()"
+            (clickCard)="emitChangeActivePlace($event)"
+        />
     </div>
 }
