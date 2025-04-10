@@ -1,0 +1,11 @@
+<button
+    tuiButton
+    appearance="primary"
+    [createEvent]="{ template: templateRef }"
+>
+    <tui-icon [icon]="'@tui.plus'" />
+</button>
+
+<ng-template #templateRef>
+    <barter-create-event-dialog />
+</ng-template>

@@ -1,0 +1,8 @@
+<div class="place-list">
+    @for (place of places; track place.id) {
+        <barter-place-card
+            [place]="place"
+            (clickCard)="emitClickCard($event)"
+        />
+    }
+</div>

@@ -1,0 +1,11 @@
+.rating {
+  font-size: 0.6rem;
+  inline-size: 4rem;
+}
+
+.rating-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}

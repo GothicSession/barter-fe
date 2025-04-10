@@ -1,0 +1,62 @@
+:host {
+  height: calc(100vh - 120px);
+  display: block;
+}
+
+.content {
+  &__input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.create-dialog {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    overflow: scroll;
+    padding-bottom: 16px;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 272px;
+    min-height: 272px;
+  }
+
+  &__title {
+    padding: 16px 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 12px;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100vw;
+      height: 1px;
+      background-color: var(--tui-border-normal);
+    }
+  }
+}
+
+.footer {
+  &__button {
+    width: 100%;
+  }
+}

@@ -1,3 +1,4 @@
+export * from './create-event-button/create-event-button.component';
 export * from './footer/footer.component';
 export * from './footer-link-item/footer-link-item.component';
 export * from './header/header.component';

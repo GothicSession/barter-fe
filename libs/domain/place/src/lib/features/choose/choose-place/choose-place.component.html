@@ -1,0 +1,12 @@
+@if ({ places: placeFacade.getPlaces() }; as tplData) {
+    <div class="choose-place">
+        <div class="choose-place__title">
+            <span class="tui-text_body-l-2">Выбор локации</span>
+            <tui-icon
+                [style.color]="'var(--tui-background-accent-1)'"
+                [icon]="'@tui.plus'"
+            />
+        </div>
+        <barter-choose-place-control [places]="tplData.places()" />
+    </div>
+}
