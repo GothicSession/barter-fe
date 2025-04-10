@@ -5,7 +5,15 @@
                 <span class="events__title tui-text_h6">
                     Ближайшие события
                 </span>
-                <barter-search-events-input />
+                <button
+                    class="events__search-button"
+                    iconStart="@tui.search"
+                    tuiIconButton
+                    appearance="flat"
+                    size="m"
+                    type="button"
+                    searchEvents
+                ></button>
             </div>
             <div class="events__list">
                 @for (event of tplData.events(); track event.id) {

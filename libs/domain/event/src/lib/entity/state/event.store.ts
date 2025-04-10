@@ -19,11 +19,11 @@ export const EventEntityStore = signalStore(
     events: [],
   })),
   withMethods((store, eventService = inject(EventService)) => ({
-    loadEvents: rxMethod<void>(
+    loadEvents: rxMethod<{ search?: string }>(
       pipe(
         tap(() => patchState(store, { isLoading: true })),
-        switchMap(() =>
-          eventService.getEvents().pipe(
+        switchMap(({ search }) =>
+          eventService.getEvents(search).pipe(
             tapResponse({
               next: (events: Event[]) => patchState(store, { events }),
               error: (error: HttpErrorResponse) => {

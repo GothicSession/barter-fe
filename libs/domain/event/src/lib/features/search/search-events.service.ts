@@ -1,9 +1,12 @@
 import { inject, Injectable } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder } from '@angular/forms';
 
 @Injectable()
 export class SearchEventsFeatureService {
-  private readonly fb = inject(FormBuilder);
+  private readonly fb = inject(NonNullableFormBuilder);
 
-  searchControl = this.fb.nonNullable.control('');
+  readonly form = this.fb.group({
+    search: this.fb.control<string>(''),
+    searchDefault: this.fb.control<string>(''),
+  });
 }

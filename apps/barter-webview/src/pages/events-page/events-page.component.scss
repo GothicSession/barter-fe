@@ -28,6 +28,12 @@
     display: inline-block;
   }
 
+  &__search-button {
+    border-radius: 50%;
+    height: 36px;
+    width: 36px;
+  }
+
   &__list-wrapper {
     display: flex;
     flex-direction: column;
