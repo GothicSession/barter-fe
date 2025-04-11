@@ -14,6 +14,7 @@ import {
 import { injectContext } from '@taiga-ui/polymorpheus';
 
 import { EventPhotoItemComponent } from '../../../ui';
+import { CreateEventFeatureService } from '../create-event.service';
 import { CreateEventDialogData } from '../types/create-event-dialog-data';
 
 @Component({
@@ -33,17 +34,20 @@ import { CreateEventDialogData } from '../types/create-event-dialog-data';
     TuiInputDateModule,
     NgTemplateOutlet,
   ],
+  providers: [CreateEventFeatureService],
 })
 export class CreateEventDialogComponent {
   protected readonly placeFacade = inject(PlaceEntityFacade);
   protected readonly context =
     injectContext<TuiDialogContext<boolean, CreateEventDialogData>>();
 
+  protected readonly form = inject(CreateEventFeatureService).eventForm;
+
   constructor() {
     this.placeFacade.loadPlaces();
   }
 
-  logPlace(place: Place): void {
-    console.log(place);
-  }
+  setPlaceControlValue = (place: Place): void => {
+    this.form.controls.place.setValue(place);
+  };
 }

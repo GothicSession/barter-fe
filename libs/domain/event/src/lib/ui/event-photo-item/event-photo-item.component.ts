@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TuiIcon } from '@taiga-ui/core';
 import {
   TuiAvatar,
   TuiFileLike,
@@ -16,7 +15,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FormsModule,
-    TuiIcon,
     TuiInputFiles,
     TuiInputFilesDirective,
     ReactiveFormsModule,

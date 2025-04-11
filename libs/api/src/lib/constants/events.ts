@@ -21,7 +21,7 @@ import {
   USER_ERIK,
   USER_RUSIK,
 } from './users';
-
+/* eslint-disable max-lines */
 export const BUHLO_EVENT: Event = {
   id: 1,
   name: 'Бухаем в баре',
@@ -351,3 +351,4 @@ export const EVENTS: Event[] = [
   EVENT_19,
   EVENT_20,
 ];
+/* eslint-enable max-lines */

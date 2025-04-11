@@ -1,5 +1,5 @@
 import { User } from '../types';
-
+/* eslint-disable max-lines */
 export const USER_DAN: User = {
   id: 3,
   name: 'Danila',
@@ -387,3 +387,4 @@ export const USERS: User[] = [
   USER_19, // id 19
   USER_20, // id 20
 ];
+/* eslint-enable max-lines */

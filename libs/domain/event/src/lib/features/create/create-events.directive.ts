@@ -2,14 +2,14 @@ import { Directive, Input } from '@angular/core';
 import { BaseSheetDialogDirective, DialogConfig } from '@libs/core';
 import { TuiSheetDialogOptions } from '@taiga-ui/addon-mobile';
 
-import { CreateEventService } from './create-event.service';
+import { CreateEventFeatureService } from './create-event.service';
 import { CreateEventDialogComponent } from './event-create-dialog/create-event-dialog.component';
 import { CreateEventDialogData } from './types/create-event-dialog-data';
 
 @Directive({
   selector: '[createEvent]',
   standalone: true,
-  providers: [CreateEventService],
+  providers: [CreateEventFeatureService],
 })
 export class CreateEventsDirective extends BaseSheetDialogDirective<
   CreateEventDialogComponent,

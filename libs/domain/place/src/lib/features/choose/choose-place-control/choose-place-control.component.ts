@@ -6,7 +6,6 @@ import {
   Output,
 } from '@angular/core';
 import { Place } from '@libs/api';
-import { TuiIcon } from '@taiga-ui/core';
 
 import { PlaceListComponent } from '../../../ui';
 
@@ -16,7 +15,7 @@ import { PlaceListComponent } from '../../../ui';
   templateUrl: './choose-place-control.component.html',
   styleUrl: './choose-place-control.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PlaceListComponent, TuiIcon],
+  imports: [PlaceListComponent],
 })
 export class ChoosePlaceControlComponent {
   @Input()

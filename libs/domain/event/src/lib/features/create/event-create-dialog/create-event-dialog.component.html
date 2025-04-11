@@ -1,4 +1,3 @@
-@if ({ places: placeFacade.getPlaces() }; as tplData) {}
 <div class="create-dialog">
     <span class="tui-text_h6 create-dialog__title">Создание мероприятия</span>
     <div class="create-dialog__content">
@@ -7,21 +6,27 @@
         </div>
         <div class="content__input">
             <span class="tui-text_body-l">Название мероприятия</span>
-            <tui-input [tuiTextfieldLabelOutside]="true">
+            <tui-input
+                [formControl]="form.controls.name"
+                [tuiTextfieldLabelOutside]="true"
+            >
                 Сходить в ресторан...
                 <input tuiTextfieldLegacy type="text" />
             </tui-input>
         </div>
         <div class="content__input">
             <span class="tui-text_body-l">Описание</span>
-            <tui-textarea [tuiTextfieldLabelOutside]="true">
+            <tui-textarea
+                [formControl]="form.controls.description"
+                [tuiTextfieldLabelOutside]="true"
+            >
                 Расскажите кто вам интересен...
                 <input tuiTextfieldLegacy type="text" />
             </tui-textarea>
         </div>
         <div class="content__input">
             <span class="tui-text_body-l">Дата</span>
-            <tui-input-date>
+            <tui-input-date [formControl]="form.controls.date">
                 Укажите дату
                 <input tuiTextfieldLegacy type="text" />
             </tui-input-date>
@@ -29,9 +34,9 @@
         <ng-container
             *ngTemplateOutlet="
                 context.data.placesTpl;
-                context: { $implicit: logPlace }
+                context: { $implicit: setPlaceControlValue }
             "
-        ></ng-container>
+        />
     </div>
     <div class="create-dialog__footer">
         <button class="footer__button" tuiButton size="m">
