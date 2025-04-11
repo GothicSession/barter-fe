@@ -9,7 +9,7 @@ import { Place } from '@libs/api';
 import { TuiIcon } from '@taiga-ui/core';
 
 import { PlaceEntityFacade } from '../../../entity';
-import { ChoosePlaceControlComponent } from '../choose-place-control/choose-place-control.component';
+import { PlaceListComponent } from '../../../ui';
 
 @Component({
   selector: 'barter-choose-place',
@@ -17,7 +17,7 @@ import { ChoosePlaceControlComponent } from '../choose-place-control/choose-plac
   templateUrl: './choose-place.component.html',
   styleUrl: './choose-place.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TuiIcon, ChoosePlaceControlComponent],
+  imports: [TuiIcon, PlaceListComponent],
 })
 export class ChoosePlaceComponent {
   protected readonly placeFacade = inject(PlaceEntityFacade);

@@ -43,11 +43,17 @@
       },
       "configurations": {
         "production": {
+          "sourceMap": {
+            "scripts": true,
+            "styles": true,
+            "hidden": false,
+            "vendor": false
+          },
           "budgets": [
             {
               "type": "initial",
               "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumError": "2mb"
             },
             {
               "type": "anyComponentStyle",

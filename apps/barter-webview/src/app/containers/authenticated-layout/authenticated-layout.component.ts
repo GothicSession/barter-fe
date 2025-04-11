@@ -12,7 +12,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterOutlet } from '@angular/router';
 import { RouteFacade } from '@libs/core';
 
-import { FooterComponent, HeaderComponent } from '../../../ui';
+import { FooterComponent } from '../../../ui/footer';
+import { HeaderComponent } from '../../../ui/header';
 
 @Component({
   selector: 'barter-authenticated-layout',
