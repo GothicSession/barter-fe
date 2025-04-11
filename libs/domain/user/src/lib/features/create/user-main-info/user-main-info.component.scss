@@ -6,6 +6,15 @@
   justify-content: space-between;
 }
 
+.main__info {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 36px;
+  justify-content: center;
+}
+
 .form {
   display: flex;
   flex-direction: column;

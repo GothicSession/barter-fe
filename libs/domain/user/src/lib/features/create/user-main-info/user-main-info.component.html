@@ -1,64 +1,73 @@
-<h1 tuiTitle="m" class="onboarding__title">Укажите данные профиля</h1>
-<form class="form" [formGroup]="createUserFeatureService.userInfoForm">
-    <div class="form__control control">
-        <span class="tui-text_body-l-2 control__name"> Имя </span>
-        <tui-input
-            [formControl]="
-                createUserFeatureService.userInfoForm.controls.firstName
-            "
-        >
-            Укажите имя
-            <input tuiTextfieldLegacy type="text" />
-        </tui-input>
-    </div>
-    <div class="form__control control">
-        <span class="tui-text_body-l-2 control__name"> Дата рождения </span>
-        <tui-input-date
-            [formControl]="
-                createUserFeatureService.userInfoForm.controls.birthDate
-            "
-            [max]="createUserFeatureService.max"
-            [min]="createUserFeatureService.min"
-        >
-            Укажите дату рождения
-        </tui-input-date>
-    </div>
-    <div class="form__control control">
-        <span class="tui-text_body-l-2 control__name"> Пол </span>
-        <tui-select
-            *tuiLet="createUserFeatureService.sexItems"
-            tuiTextfieldSize="l"
-            [formControl]="createUserFeatureService.userInfoForm.controls.sex"
-            [valueContent]="stringify(createUserFeatureService.sexItems)"
-            [tuiTextfieldLabelOutside]="true"
-        >
-            Выберите пол
-            <input placeholder="Выберите пол" tuiTextfieldLegacy />
-            <ng-template tuiDataList>
-                <tui-data-list>
-                    @for (
-                        item of createUserFeatureService.sexItems;
-                        track item.sex
-                    ) {
-                        <button tuiOption type="button" [value]="item.sex">
-                            {{ item.displayText }}
-                        </button>
-                    }
-                </tui-data-list>
-            </ng-template>
-        </tui-select>
-    </div>
-    <div class="form__control control">
-        <span class="tui-text_body-l-2 control__name"> Расскажите о себе </span>
-        <tui-textarea
-            #textarea
-            [formControl]="createUserFeatureService.userInfoForm.controls.about"
-            [expandable]="textarea.focused"
-        >
-            Расскажите о своих интересах...
-        </tui-textarea>
-    </div>
-</form>
+<div class="main__info">
+    <h1 tuiTitle="m">Укажите данные профиля</h1>
+    <form class="form" [formGroup]="createUserFeatureService.userInfoForm">
+        <div class="form__control control">
+            <span class="tui-text_body-l-2 control__name"> Имя </span>
+            <tui-input
+                [formControl]="
+                    createUserFeatureService.userInfoForm.controls.firstName
+                "
+            >
+                Укажите имя
+                <input tuiTextfieldLegacy type="text" />
+            </tui-input>
+        </div>
+        <div class="form__control control">
+            <span class="tui-text_body-l-2 control__name"> Дата рождения </span>
+            <tui-input-date
+                [formControl]="
+                    createUserFeatureService.userInfoForm.controls.birthDate
+                "
+                [max]="createUserFeatureService.max"
+                [min]="createUserFeatureService.min"
+            >
+                Укажите дату рождения
+            </tui-input-date>
+        </div>
+        <div class="form__control control">
+            <span class="tui-text_body-l-2 control__name"> Пол </span>
+            <tui-select
+                *tuiLet="createUserFeatureService.sexItems"
+                tuiTextfieldSize="l"
+                [formControl]="
+                    createUserFeatureService.userInfoForm.controls.sex
+                "
+                [valueContent]="stringify(createUserFeatureService.sexItems)"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Выберите пол
+                <input placeholder="Выберите пол" tuiTextfieldLegacy />
+                <ng-template tuiDataList>
+                    <tui-data-list>
+                        @for (
+                            item of createUserFeatureService.sexItems;
+                            track item.sex
+                        ) {
+                            <button tuiOption type="button" [value]="item.sex">
+                                {{ item.displayText }}
+                            </button>
+                        }
+                    </tui-data-list>
+                </ng-template>
+            </tui-select>
+        </div>
+        <div class="form__control control">
+            <span class="tui-text_body-l-2 control__name">
+                Расскажите о себе
+            </span>
+            <tui-textarea
+                #textarea
+                [formControl]="
+                    createUserFeatureService.userInfoForm.controls.about
+                "
+                [expandable]="textarea.focused"
+            >
+                Расскажите о своих интересах...
+            </tui-textarea>
+        </div>
+    </form>
+</div>
+
 <button class="onboarding__button" tuiButton (click)="onBtnClick()">
     Продолжить
 </button>
