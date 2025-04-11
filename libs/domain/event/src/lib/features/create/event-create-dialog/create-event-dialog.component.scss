@@ -1,6 +1,6 @@
 :host {
   display: block;
-  height: calc(100vh - var(--tg-safe-area-inset-top));
+  height: calc(100vh - 120px);
 }
 
 .content {

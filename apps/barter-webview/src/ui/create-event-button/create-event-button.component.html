@@ -1,6 +1,8 @@
 <button
     tuiButton
     appearance="primary"
+    tuiIconButton
+    iconStart="@tui.plus"
     [createEvent]="{
         dialogOptions: {
             data: {
@@ -8,9 +10,7 @@
             },
         },
     }"
->
-    <tui-icon [icon]="'@tui.plus'" />
-</button>
+></button>
 
 <ng-template #choosePlaceTpl let-changeActiveCardHandler>
     <barter-choose-place
