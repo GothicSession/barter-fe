@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  HostListener,
-  Input,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Place } from '@libs/api';
 import { RatingComponent } from '@libs/core';
 import { TuiIcon } from '@taiga-ui/core';
@@ -21,12 +14,4 @@ import { TuiIcon } from '@taiga-ui/core';
 export class PlaceCardComponent {
   @Input({ required: true })
   place!: Place;
-
-  @Output()
-  clickCard = new EventEmitter<Place>();
-
-  @HostListener('click', ['$event'])
-  emitClickCard(): void {
-    this.clickCard.emit(this.place);
-  }
 }
