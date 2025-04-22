@@ -1,22 +1,26 @@
-<h1 tuiTitle="m" class="onboarding__title">
-    TradeVibe - место встречи твоих желаний
-</h1>
-<div class="onboarding__list">
-    <barter-onboarding-list-item
-        [icon]="'@tui.waves'"
-        [title]="'Здесь начинаются твои события'"
-        [description]="'Cоздавай уникальные встречи'"
-    />
-    <barter-onboarding-list-item
-        [icon]="'@tui.person-standing'"
-        [title]="'Будь в центре внимания'"
-        [description]="'Выбери свой круг интересов или сам задай направление'"
-    />
-    <barter-onboarding-list-item
-        [icon]="'@tui.calendar-range'"
-        [title]="'Следи за любимыми мероприятиями'"
-        [description]="'Не пропускай любимые мероприятия и будь в тренде'"
-    />
+<div class="onboarding">
+    <h1 tuiTitle="m" class="onboarding__title">
+        TradeVibe - место встречи твоих желаний
+    </h1>
+    <div class="onboarding__list">
+        <barter-onboarding-list-item
+            [icon]="'@tui.waves'"
+            [title]="'Здесь начинаются твои события'"
+            [description]="'Cоздавай уникальные встречи'"
+        />
+        <barter-onboarding-list-item
+            [icon]="'@tui.person-standing'"
+            [title]="'Будь в центре внимания'"
+            [description]="
+                'Выбери свой круг интересов или сам задай направление'
+            "
+        />
+        <barter-onboarding-list-item
+            [icon]="'@tui.calendar-range'"
+            [title]="'Следи за любимыми мероприятиями'"
+            [description]="'Не пропускай любимые мероприятия и будь в тренде'"
+        />
+    </div>
 </div>
 <button class="onboarding__button" tuiButton (click)="onBtnClick()">
     Поехали!

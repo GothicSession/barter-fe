@@ -1,10 +1,5 @@
 import { Directive, Input } from '@angular/core';
-import {
-  BaseDialogConfig,
-  BaseSheetDialogDirective,
-  DialogConfig,
-  TemplateDialogConfig,
-} from '@libs/core';
+import { BaseSheetDialogDirective, DialogConfig } from '@libs/core';
 import { TuiSheetDialogOptions } from '@taiga-ui/addon-mobile';
 
 import { SearchEventsFeatureService } from './search-events.service';

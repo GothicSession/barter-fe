@@ -1,0 +1,46 @@
+<div class="create-dialog">
+    <span class="tui-text_h6 create-dialog__title">Создание мероприятия</span>
+    <div class="create-dialog__content">
+        <div class="create-dialog__photo">
+            <barter-event-photo />
+        </div>
+        <div class="content__input">
+            <span class="tui-text_body-l">Название мероприятия</span>
+            <tui-input
+                [formControl]="form.controls.name"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Сходить в ресторан...
+                <input tuiTextfieldLegacy type="text" />
+            </tui-input>
+        </div>
+        <div class="content__input">
+            <span class="tui-text_body-l">Описание</span>
+            <tui-textarea
+                [formControl]="form.controls.description"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Расскажите кто вам интересен...
+                <input tuiTextfieldLegacy type="text" />
+            </tui-textarea>
+        </div>
+        <div class="content__input">
+            <span class="tui-text_body-l">Дата</span>
+            <tui-input-date [formControl]="form.controls.date">
+                Укажите дату
+                <input tuiTextfieldLegacy type="text" />
+            </tui-input-date>
+        </div>
+        <ng-container
+            *ngTemplateOutlet="
+                context.data.placesTpl;
+                context: { $implicit: setPlaceControlValue }
+            "
+        />
+    </div>
+    <div class="create-dialog__footer">
+        <button class="footer__button" tuiButton size="m">
+            Создать мероприятие
+        </button>
+    </div>
+</div>

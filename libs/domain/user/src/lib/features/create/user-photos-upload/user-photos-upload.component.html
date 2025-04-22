@@ -1,13 +1,15 @@
-<h1 tuiTitle="m" class="onboarding__title">Загрузите ваши фотографии</h1>
-<div class="photo">
-    <span class="tui-text_body-l-2 control__name">
-        Поделитесь своими лучшими моментами! Загрузите фото и получите лайки от
-        нашего сообщества
-    </span>
-    <div class="photo__list">
-        @for (photo of photoList; track photo) {
-            <barter-user-photo-item class="photo__item" />
-        }
+<div class="photo-wrapper">
+    <h1 tuiTitle="m">Загрузите ваши фотографии</h1>
+    <div class="photo">
+        <span class="tui-text_body-l-2 control__name">
+            Поделитесь своими лучшими моментами! Загрузите фото и получите лайки
+            от нашего сообщества
+        </span>
+        <div class="photo__list">
+            @for (photo of photoList; track photo) {
+                <barter-user-photo-item class="photo__item" />
+            }
+        </div>
     </div>
 </div>
 
