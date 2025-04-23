@@ -1,4 +1,5 @@
-import { computed } from '@angular/core';
+import { computed, inject } from '@angular/core';
+import { TELEGRAM } from '@libs/core';
 import {
   patchState,
   signalStore,
@@ -17,9 +18,9 @@ export const PlatformSharedStore = signalStore(
   withState<PlatformStore>(() => ({
     currentPlatform: Platform.UNKNOWN,
   })),
-  withMethods((store) => ({
+  withMethods((store, telegram = inject(TELEGRAM)) => ({
     initCurrentPlatform: () => {
-      const platform = window.Telegram?.WebApp.platform;
+      const platform = telegram?.WebApp.platform;
 
       patchState(store, {
         currentPlatform:
