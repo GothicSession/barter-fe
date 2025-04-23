@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SkeletonComponent } from '@libs/core';
 import { TuiAvatar, TuiAvatarStack } from '@taiga-ui/kit';
 
+const AVATARS_ARRAY_LENGTH = 5;
+
 @Component({
   selector: 'barter-event-card-skeleton',
   standalone: true,
@@ -13,4 +15,6 @@ import { TuiAvatar, TuiAvatarStack } from '@taiga-ui/kit';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [SkeletonComponent, TuiAvatarStack, TuiAvatar],
 })
-export class EventCardSkeletonComponent {}
+export class EventCardSkeletonComponent {
+  protected readonly AVATARS_ARRAY = new Array(AVATARS_ARRAY_LENGTH);
+}

@@ -14,7 +14,7 @@
             </span>
             <div class="event__participants">
                 <tui-avatar-stack [direction]="'left'">
-                    @for (participant of [1, 2, 3]; track participant) {
+                    @for (participant of AVATARS_ARRAY; track participant) {
                         <tui-avatar [round]="true" [size]="'xs'" [src]="''" />
                     }
                 </tui-avatar-stack>
