@@ -1,11 +1,29 @@
-@if ({ currentUser: userEntityFacade.getCurrentUser() }; as tplData) {
-    <barter-avatar
-        [name]="tplData.currentUser()?.name"
-        [src]="tplData.currentUser()?.photos?.[0] || ''"
-    />
-    <barter-edit-user-button class="edit__button" />
-    <barter-profile-events-list
-        [activeEvents]="tplData.currentUser()?.createdEvents || []"
-        [passedEvents]="tplData.currentUser()?.createdEvents || []"
-    />
+@if (
+    {
+        currentUser: userEntityFacade.getCurrentUser(),
+        isLoading: userEntityFacade.getIsLoading(),
+    };
+    as tplData
+) {
+    @if (tplData.isLoading()) {
+        <ng-container *ngTemplateOutlet="placeholderTpl"></ng-container>
+    } @else {
+        <barter-avatar
+            [name]="tplData.currentUser()?.name"
+            [src]="tplData.currentUser()?.photos?.[0] || ''"
+        />
+        <barter-edit-user-button class="edit__button" />
+        <barter-profile-events-list
+            [activeEvents]="tplData.currentUser()?.createdEvents || []"
+            [passedEvents]="tplData.currentUser()?.createdEvents || []"
+        />
+    }
 }
+
+<ng-template #placeholderTpl>
+    <barter-avatar-skeleton />
+    <div class="edit__button edit__button--placeholder">
+        <barter-skeleton />
+    </div>
+    <barter-profile-events-list-skeleton />
+</ng-template>

@@ -7,7 +7,7 @@
     "build": "nx run barter-webview:build --skip-nx-cache",
     "lint": "nx run-many --all --target=lint --skip-nx-cache --exclude=styles",
     "lint:fix": "nx run-many --all --target=lint --skip-nx-cache --fix --verbose --exclude=styles",
-    "lint:styles": "stylelint \"apps/**/*.scss\" \"libs/**/*.scss\"",
+    "lint:styles": "stylelint --fix \"apps/**/*.scss\" \"libs/**/*.scss\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,html,json,md}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,css,scss,html,json,md}\"",
     "barter-webview:lint": "nx run barter-webview:lint --cache",

@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,15 +10,20 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '@libs/api';
+import { SkeletonComponent } from '@libs/core';
 import {
   AvatarComponent,
+  AvatarSkeletonComponent,
   EditUserButtonComponent,
   UserEntityFacade,
   UserEntityStore,
 } from '@libs/domain/user';
 import { map } from 'rxjs';
 
-import { ProfileEventsListComponent } from '../../ui';
+import {
+  ProfileEventsListComponent,
+  ProfileEventsListSkeletonComponent,
+} from '../../ui';
 
 @Component({
   selector: 'barter-profile-page',
@@ -29,6 +35,10 @@ import { ProfileEventsListComponent } from '../../ui';
     AvatarComponent,
     EditUserButtonComponent,
     ProfileEventsListComponent,
+    AvatarSkeletonComponent,
+    NgTemplateOutlet,
+    SkeletonComponent,
+    ProfileEventsListSkeletonComponent,
   ],
   providers: [UserEntityStore, UserEntityFacade, UserService],
 })
