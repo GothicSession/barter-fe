@@ -1,4 +1,10 @@
-@if ({ events: eventEntityFacade.getEvents() }; as tplData) {
+@if (
+    {
+        events: eventEntityFacade.getEvents(),
+        isLoading: eventEntityFacade.getIsLoading(),
+    };
+    as tplData
+) {
     <div class="events">
         <div class="events__list-wrapper">
             <div class="events__top">
@@ -16,8 +22,17 @@
                 ></button>
             </div>
             <div class="events__list">
-                @for (event of tplData.events(); track event.id) {
-                    <barter-event-card class="events__item" [event]="event" />
+                @if (tplData.isLoading()) {
+                    @for (event of SKELETON_EVENTS_LIST; track event) {
+                        <barter-event-card-skeleton />
+                    }
+                } @else {
+                    @for (event of tplData.events(); track event.id) {
+                        <barter-event-card
+                            class="events__item"
+                            [event]="event"
+                        />
+                    }
                 }
             </div>
         </div>

@@ -2,7 +2,7 @@
     <span class="tui-text_body-l-2">
         {{ place.name }}
     </span>
-    <img class="place-card__photo" [src]="place.photo" />
+    <img class="place-card__photo" alt="'place'" [lazySrc]="place.photo" />
     <barter-rating [rating]="place.rating" [isReadonly]="true" />
     <span class="tui-text_body-s text-secondary">
         <tui-icon

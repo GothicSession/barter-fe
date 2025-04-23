@@ -12,6 +12,18 @@ barter-root {
   }
 }
 
+img {
+  background-color: var(--tui-background-neutral-1-hover);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
 tui-avatar[data-size='xxl'] {
   border-radius: 50%;
   height: 134px;

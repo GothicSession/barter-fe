@@ -1,0 +1,49 @@
+.skeleton {
+  background: var(--tui-background-neutral-1);
+  border-radius: 8px;
+  display: block;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &__shine {
+    &::before {
+      align-self: flex-end;
+      animation-duration: 2300ms;
+      animation-iteration-count: infinite;
+      animation-name: animation;
+      animation-timing-function: linear;
+      background: linear-gradient(
+        44deg,
+        rgb(255 255 255 / 0%) 20%,
+        rgb(255 255 255 / 90%) 50%,
+        rgb(255 255 255 / 0%) 80%
+      );
+      content: '';
+      display: block;
+      height: 100%;
+      left: -100%;
+      position: absolute;
+      transform-origin: bottom;
+      width: 100%;
+    }
+  }
+}
+
+@keyframes animation {
+  0% {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+
+  65% {
+    transform: translateX(calc(100% * 1.5));
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(calc(100% * 1.5));
+  }
+}
