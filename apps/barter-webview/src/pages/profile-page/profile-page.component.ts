@@ -10,7 +10,6 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '@libs/api';
-import { SkeletonComponent } from '@libs/core';
 import {
   AvatarComponent,
   AvatarSkeletonComponent,
@@ -18,6 +17,7 @@ import {
   UserEntityFacade,
   UserEntityStore,
 } from '@libs/domain/user';
+import { TuiSkeleton } from '@taiga-ui/kit';
 import { map } from 'rxjs';
 
 import {
@@ -37,8 +37,8 @@ import {
     ProfileEventsListComponent,
     AvatarSkeletonComponent,
     NgTemplateOutlet,
-    SkeletonComponent,
     ProfileEventsListSkeletonComponent,
+    TuiSkeleton,
   ],
   providers: [UserEntityStore, UserEntityFacade, UserService],
 })

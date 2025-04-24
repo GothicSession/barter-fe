@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SkeletonComponent } from '@libs/core';
-import { TuiAvatar, TuiAvatarStack } from '@taiga-ui/kit';
+import { TuiAvatar, TuiAvatarStack, TuiSkeleton } from '@taiga-ui/kit';
 
 const AVATARS_ARRAY_LENGTH = 5;
 
@@ -13,7 +12,7 @@ const AVATARS_ARRAY_LENGTH = 5;
     './../event-card.component.scss',
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [SkeletonComponent, TuiAvatarStack, TuiAvatar],
+  imports: [TuiAvatarStack, TuiAvatar, TuiSkeleton],
 })
 export class EventCardSkeletonComponent {
   protected readonly AVATARS_ARRAY = new Array(AVATARS_ARRAY_LENGTH);

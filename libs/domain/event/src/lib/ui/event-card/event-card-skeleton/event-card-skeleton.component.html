@@ -1,33 +1,33 @@
 <div class="event">
     <div class="event__cover cover">
-        <div class="cover__date">
-            <barter-skeleton />
-        </div>
-        <div class="cover__img">
-            <barter-skeleton />
-        </div>
+        <div class="cover__date" [tuiSkeleton]="true"></div>
+        <div class="cover__img" [tuiSkeleton]="true"></div>
     </div>
     <div class="event__info-wrapper">
         <div class="event__info">
-            <span class="event__name--placeholder">
-                <barter-skeleton />
-            </span>
+            <span class="event__name--placeholder" [tuiSkeleton]="true"> </span>
             <div class="event__participants">
                 <tui-avatar-stack [direction]="'left'">
                     @for (participant of AVATARS_ARRAY; track participant) {
-                        <tui-avatar [round]="true" [size]="'xs'" [src]="''" />
+                        <tui-avatar
+                            [round]="true"
+                            [size]="'xs'"
+                            [src]="''"
+                            [tuiSkeleton]="true"
+                        />
                     }
                 </tui-avatar-stack>
-                <span class="event__participants__count--placeholder">
-                    <barter-skeleton />
+                <span
+                    class="event__participants__count--placeholder"
+                    [tuiSkeleton]="true"
+                >
                 </span>
             </div>
-            <div class="event__location--placeholder">
-                <barter-skeleton />
-            </div>
+            <div
+                class="event__location--placeholder"
+                [tuiSkeleton]="true"
+            ></div>
         </div>
-        <div class="event__button--placeholder">
-            <barter-skeleton />
-        </div>
+        <div class="event__button--placeholder" [tuiSkeleton]="true"></div>
     </div>
 </div>

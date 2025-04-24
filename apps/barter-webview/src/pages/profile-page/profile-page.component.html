@@ -22,8 +22,9 @@
 
 <ng-template #placeholderTpl>
     <barter-avatar-skeleton />
-    <div class="edit__button edit__button--placeholder">
-        <barter-skeleton />
-    </div>
+    <div
+        class="edit__button edit__button--placeholder"
+        [tuiSkeleton]="true"
+    ></div>
     <barter-profile-events-list-skeleton />
 </ng-template>

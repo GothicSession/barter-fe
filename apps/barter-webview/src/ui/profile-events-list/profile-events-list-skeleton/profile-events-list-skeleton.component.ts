@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SkeletonComponent } from '@libs/core';
 import { EventCardSkeletonComponent } from '@libs/domain/event';
+import { TuiSkeleton } from '@taiga-ui/kit';
 
 const EVENTS_CARD_SKELETON_LENGTH = 5;
 
@@ -13,7 +13,7 @@ const EVENTS_CARD_SKELETON_LENGTH = 5;
     './../profile-events-list.component.scss',
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [EventCardSkeletonComponent, SkeletonComponent],
+  imports: [EventCardSkeletonComponent, TuiSkeleton],
 })
 export class ProfileEventsListSkeletonComponent {
   protected readonly EVENTS_CARD_SKELETON = new Array(
