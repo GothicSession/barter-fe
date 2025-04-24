@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TELEGRAM } from '@libs/core';
 import { TuiRoot } from '@taiga-ui/core';
 
 import { PlatformSharedFacade } from './shared';
+import { TELEGRAM } from './shared/tokens';
 
 @Component({
   imports: [RouterModule, TuiRoot],

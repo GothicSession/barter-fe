@@ -1,7 +1,5 @@
 import { inject, InjectionToken } from '@angular/core';
-
-import { Telegram } from '../types';
-import { WINDOW } from './window';
+import { Telegram, WINDOW } from '@libs/core';
 
 export const TELEGRAM = new InjectionToken<Telegram>('telegram', {
   factory: () => {

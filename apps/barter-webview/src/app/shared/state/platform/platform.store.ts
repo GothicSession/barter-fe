@@ -1,5 +1,4 @@
 import { computed, inject } from '@angular/core';
-import { TELEGRAM } from '@libs/core';
 import {
   patchState,
   signalStore,
@@ -9,6 +8,7 @@ import {
 } from '@ngrx/signals';
 
 import { Platform } from '../../enums';
+import { TELEGRAM } from '../../tokens';
 
 export interface PlatformStore {
   currentPlatform: Platform;
