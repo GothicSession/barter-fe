@@ -1,4 +1,4 @@
-import { computed } from '@angular/core';
+import { computed, inject } from '@angular/core';
 import {
   patchState,
   signalStore,
@@ -8,6 +8,7 @@ import {
 } from '@ngrx/signals';
 
 import { Platform } from '../../enums';
+import { TELEGRAM } from '../../tokens';
 
 export interface PlatformStore {
   currentPlatform: Platform;
@@ -17,9 +18,9 @@ export const PlatformSharedStore = signalStore(
   withState<PlatformStore>(() => ({
     currentPlatform: Platform.UNKNOWN,
   })),
-  withMethods((store) => ({
+  withMethods((store, telegram = inject(TELEGRAM)) => ({
     initCurrentPlatform: () => {
-      const platform = window.Telegram?.WebApp.platform;
+      const platform = telegram?.WebApp.platform;
 
       patchState(store, {
         currentPlatform:

@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { TuiRoot } from '@taiga-ui/core';
 
 import { PlatformSharedFacade } from './shared';
+import { TELEGRAM } from './shared/tokens';
 
 @Component({
   imports: [RouterModule, TuiRoot],
@@ -12,10 +13,11 @@ import { PlatformSharedFacade } from './shared';
 })
 export class AppComponent {
   protected platformFacade = inject(PlatformSharedFacade);
+  protected telegram = inject(TELEGRAM);
 
   constructor() {
     try {
-      window.Telegram?.WebApp?.requestFullscreen();
+      this.telegram?.WebApp?.requestFullscreen();
     } catch (e) {
       console.error('Run app via Telegram');
     }
