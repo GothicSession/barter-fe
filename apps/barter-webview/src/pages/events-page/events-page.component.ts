@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { EventService, PlaceService } from '@libs/api';
 import {
   EventCardComponent,
+  EventCardSkeletonComponent,
   EventEntityFacade,
   EventEntityStore,
   SearchEventsFeatureDirective,
@@ -11,6 +12,8 @@ import { PlaceEntityFacade, PlaceEntityStore } from '@libs/domain/place';
 import { TuiButton } from '@taiga-ui/core';
 
 import { CreateEventButtonComponent } from '../../ui';
+
+const SKELETON_EVENTS_LIST_LENGTH = 10;
 
 @Component({
   selector: 'barter-events-page',
@@ -32,10 +35,14 @@ import { CreateEventButtonComponent } from '../../ui';
     FormsModule,
     TuiButton,
     CreateEventButtonComponent,
+    EventCardSkeletonComponent,
   ],
 })
 export class EventsPageComponent {
   protected readonly eventEntityFacade = inject(EventEntityFacade);
+  protected readonly SKELETON_EVENTS_LIST = new Array(
+    SKELETON_EVENTS_LIST_LENGTH,
+  );
 
   constructor() {
     this.eventEntityFacade.loadEvents();

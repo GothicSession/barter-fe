@@ -1,0 +1,7 @@
+<div class="header--placeholder" [tuiSkeleton]="true"></div>
+<div class="tabs--placeholder" [tuiSkeleton]="true"></div>
+<div class="events__list">
+    @for (skeleton of EVENTS_CARD_SKELETON; track skeleton) {
+        <barter-event-card-skeleton />
+    }
+</div>

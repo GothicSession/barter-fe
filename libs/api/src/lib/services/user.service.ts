@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 
 import { USER_ARTEM, USERS } from '../constants';
 import { User } from '../types';
 
+const DELAY = 2500;
 @Injectable()
 export class UserService {
   getActiveUser(): Observable<User> {
@@ -11,6 +12,8 @@ export class UserService {
   }
 
   getUserById(id: number): Observable<User> {
-    return of<User>(USERS.find((user) => user.id === id) || USER_ARTEM);
+    return of<User>(USERS.find((user) => user.id === id) || USER_ARTEM).pipe(
+      delay(DELAY),
+    );
   }
 }

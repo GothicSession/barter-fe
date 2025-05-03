@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -11,13 +12,18 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '@libs/api';
 import {
   AvatarComponent,
+  AvatarSkeletonComponent,
   EditUserButtonComponent,
   UserEntityFacade,
   UserEntityStore,
 } from '@libs/domain/user';
+import { TuiSkeleton } from '@taiga-ui/kit';
 import { map } from 'rxjs';
 
-import { ProfileEventsListComponent } from '../../ui';
+import {
+  ProfileEventsListComponent,
+  ProfileEventsListSkeletonComponent,
+} from '../../ui';
 
 @Component({
   selector: 'barter-profile-page',
@@ -29,6 +35,10 @@ import { ProfileEventsListComponent } from '../../ui';
     AvatarComponent,
     EditUserButtonComponent,
     ProfileEventsListComponent,
+    AvatarSkeletonComponent,
+    NgTemplateOutlet,
+    ProfileEventsListSkeletonComponent,
+    TuiSkeleton,
   ],
   providers: [UserEntityStore, UserEntityFacade, UserService],
 })

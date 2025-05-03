@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withRouterConfig } from '@angular/router';
-import { provideRoutesState } from '@libs/core';
+import { LazyViewport, provideRoutesState } from '@libs/core';
 import { NG_EVENT_PLUGINS } from '@taiga-ui/event-plugins';
 
 import { appRoutes } from './app.routes';
@@ -28,5 +28,6 @@ export const appConfig: ApplicationConfig = {
     provideRoutesState<Routes>(),
     PlatformSharedFacade,
     PlatformSharedStore,
+    LazyViewport,
   ],
 };

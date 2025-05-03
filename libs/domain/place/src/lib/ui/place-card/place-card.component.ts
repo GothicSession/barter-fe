@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Place } from '@libs/api';
-import { RatingComponent } from '@libs/core';
+import { LazySrcDirective, RatingComponent } from '@libs/core';
 import { TuiIcon } from '@taiga-ui/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { TuiIcon } from '@taiga-ui/core';
   templateUrl: './place-card.component.html',
   styleUrl: './place-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TuiIcon, RatingComponent],
+  imports: [TuiIcon, RatingComponent, LazySrcDirective],
 })
 export class PlaceCardComponent {
   @Input({ required: true })

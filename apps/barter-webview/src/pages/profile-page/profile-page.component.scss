@@ -10,4 +10,10 @@
 .edit__button {
   margin-bottom: 24px;
   margin-top: 16px;
+
+  &--placeholder {
+    border-radius: 10px;
+    min-height: 44px;
+    width: 230px;
+  }
 }

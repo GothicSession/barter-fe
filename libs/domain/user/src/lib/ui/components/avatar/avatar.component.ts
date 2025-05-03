@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AvatarSize } from '@libs/core';
 import { TuiAvatar, TuiAvatarOutline } from '@taiga-ui/kit';
 
 @Component({
@@ -18,4 +19,7 @@ export class AvatarComponent {
 
   @Input()
   name?: string;
+
+  @Input()
+  size: AvatarSize = 'xxl';
 }
