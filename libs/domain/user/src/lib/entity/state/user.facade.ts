@@ -19,4 +19,8 @@ export class UserEntityFacade {
   loadUserById(id: Signal<number>): Unsubscribable {
     return this.userEntityStore.loadUserById(id);
   }
+
+  getIsMyProfile(): Signal<boolean> {
+    return this.userEntityStore.isMyProfile;
+  }
 }

@@ -2,6 +2,7 @@
     {
         currentUser: userEntityFacade.getCurrentUser(),
         isLoading: userEntityFacade.getIsLoading(),
+        isMyProfile: userEntityFacade.getIsMyProfile(),
     };
     as tplData
 ) {
@@ -12,7 +13,11 @@
             [name]="tplData.currentUser()?.name"
             [src]="tplData.currentUser()?.photos?.[0] || ''"
         />
-        <barter-edit-user-button class="edit__button" />
+        @if (tplData.isMyProfile()) {
+            <barter-edit-user-button class="profile__button" />
+        } @else {
+            <barter-subscribe-user-button class="profile__button" />
+        }
         <barter-profile-events-list
             [activeEvents]="tplData.currentUser()?.createdEvents || []"
             [passedEvents]="tplData.currentUser()?.createdEvents || []"
