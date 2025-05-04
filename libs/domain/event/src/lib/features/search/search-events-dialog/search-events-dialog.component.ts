@@ -62,7 +62,7 @@ export class SearchEventsDialogComponent {
     const searchValue = this.form.getRawValue().search.trim();
 
     this.form.controls.searchDefault.setValue(searchValue);
-    this.eventEntityFacade.loadEvents(searchValue);
+    this.eventEntityFacade.loadEvents({ search: searchValue || undefined });
     this.saveRecentSearches(searchValue);
     this.context.completeWith();
   }

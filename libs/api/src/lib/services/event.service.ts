@@ -1,25 +1,32 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { catchError, delay, Observable, of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { delay, Observable, of } from 'rxjs';
 
 import { EVENTS } from '../constants';
 import { Event } from '../types';
 
-const DELAY = 1500;
+const DELAY = 500;
+const PAGE_SIZE = 15;
+
+export interface GetEventsRequest {
+  offset?: number;
+  search?: string;
+  limit?: number;
+}
+
 @Injectable()
 export class EventService {
-  private readonly httpClient = inject(HttpClient);
+  getEvents(req: GetEventsRequest = {}): Observable<Event[]> {
+    const { offset = 0, search = '', limit = PAGE_SIZE } = req;
+    const term = search.trim().toLowerCase();
 
-  getEvents(search?: string): Observable<Event[]> {
-    let params = new HttpParams();
+    let events = EVENTS;
 
-    if (search) {
-      params = params.set('search', search);
+    if (term) {
+      events = events.filter((e) => e.name.toLowerCase().includes(term));
     }
 
-    return this.httpClient.get<Event[]>('/events', { params }).pipe(
-      delay(DELAY),
-      catchError(() => of(EVENTS).pipe(delay(DELAY))),
-    );
+    const page = events.slice(offset, offset + limit);
+
+    return of(page).pipe(delay(DELAY));
   }
 }

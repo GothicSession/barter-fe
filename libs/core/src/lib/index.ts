@@ -1,6 +1,7 @@
 export * from './abstract';
 export * from './directives';
 export * from './pipes';
+export * from './rx-js';
 export * from './services';
 export * from './state';
 export * from './tokens';

@@ -1,12 +1,13 @@
 :host {
   display: block;
   height: 100%;
-  padding: 48px 18px 24px;
 }
 
 .events {
   display: flex;
   height: 100%;
+  overflow: scroll;
+  padding: 48px 18px 0;
 
   &__top {
     align-items: center;
@@ -19,6 +20,7 @@
   }
 
   &__list {
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -40,4 +42,8 @@
     flex-direction: column;
     flex-grow: 1;
   }
+}
+
+.loader {
+  margin-top: 8px;
 }

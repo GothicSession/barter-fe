@@ -39,7 +39,7 @@ export class LazyViewport {
       );
       this.destroyRef.onDestroy(() => this.observer?.disconnect());
     } else {
-      this.observer = null; // graceful fallback
+      this.observer = null;
     }
   }
 
