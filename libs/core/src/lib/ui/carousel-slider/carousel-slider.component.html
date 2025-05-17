@@ -1,0 +1,22 @@
+<div class="carousel-wrapper">
+    <div class="carousel__slides" tuiCarouselButtons>
+        @for (item of items; track item; let idx = $index) {
+            <div
+                class="slides__item"
+                [class.slides__item_active]="idx === activeIndex"
+            ></div>
+        }
+    </div>
+    <tui-carousel
+        class="carousel"
+        #carousel
+        [draggable]="false"
+        [(index)]="activeIndex"
+    >
+        @for (item of items; track item) {
+            <div *tuiItem>
+                <img class="photo__item" alt="photo" [lazySrc]="item" />
+            </div>
+        }
+    </tui-carousel>
+</div>

@@ -10,6 +10,7 @@ import {
   EventCardSkeletonComponent,
   EventEntityFacade,
   EventEntityStore,
+  OpenEventFeatureDirective,
   SearchEventsFeatureDirective,
 } from '@libs/domain/event';
 import { PlaceEntityFacade, PlaceEntityStore } from '@libs/domain/place';
@@ -42,6 +43,7 @@ const SKELETON_EVENTS_LIST_LENGTH = 10;
     EventCardSkeletonComponent,
     LazyVisibleLoaderDirective,
     ScrolledToBottomDirective,
+    OpenEventFeatureDirective,
   ],
 })
 export class EventsPageComponent {

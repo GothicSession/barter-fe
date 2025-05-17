@@ -37,6 +37,7 @@
                         <barter-event-card
                             class="events__item"
                             [event]="event"
+                            [openEvent]="{ dialogOptions: { data: event } }"
                         />
                     }
                     @if (!tplData.isWholeListLoaded()) {
