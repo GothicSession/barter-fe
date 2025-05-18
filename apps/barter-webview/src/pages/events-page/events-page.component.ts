@@ -72,7 +72,7 @@ export class EventsPageComponent implements AfterViewInit {
   protected readonly mappedEvents = computed(() =>
     this.eventEntityFacade
       .getEvents()()
-      .map((event) => ({
+      .map((event: Event) => ({
         ...event,
         creatorRouterLink: [
           '/',
