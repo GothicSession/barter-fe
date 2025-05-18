@@ -2,6 +2,10 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { EventService, PlaceService } from '@libs/api';
 import {
+  LazyVisibleLoaderDirective,
+  ScrolledToBottomDirective,
+} from '@libs/core';
+import {
   EventCardComponent,
   EventCardSkeletonComponent,
   EventEntityFacade,
@@ -36,6 +40,8 @@ const SKELETON_EVENTS_LIST_LENGTH = 10;
     TuiButton,
     CreateEventButtonComponent,
     EventCardSkeletonComponent,
+    LazyVisibleLoaderDirective,
+    ScrolledToBottomDirective,
   ],
 })
 export class EventsPageComponent {
@@ -46,5 +52,10 @@ export class EventsPageComponent {
 
   constructor() {
     this.eventEntityFacade.loadEvents();
+  }
+
+  onNearBottom(): void {
+    if (!this.eventEntityFacade.getIsLoading()())
+      this.eventEntityFacade.loadEvents();
   }
 }

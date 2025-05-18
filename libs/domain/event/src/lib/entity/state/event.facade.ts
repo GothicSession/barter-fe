@@ -1,5 +1,5 @@
 import { inject, Injectable, Signal } from '@angular/core';
-import { Event } from '@libs/api';
+import { Event, GetEventsRequest } from '@libs/api';
 import { Unsubscribable } from 'rxjs';
 
 import { EventEntityStore } from './event.store';
@@ -16,7 +16,11 @@ export class EventEntityFacade {
     return this.eventEntityStore.isLoading;
   }
 
-  loadEvents(search?: string): Unsubscribable {
-    return this.eventEntityStore.loadEvents({ search });
+  getIsWholeListLoaded(): Signal<boolean> {
+    return this.eventEntityStore.isWholeListLoaded;
+  }
+
+  loadEvents(request?: GetEventsRequest): Unsubscribable {
+    return this.eventEntityStore.loadEvents(request || {});
   }
 }

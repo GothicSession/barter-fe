@@ -327,12 +327,300 @@ export const EVENT_20: Event = {
   participants: [USER_9, USER_19 /* exclude */, USER_5, USER_14],
 };
 
-// ====== Итоговые массивы ======
+/* ===== Новые события ===== */
+
+export const EVENT_21: Event = {
+  id: 21,
+  name: 'Поход в Кеку',
+  photos: ['https://artpiknik.ru/wp-content/uploads/2019/09/6789-1.jpg'],
+
+  description:
+    'Осенний трек по Кеку Кеку. Ночуем в палатках, встречаем рассвет на Кеку.',
+  people_count: 12,
+  date: '2025-11-05T07:00:00.000Z',
+  geolocation: 'Кеку, Кеку',
+  creator_id: 12, // USER_12
+  participants: [USER_5, USER_7, USER_9, USER_12, USER_15],
+};
+
+export const EVENT_22: Event = {
+  id: 22,
+  name: 'Сальса-вечер в парке',
+  photos: ['https://artpiknik.ru/wp-content/uploads/2019/09/6789-1.jpg'],
+  description:
+    'Живой оркестр и бесплатный мастер-класс по сальсе на открытом воздухе.',
+  people_count: 20,
+  date: '2025-05-25T18:00:00.000Z',
+  geolocation: 'Парк «Сокольники», Москва',
+  creator_id: 6, // Natalia
+  participants: [USER_6, USER_8, USER_10, USER_14],
+};
+
+export const EVENT_23: Event = {
+  id: 23,
+  name: '48-часовой Хакатон',
+  photos: ['https://artpiknik.ru/wp-content/uploads/2019/09/6789-1.jpg'],
+  description:
+    'Собираемся, чтобы за выходные собрать рабочий прототип и выиграть призы от спонсоров.',
+  people_count: 40,
+  date: '2025-11-15T10:00:00.000Z',
+  geolocation: 'GeekHub, Санкт-Петербург',
+  creator_id: 11, // Pavel
+  participants: [USER_ARTEM, USER_RUSIK, USER_ERIK, USER_11, USER_18],
+};
+
+export const EVENT_24: Event = {
+  id: 24,
+  name: 'Караоке-баттл',
+  photos: [
+    'https://images.unsplash.com/photo-1581389443276-8e126048adf4?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Турнир по караоке с жюри и призами. Выбираем лучшего вокалиста вечера.',
+  people_count: 15,
+  date: '2025-12-01T19:00:00.000Z',
+  geolocation: 'Joy Karaoke, Москва',
+  creator_id: 14, // Stanislav
+  participants: [USER_5, USER_14, USER_19],
+};
+
+export const EVENT_25: Event = {
+  id: 25,
+  name: 'Литературный клуб «Читаем и спорим»',
+  photos: [
+    'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Обсуждаем роман Мураками «Кафка на пляже». Не забудьте закладки и свои теории!',
+  people_count: 10,
+  date: '2025-11-10T18:30:00.000Z',
+  geolocation: 'Антикафе Book&Coffee',
+  creator_id: 13, // Evgeniya
+  participants: [USER_13, USER_6, USER_17],
+};
+
+export const EVENT_26: Event = {
+  id: 26,
+  name: 'SUP-серфинг по Москве-реке',
+  photos: [
+    'https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Утренний заплыв на сапах, завтрак на воде и фотосессия у Кремля.',
+  people_count: 8,
+  date: '2025-07-25T09:00:00.000Z',
+  geolocation: 'Причал «Горький парк»',
+  creator_id: 10, // Elena
+  participants: [USER_10, USER_8, USER_15, USER_20],
+};
+
+export const EVENT_27: Event = {
+  id: 27,
+  name: 'Retro Gaming Night',
+  photos: ['https://artpiknik.ru/wp-content/uploads/2019/09/6789-1.jpg'],
+  description:
+    'Dendy, Sega, ламповый CRT и турниры в Mortal Kombat II. Победитель уходит с катриджем-трофеем.',
+  people_count: 12,
+  date: '2025-08-20T21:00:00.000Z',
+  geolocation: 'Клуб «OldSchool»',
+  creator_id: 2, // Ruslan
+  participants: [USER_9, USER_11, USER_12],
+};
+
+export const EVENT_28: Event = {
+  id: 28,
+  name: 'Субботник в парке',
+  photos: ['https://artpiknik.ru/wp-content/uploads/2019/09/6789-1.jpg'],
+  description:
+    'Убираем листья, красим лавочки, а после — чай с пирогами от волонтёров.',
+  people_count: 25,
+  date: '2025-04-20T09:00:00.000Z',
+  geolocation: 'Парк Горького, Москва',
+  creator_id: 18, // Andrey
+  participants: [USER_18, USER_6, USER_7, USER_14],
+};
+
+export const EVENT_29: Event = {
+  id: 29,
+  name: 'Vegan Cooking Night',
+  photos: ['https://artpiknik.ru/wp-content/uploads/2019/09/6789-1.jpg'],
+  description:
+    'Готовим чёрные бургеры из киноа и мороженое на кокосовом молоке.',
+  people_count: 6,
+  date: '2025-09-15T18:00:00.000Z',
+  geolocation: 'Студия «Зелёная тарелка»',
+  creator_id: 9, // Yuri
+  participants: [USER_5, USER_9, USER_12],
+};
+
+export const EVENT_30: Event = {
+  id: 30,
+  name: 'Sneaker Meetup',
+  photos: [
+    'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Обмен редкими кроссами, лекция о культуре streetwear и живая DJ-сцена.',
+  people_count: 20,
+  date: '2025-06-25T17:00:00.000Z',
+  geolocation: 'Проект «Хлебозавод»',
+  creator_id: 7, // Oleg
+  participants: [USER_7, USER_11, USER_13, USER_17],
+};
+
+export const EVENT_31: Event = {
+  id: 31,
+  name: 'Language Exchange Picnic',
+  photos: [
+    'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Русский ↔ Английский ↔ Испанский. Игры, снеки и разговоры без учебников.',
+  people_count: 15,
+  date: '2025-05-30T19:00:00.000Z',
+  geolocation: 'Парк Зарядье, Москва',
+  creator_id: 15, // Svetlana
+  participants: [USER_15, USER_8, USER_10, USER_16],
+};
+
+export const EVENT_32: Event = {
+  id: 32,
+  name: 'Мастер-класс по фоторетуши',
+  photos: [
+    'https://images.unsplash.com/photo-1541696432-a7ee0b0197d9?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Учимся доводить RAW-снимки до портфолио-уровня в Lightroom и Photoshop.',
+  people_count: 10,
+  date: '2025-12-10T16:00:00.000Z',
+  geolocation: 'Loft PhotoLab',
+  creator_id: 13, // Evgeniya
+  participants: [USER_13, USER_6, USER_12, USER_17],
+};
+
+export const EVENT_33: Event = {
+  id: 33,
+  name: 'Живой квест «Побег из замка»',
+  photos: [
+    'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Ролевая игра с актёрами и декорациями в антураже средневековья.',
+  people_count: 12,
+  date: '2025-09-05T18:00:00.000Z',
+  geolocation: 'Клуб «Questoria»',
+  creator_id: 19, // Valeria
+  participants: [USER_19, USER_9, USER_14, USER_20],
+};
+
+export const EVENT_34: Event = {
+  id: 34,
+  name: 'Наблюдение за звёздами',
+  photos: [
+    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
+  ],
+  description: 'Телескопы, чай в термосах и лекция астронома про персеиды.',
+  people_count: 15,
+  date: '2025-07-12T22:00:00.000Z',
+  geolocation: 'Обсерватория Звенигород',
+  creator_id: 8, // Marina
+  participants: [USER_8, USER_10, USER_17],
+};
+
+export const EVENT_35: Event = {
+  id: 35,
+  name: 'VR-Party',
+  photos: [
+    'https://images.unsplash.com/photo-1603787081559-4c4c89c6cb90?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Beat Saber, Half-Life: Alyx и сетевые гонки — всё на топовых VR-комплектах.',
+  people_count: 10,
+  date: '2025-10-15T20:00:00.000Z',
+  geolocation: 'VR-арена «Neon»',
+  creator_id: 2, // Ruslan
+  participants: [USER_9, USER_11, USER_ARTEM, USER_ERIK],
+};
+
+export const EVENT_36: Event = {
+  id: 36,
+  name: 'BBQ-пикник на природе',
+  photos: [
+    'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Шашлыки, настолки и музыкальный jam. Берём пледы и хорошее настроение.',
+  people_count: 18,
+  date: '2025-05-12T12:00:00.000Z',
+  geolocation: 'Битцевский лес, Москва',
+  creator_id: 5, // USER_5
+  participants: [USER_5, USER_8, USER_9, USER_15],
+};
+
+export const EVENT_37: Event = {
+  id: 37,
+  name: 'Art Jam: рисуем вместе',
+  photos: [
+    'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Большой холст, акрил и джаз-play-лист. Делаем коллективную картину-коллаж.',
+  people_count: 14,
+  date: '2025-07-18T14:00:00.000Z',
+  geolocation: 'Арт-площадка «Флакон»',
+  creator_id: 13, // Evgeniya
+  participants: [USER_13, USER_6, USER_10, USER_14],
+};
+
+export const EVENT_38: Event = {
+  id: 38,
+  name: 'Пейнтбольный турнир',
+  photos: ['https://artpiknik.ru/wp-content/uploads/2019/09/6789-1.jpg'],
+  description:
+    'Команды по 5 человек, олимпийская сетка, приз — кубок и сертификат на пиццу.',
+  people_count: 20,
+  date: '2025-05-18T11:00:00.000Z',
+  geolocation: 'Полигон «Strike»',
+  creator_id: 16, // Maxim
+  participants: [USER_16, USER_9, USER_11, USER_14, USER_18],
+};
+
+export const EVENT_39: Event = {
+  id: 39,
+  name: 'Добровольческий марафон',
+  photos: [
+    'https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Пробег 10 км. Каждый километр — пожертвование в фонд помощи детям.',
+  people_count: 30,
+  date: '2025-11-20T08:00:00.000Z',
+  geolocation: 'Лужники, Москва',
+  creator_id: 18, // Andrey
+  participants: [USER_18, USER_12, USER_20, USER_15, USER_17],
+};
+
+export const EVENT_40: Event = {
+  id: 40,
+  name: 'Зимнее катание на коньках',
+  photos: [
+    'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80',
+  ],
+  description:
+    'Горячий глинтвейн, музыка 80-х и фотоконкурс лучшего падения :)',
+  people_count: 25,
+  date: '2025-12-25T17:00:00.000Z',
+  geolocation: 'Каток на ВДНХ',
+  creator_id: 1, // Artem
+  participants: [USER_ARTEM, USER_7, USER_9, USER_10, USER_14],
+};
+
+/* ===== Обновляем общий массив ===== */
 
 export const EVENTS: Event[] = [
-  DANCING_EVENT, // id 3 (creator_id=20)
-  GAMING_EVENT, // id 2 (creator_id=3)
-  BUHLO_EVENT, // id 1 (creator_id=1)
+  DANCING_EVENT,
+  GAMING_EVENT,
+  BUHLO_EVENT,
   EVENT_4,
   EVENT_5,
   EVENT_6,
@@ -350,5 +638,26 @@ export const EVENTS: Event[] = [
   EVENT_18,
   EVENT_19,
   EVENT_20,
+  EVENT_21,
+  EVENT_22,
+  EVENT_23,
+  EVENT_24,
+  EVENT_25,
+  EVENT_26,
+  EVENT_27,
+  EVENT_28,
+  EVENT_29,
+  EVENT_30,
+  EVENT_31,
+  EVENT_32,
+  EVENT_33,
+  EVENT_34,
+  EVENT_35,
+  EVENT_36,
+  EVENT_37,
+  EVENT_38,
+  EVENT_39,
+  EVENT_40,
 ];
+
 /* eslint-enable max-lines */

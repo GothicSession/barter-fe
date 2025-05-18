@@ -2,10 +2,16 @@
     {
         events: eventEntityFacade.getEvents(),
         isLoading: eventEntityFacade.getIsLoading(),
+        isWholeListLoaded: eventEntityFacade.getIsWholeListLoaded(),
     };
     as tplData
 ) {
-    <div class="events">
+    <div
+        class="events"
+        scrolledToBottom
+        (isNearBottom)="onNearBottom()"
+        [disabled]="tplData.isWholeListLoaded()"
+    >
         <div class="events__list-wrapper">
             <div class="events__top">
                 <span class="events__title tui-text_h6">
@@ -22,7 +28,7 @@
                 ></button>
             </div>
             <div class="events__list">
-                @if (tplData.isLoading()) {
+                @if (tplData.isLoading() && !tplData.events().length) {
                     @for (event of SKELETON_EVENTS_LIST; track event) {
                         <barter-event-card-skeleton />
                     }
@@ -32,6 +38,9 @@
                             class="events__item"
                             [event]="event"
                         />
+                    }
+                    @if (!tplData.isWholeListLoaded()) {
+                        <barter-loader class="loader" />
                     }
                 }
             </div>
