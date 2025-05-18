@@ -36,7 +36,7 @@
         "@typescript-eslint/naming-convention": ["off"],
         "complexity": ["error", 6],
         "max-lines": ["error", 200],
-        "no-magic-numbers": ["error", { "ignore": [0] }],
+        "no-magic-numbers": ["error", { "ignore": [0, 1] }],
         "dot-notation": ["off"],
         "@nx/enforce-module-boundaries": [
           "error",

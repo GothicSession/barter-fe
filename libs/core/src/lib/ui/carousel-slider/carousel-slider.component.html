@@ -7,12 +7,11 @@
             ></div>
         }
     </div>
-    <tui-carousel
-        class="carousel"
-        #carousel
-        [draggable]="false"
-        [(index)]="activeIndex"
-    >
+    <div class="carousel__controllers">
+        <div class="controllers__item" (click)="carousel.prev()"></div>
+        <div class="controllers__item" (click)="carousel.next()"></div>
+    </div>
+    <tui-carousel class="carousel" #carousel [(index)]="activeIndex">
         @for (item of items; track item) {
             <div *tuiItem>
                 <img class="photo__item" alt="photo" [lazySrc]="item" />

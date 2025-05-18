@@ -1,3 +1,71 @@
 <div class="dialog">
-    <barter-carousel-slider [items]="event.photos" />
+    <div class="event">
+        <barter-carousel-slider class="slider" [items]="event.photos" />
+        <div class="event__info">
+            <div class="event__title tui-text_h5">
+                {{ event.name }}
+            </div>
+            <div class="event__description tui-text_body-m">
+                {{ event.description }}
+            </div>
+            <div class="event__icons">
+                <div class="icons__item">
+                    <tui-icon
+                        [icon]="'@tui.users'"
+                        [style.color]="'var(--tui-background-accent-1)'"
+                    />
+                    <span>
+                        {{ event.people_count }}
+                        {{ nouns | nounsDeclension: event.people_count }}
+                    </span>
+                </div>
+                <div class="icons__item">
+                    <tui-icon
+                        [icon]="'@tui.calendar-days'"
+                        [style.color]="'var(--tui-background-accent-1)'"
+                    />
+                    <span>
+                        {{ event.date | date }}
+                    </span>
+                </div>
+            </div>
+            <div class="icons__item">
+                <tui-icon
+                    [icon]="'@tui.map-pin'"
+                    [style.color]="'var(--tui-background-accent-1)'"
+                />
+                <span>
+                    {{ event.geolocation }}
+                </span>
+            </div>
+        </div>
+        <div class="event__creator" [routerLink]="event.creatorRouterLink">
+            <tui-avatar [src]="event.participants[0].photos[0]" [size]="'l'" />
+            <div class="creator__info">
+                <span class="tui-text_body-l-2 tui-text_bold">{{
+                    event.participants[0].name
+                }}</span>
+                <span class="text-secondary tui-text_body-m">Создатель</span>
+            </div>
+        </div>
+        <div class="event__participants">
+            <span class="tui-text_h6">
+                Участники – {{ event.participants.length }}
+            </span>
+            <tui-avatar-stack [direction]="'left'">
+                @for (participant of event.participants; track participant) {
+                    <tui-avatar
+                        [round]="true"
+                        [size]="'m'"
+                        [src]="participant.photos[0]"
+                    />
+                }
+            </tui-avatar-stack>
+        </div>
+    </div>
+    <div class="dialog-sheet__footer-btn">
+        <button class="footer__button" tuiButton size="m">
+            Присоединиться
+        </button>
+    </div>
 </div>

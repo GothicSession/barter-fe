@@ -1,6 +1,6 @@
 @if (
     {
-        events: eventEntityFacade.getEvents(),
+        events: mappedEvents,
         isLoading: eventEntityFacade.getIsLoading(),
         isWholeListLoaded: eventEntityFacade.getIsWholeListLoaded(),
     };
@@ -8,6 +8,7 @@
 ) {
     <div
         class="events"
+        #eventsList
         scrolledToBottom
         (isNearBottom)="onNearBottom()"
         [disabled]="tplData.isWholeListLoaded()"
@@ -37,7 +38,11 @@
                         <barter-event-card
                             class="events__item"
                             [event]="event"
-                            [openEvent]="{ dialogOptions: { data: event } }"
+                            [openEvent]="{
+                                dialogOptions: {
+                                    data: event,
+                                },
+                            }"
                         />
                     }
                     @if (!tplData.isWholeListLoaded()) {

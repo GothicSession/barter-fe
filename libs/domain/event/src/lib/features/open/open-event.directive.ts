@@ -11,20 +11,24 @@ import { EventSheetDialogComponent } from '../../ui';
 })
 export class OpenEventFeatureDirective extends BaseSheetDialogDirective<
   EventSheetDialogComponent,
-  Event,
+  Event & { creatorRouterLink: string[] },
   boolean
 > {
   protected override readonly defaultComponent = EventSheetDialogComponent;
 
   protected override readonly defaultDialogOptions: Partial<TuiSheetDialogOptions> =
     {
-      bar: true,
+      bar: false,
     };
 
   @Input()
-  openEvent!: DialogConfig<TuiSheetDialogOptions<Event>>;
+  openEvent!: DialogConfig<
+    TuiSheetDialogOptions<Event & { creatorRouterLink: string[] }>
+  >;
 
-  protected get inputConfig(): DialogConfig<TuiSheetDialogOptions<Event>> {
+  protected get inputConfig(): DialogConfig<
+    TuiSheetDialogOptions<Event & { creatorRouterLink: string[] }>
+  > {
     return this.openEvent;
   }
 }

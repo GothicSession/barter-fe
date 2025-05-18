@@ -1,6 +1,6 @@
 import { inject, Injectable, Signal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter, Observable } from 'rxjs';
+import { filter, Observable, tap } from 'rxjs';
 
 import { RouteStore } from './route.store';
 
@@ -17,6 +17,14 @@ export class RouteFacade<T> {
 
   getNavigationEndEvents$(): Observable<NavigationEnd> {
     return this.navigationEndEvents$;
+  }
+
+  scrollBlockOnSameUrlNavigation$(
+    block: HTMLElement,
+  ): Observable<NavigationEnd> {
+    return this.getNavigationEndEvents$().pipe(
+      tap(() => block.scrollTo({ top: 0, behavior: 'smooth' })),
+    );
   }
 
   getActiveRoute(): Signal<T | null> {
