@@ -16,7 +16,7 @@
                     />
                     <span>
                         {{ event.people_count }}
-                        {{ nouns | nounsDeclension: event.people_count }}
+                        {{ event.people_count | i18nPlural: pluralMap }}
                     </span>
                 </div>
                 <div class="icons__item">

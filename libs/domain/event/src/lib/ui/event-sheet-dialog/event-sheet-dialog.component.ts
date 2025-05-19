@@ -1,8 +1,8 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, I18nPluralPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Event } from '@libs/api';
-import { CarouselSliderComponent, NounsDeclensionPipe } from '@libs/core';
+import { CarouselSliderComponent } from '@libs/core';
 import { TuiButton, TuiDialogContext, TuiIcon } from '@taiga-ui/core';
 import { TuiAvatar, TuiAvatarStack } from '@taiga-ui/kit';
 import { injectContext } from '@taiga-ui/polymorpheus';
@@ -16,12 +16,12 @@ import { injectContext } from '@taiga-ui/polymorpheus';
   imports: [
     CarouselSliderComponent,
     TuiIcon,
-    NounsDeclensionPipe,
     DatePipe,
     TuiAvatar,
     TuiAvatarStack,
     TuiButton,
     RouterLink,
+    I18nPluralPipe,
   ],
 })
 export class EventSheetDialogComponent {
@@ -30,5 +30,10 @@ export class EventSheetDialogComponent {
       TuiDialogContext<boolean, Event & { creatorRouterLink: string[] }>
     >().data;
 
-  protected readonly nouns = ['человек', 'человека', 'человек'];
+  protected readonly pluralMap: Record<string, string> = {
+    one: 'человек',
+    few: 'человека',
+    many: 'человек',
+    other: 'человека',
+  };
 }
