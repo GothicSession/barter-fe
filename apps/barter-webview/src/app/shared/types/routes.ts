@@ -3,4 +3,5 @@ export enum Routes {
   EVENTS = 'events',
   MAIN = '',
   PROFILE = 'profile',
+  NON_TELEGRAM = 'nontelegram',
 }

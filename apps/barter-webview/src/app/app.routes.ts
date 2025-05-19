@@ -14,6 +14,11 @@ export const appRoutes: Route[] = [
         loadComponent: async () =>
           import('../pages').then((m) => m.OnboardingPageComponent),
       },
+      {
+        path: Routes.NON_TELEGRAM,
+        loadComponent: async () =>
+          import('../pages').then((m) => m.NonTelegramPageComponent),
+      },
     ],
   },
   // TODO: Сменить path на '' и покрыть guard'ом как будет готов бекенд

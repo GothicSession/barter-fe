@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  height: 100%;
+  padding: 24px;
+  align-items: center;
+}
+
+.non-telegram {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  &__img {
+    width: 50vw;
+    height: 50vw;
+    border-radius: 50%;
+  }
+}
