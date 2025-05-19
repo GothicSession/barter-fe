@@ -1,20 +1,20 @@
 :host {
+  align-items: center;
   display: flex;
   height: 100%;
   padding: 24px;
-  align-items: center;
 }
 
 .non-telegram {
-  display: flex;
-  gap: 24px;
-  flex-direction: column;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   text-align: center;
 
   &__img {
-    width: 50vw;
-    height: 50vw;
     border-radius: 50%;
+    height: 50vw;
+    width: 50vw;
   }
 }
