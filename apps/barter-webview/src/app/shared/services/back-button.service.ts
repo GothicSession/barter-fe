@@ -1,7 +1,8 @@
 import { Location } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
-import { RouteFacade, TELEGRAM } from '@libs/core';
+import { RouteFacade } from '@libs/core';
 
+import { TELEGRAM } from '../tokens';
 import { Routes } from '../types';
 
 @Injectable()
