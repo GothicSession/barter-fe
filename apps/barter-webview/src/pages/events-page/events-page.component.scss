@@ -3,6 +3,14 @@
   height: 100%;
 }
 
+.exit-btn {
+  width: 86px;
+}
+
+.settings-btn {
+  width: 64px;
+}
+
 .events {
   display: flex;
   height: 100%;
@@ -17,6 +25,18 @@
     margin-bottom: 16px;
     padding: 0 10px;
     width: 100%;
+
+    &_scrolled {
+      align-items: center;
+      display: flex;
+      height: var(--tg-content-safe-area-inset-top, 28px);
+      justify-content: space-between;
+      left: 0;
+      position: fixed;
+      top: var(--tg-safe-area-inset-top, 6px);
+      width: 100%;
+      z-index: 1;
+    }
   }
 
   &__list {
@@ -29,6 +49,19 @@
 
   &__title {
     display: inline-block;
+
+    &_scrolled {
+      align-items: center;
+      backdrop-filter: blur(32px);
+      background-color: rgb(0 0 0 / 12%);
+      border-radius: 18px;
+      color: #fff;
+      display: flex;
+      gap: 8px;
+      max-width: 33vw;
+      padding: 6.5px 10px;
+      white-space: nowrap;
+    }
   }
 
   &__search-button {

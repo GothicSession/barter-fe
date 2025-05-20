@@ -615,6 +615,84 @@ export const EVENT_40: Event = {
   participants: [USER_ARTEM, USER_7, USER_9, USER_10, USER_14],
 };
 
+export const EVENT_41: Event = {
+  id: 41,
+  name: 'Ночная пробежка в парке',
+  photos: ['https://marathonec.ru/wp-content/uploads/2020/04/dlitelny-beg.jpg'],
+  description:
+    'Собираемся на пробежку в парке Горького под луной. Хороший шанс проверить свою выносливость и завести новых знакомых.',
+  people_count: 10,
+  date: '2025-04-01T09:00:00.000Z',
+  geolocation: 'Парк Горького, Москва',
+  creator_id: 18, // Andrey
+  participants: [USER_6, USER_14, USER_18], // без пользователя #18 в списке
+};
+
+export const EVENT_42: Event = {
+  id: 42,
+  name: 'Ночная пробежка в парке',
+  photos: ['https://marathonec.ru/wp-content/uploads/2020/04/dlitelny-beg.jpg'],
+  description:
+    'Собираемся на пробежку в парке Горького под луной. Хороший шанс проверить свою выносливость и завести новых знакомых.',
+  people_count: 10,
+  date: '2025-04-01T09:00:00.000Z',
+  geolocation: 'Парк Горького, Москва',
+  creator_id: 18, // Andrey
+  participants: [USER_6, USER_14, USER_18], // без пользователя #18 в списке
+};
+
+export const EVENT_43: Event = {
+  id: 43,
+  name: 'Ночная пробежка в парке',
+  photos: ['https://marathonec.ru/wp-content/uploads/2020/04/dlitelny-beg.jpg'],
+  description:
+    'Собираемся на пробежку в парке Горького под луной. Хороший шанс проверить свою выносливость и завести новых знакомых.',
+  people_count: 10,
+  date: '2025-04-01T09:00:00.000Z',
+  geolocation: 'Парк Горького, Москва',
+  creator_id: 18, // Andrey
+  participants: [USER_6, USER_14, USER_18], // без пользователя #18 в списке
+};
+
+export const EVENT_44: Event = {
+  id: 44,
+  name: 'Ночная пробежка в парке',
+  photos: ['https://marathonec.ru/wp-content/uploads/2020/04/dlitelny-beg.jpg'],
+  description:
+    'Собираемся на пробежку в парке Горького под луной. Хороший шанс проверить свою выносливость и завести новых знакомых.',
+  people_count: 10,
+  date: '2025-04-01T09:00:00.000Z',
+  geolocation: 'Парк Горького, Москва',
+  creator_id: 18, // Andrey
+  participants: [USER_6, USER_14, USER_18], // без пользователя #18 в списке
+};
+
+export const EVENT_45: Event = {
+  id: 45,
+  name: 'Ночная пробежка в парке',
+  photos: ['https://marathonec.ru/wp-content/uploads/2020/04/dlitelny-beg.jpg'],
+  description:
+    'Собираемся на пробежку в парке Горького под луной. Хороший шанс проверить свою выносливость и завести новых знакомых.',
+  people_count: 10,
+  date: '2025-04-01T09:00:00.000Z',
+  geolocation: 'Парк Горького, Москва',
+  creator_id: 18, // Andrey
+  participants: [USER_6, USER_14, USER_18], // без пользователя #18 в списке
+};
+
+export const EVENT_46: Event = {
+  id: 46,
+  name: 'Ночная пробежка в парке',
+  photos: ['https://marathonec.ru/wp-content/uploads/2020/04/dlitelny-beg.jpg'],
+  description:
+    'Собираемся на пробежку в парке Горького под луной. Хороший шанс проверить свою выносливость и завести новых знакомых.',
+  people_count: 10,
+  date: '2025-04-01T09:00:00.000Z',
+  geolocation: 'Парк Горького, Москва',
+  creator_id: 18, // Andrey
+  participants: [USER_6, USER_14, USER_18], // без пользователя #18 в списке
+};
+
 /* ===== Обновляем общий массив ===== */
 
 export const EVENTS: Event[] = [
@@ -658,6 +736,12 @@ export const EVENTS: Event[] = [
   EVENT_38,
   EVENT_39,
   EVENT_40,
+  EVENT_41,
+  EVENT_42,
+  EVENT_43,
+  EVENT_44,
+  EVENT_45,
+  EVENT_46,
 ];
 
 /* eslint-enable max-lines */

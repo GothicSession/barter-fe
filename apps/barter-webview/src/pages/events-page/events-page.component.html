@@ -6,14 +6,31 @@
     };
     as tplData
 ) {
-    <div
+    <tui-scrollbar
         class="events"
         scrolledToBottom
         (isNearBottom)="onNearBottom()"
         [disabled]="tplData.isWholeListLoaded()"
     >
         <div class="events__list-wrapper">
-            <div class="events__top">
+            @if (isHeaderScrolled()) {
+                <div class="events__top_scrolled">
+                    <div class="exit-btn"></div>
+                    <div class="events__title_scrolled" searchEvents>
+                        <tui-icon
+                            [icon]="'@tui.search'"
+                            [style.font-size]="'11px'"
+                        />
+                        <span
+                            class="title__text tui-text_body-s-2 tui-text_bold ellipsis"
+                        >
+                            {{ searchDefaultControl.value || 'Поиск' }}
+                        </span>
+                    </div>
+                    <div class="settings-btn"></div>
+                </div>
+            }
+            <div class="events__top" (tuiElasticSticky)="onElastic($event)">
                 <span class="events__title tui-text_h6">
                     Ближайшие события
                 </span>
@@ -46,5 +63,5 @@
             </div>
         </div>
         <barter-create-event-button />
-    </div>
+    </tui-scrollbar>
 }

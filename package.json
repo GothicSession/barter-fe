@@ -10,6 +10,7 @@
     "lint:styles": "stylelint --fix \"apps/**/*.scss\" \"libs/**/*.scss\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,html,json,md}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,css,scss,html,json,md}\"",
+    "build-and-deploy": "npm run build && firebase deploy",
     "barter-webview:lint": "nx run barter-webview:lint --cache",
     "barter-webview:lint:fix": "nx run barter-webview:lint --cache --fix",
     "barter-webview:lint:errors": "nx run barter-webview:lint --cache --quiet",
