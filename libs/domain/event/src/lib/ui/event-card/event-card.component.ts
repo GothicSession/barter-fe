@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Event } from '@libs/api';
+import { Event as EventModel } from '@libs/api';
 import { EventDatePipe, LazySrcDirective } from '@libs/core';
 import { TuiButton, TuiIcon } from '@taiga-ui/core';
 import { TuiAvatar, TuiAvatarStack } from '@taiga-ui/kit';
@@ -21,5 +21,10 @@ import { TuiAvatar, TuiAvatarStack } from '@taiga-ui/kit';
 })
 export class EventCardComponent {
   @Input({ required: true })
-  event!: Event;
+  event!: EventModel;
+
+  protected joinEvent(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }

@@ -12,6 +12,29 @@ barter-root {
   }
 }
 
+.dialog-sheet__footer-btn {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+  position: relative;
+
+  &::after {
+    background-color: var(--tui-border-normal);
+    content: '';
+    height: 1px;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+  }
+
+  .footer {
+    &__button {
+      width: 100%;
+    }
+  }
+}
+
 img {
   background-color: var(--tui-background-neutral-1-hover);
 }
