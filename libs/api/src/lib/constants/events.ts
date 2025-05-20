@@ -42,6 +42,8 @@ export const GAMING_EVENT: Event = {
   name: 'Собираемся в PUBG',
   photos: [
     'https://upload.wikimedia.org/wikipedia/ru/7/7e/PlayerUnknown%27s_Battlegrounds_Mobile.jpg',
+    'https://sun9-41.userapi.com/impg/y3tNYxpZf_ld5Qca8KAMFA0mAy2ivG0rDZ41Vw/oW6fLbW2Wfc.jpg?size=1440x1920&quality=96&sign=dcd5a2083075bf50846161806fe07372&type=album',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Chess_pieces_close_up.jpg/1200px-Chess_pieces_close_up.jpg',
   ],
   description:
     'Собираю сквад поиграть в PUBG. Играем на победу и хорошее настроение).',
