@@ -65,6 +65,11 @@ tui-avatar[data-size='xxl'] {
   background-color: var(--tui-background-base-alt);
 }
 
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 tui-root {
   height: 100%;
 }

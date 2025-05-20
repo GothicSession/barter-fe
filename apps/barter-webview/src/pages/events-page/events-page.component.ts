@@ -6,6 +6,7 @@ import {
   DestroyRef,
   ElementRef,
   inject,
+  signal,
   ViewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -23,9 +24,11 @@ import {
   EventEntityStore,
   OpenEventFeatureDirective,
   SearchEventsFeatureDirective,
+  SearchEventsFeatureService,
 } from '@libs/domain/event';
 import { PlaceEntityFacade, PlaceEntityStore } from '@libs/domain/place';
-import { TuiButton } from '@taiga-ui/core';
+import { TuiElasticSticky } from '@taiga-ui/addon-mobile';
+import { TuiButton, TuiIcon, TuiScrollbar } from '@taiga-ui/core';
 
 import { Routes } from '../../app/shared';
 import { CreateEventButtonComponent } from '../../ui';
@@ -45,6 +48,7 @@ const SKELETON_EVENTS_LIST_LENGTH = 10;
     PlaceEntityStore,
     PlaceEntityFacade,
     PlaceService,
+    SearchEventsFeatureService,
   ],
   imports: [
     EventCardComponent,
@@ -55,6 +59,9 @@ const SKELETON_EVENTS_LIST_LENGTH = 10;
     EventCardSkeletonComponent,
     LazyVisibleLoaderDirective,
     ScrolledToBottomDirective,
+    TuiElasticSticky,
+    TuiScrollbar,
+    TuiIcon,
     OpenEventFeatureDirective,
   ],
 })
@@ -62,12 +69,16 @@ export class EventsPageComponent implements AfterViewInit {
   @ViewChild('eventsList')
   protected eventsListElement!: ElementRef<HTMLDivElement>;
 
+  protected readonly isHeaderScrolled = signal(false);
   protected readonly eventEntityFacade = inject(EventEntityFacade);
   protected readonly routeFacade = inject(RouteFacade);
   protected readonly destroyRef = inject(DestroyRef);
   protected readonly SKELETON_EVENTS_LIST = new Array(
     SKELETON_EVENTS_LIST_LENGTH,
   );
+
+  protected readonly searchDefaultControl = inject(SearchEventsFeatureService)
+    .form.controls.searchDefault;
 
   protected readonly mappedEvents = computed(() =>
     this.eventEntityFacade
@@ -96,5 +107,9 @@ export class EventsPageComponent implements AfterViewInit {
   onNearBottom(): void {
     if (!this.eventEntityFacade.getIsLoading()())
       this.eventEntityFacade.loadEvents();
+  }
+
+  onElastic(visibility: number): void {
+    this.isHeaderScrolled.set(!visibility);
   }
 }
