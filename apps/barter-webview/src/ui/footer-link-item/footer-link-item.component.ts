@@ -29,4 +29,7 @@ export class FooterLinkItemComponent {
 
   @Input({ required: true })
   icon!: string;
+
+  @Input()
+  hasNotifications = false;
 }

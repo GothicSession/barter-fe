@@ -74,6 +74,50 @@ export const USER_RUSIK: User = {
   ],
 };
 
+export const USER_SONYA: User = {
+  id: 228,
+  name: 'Sofya',
+  city: 'Москва',
+  photos: [
+    'https://sun9-70.userapi.com/impg/hw-z2p-iBF9Fa0qW8MF94NP6NaxzUA3oFiveXQ/PyfdHh6iihE.jpg?size=1215x2160&quality=95&sign=2783fd67b77b2ca5980038c111d15ce4&type=album',
+  ],
+  age: 21,
+  additionalInfo:
+    'Топ 1 мира по шахматам в блице, рапиде, а также классике. В свободное время глажу Алексу и езжу в дорогущие туры. Работаю в ВК, манагерствую всякое.',
+  sex: 'male',
+  interests: ['chess', 'travel', 'dota 2'],
+  createdEvents: [
+    {
+      id: 1,
+      name: 'Бухаем в баре',
+      photos: [
+        'https://sun9-41.userapi.com/impg/y3tNYxpZf_ld5Qca8KAMFA0mAy2ivG0rDZ41Vw/oW6fLbW2Wfc.jpg?size=1440x1920&quality=96&sign=dcd5a2083075bf50846161806fe07372&type=album',
+      ],
+      description:
+        'Приходите все бухать в бар! Попьем пивка, познакомимся. Собираемся небольшой компанией! С меня закуски и алкоголь, с вас хорошее настроение)',
+      people_count: 6,
+      date: '2025-03-20T13:24:09.430Z',
+      geolocation: 'Бар Сыто Пьяно',
+      creator_id: 1,
+      participants: [USER_ERIK, USER_DAN],
+    },
+    {
+      id: 2,
+      name: 'Собираемся в PUBG',
+      photos: [
+        'https://upload.wikimedia.org/wikipedia/ru/7/7e/PlayerUnknown%27s_Battlegrounds_Mobile.jpg',
+      ],
+      description:
+        'Собираю сквад поиграть в PUBG. Играем на победу и хорошее настроение).',
+      people_count: 4,
+      date: '2025-03-14T13:24:09.430Z',
+      geolocation: 'Collizeum на Курской',
+      creator_id: 3,
+      participants: [USER_ERIK, USER_DAN],
+    },
+  ],
+};
+
 export const USER_ARTEM: User = {
   id: 1,
   name: 'Artem',
@@ -100,6 +144,20 @@ export const USER_ARTEM: User = {
       geolocation: 'Бар Сыто Пьяно',
       creator_id: 1,
       participants: [USER_ERIK, USER_RUSIK, USER_DAN],
+      requests_users: [
+        USER_ERIK,
+        USER_RUSIK,
+        USER_DAN,
+        USER_ERIK,
+        USER_RUSIK,
+        USER_DAN,
+        USER_ERIK,
+        USER_RUSIK,
+        USER_DAN,
+        USER_ERIK,
+        USER_RUSIK,
+        USER_DAN,
+      ],
     },
     {
       id: 2,
@@ -386,5 +444,6 @@ export const USERS: User[] = [
   USER_18, // id 18
   USER_19, // id 19
   USER_20, // id 20
+  USER_SONYA,
 ];
 /* eslint-enable max-lines */

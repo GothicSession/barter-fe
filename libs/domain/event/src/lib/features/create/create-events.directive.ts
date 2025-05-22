@@ -3,7 +3,7 @@ import { BaseSheetDialogDirective, DialogConfig } from '@libs/core';
 import { TuiSheetDialogOptions } from '@taiga-ui/addon-mobile';
 
 import { CreateEventFeatureService } from './create-event.service';
-import { CreateEventDialogComponent } from './event-create-dialog/create-event-dialog.component';
+import { CreateEventDialogComponent } from './create-event-dialog/create-event-dialog.component';
 import { CreateEventDialogData } from './types/create-event-dialog-data';
 
 @Directive({

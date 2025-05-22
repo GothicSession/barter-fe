@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  height: calc(100vh - 120px);
+}
+
+.dialog {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+    width: 100%;
+  }
+
+  &__content {
+    height: 100%;
+    overflow-y: scroll;
+  }
+}
+
+.request {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  position: relative;
+
+  &__count {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+  }
+
+  &__info {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

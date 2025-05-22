@@ -36,6 +36,31 @@
                 {{ event.geolocation }}
             </div>
         </div>
-        <button tuiButton (click)="joinEvent($event)">Хочу</button>
+        <div class="event__buttons">
+            <button tuiButton size="m" (click)="joinEvent($event)">Хочу</button>
+            @if (event.requests_users?.length) {
+                <button
+                    tuiButton
+                    appearance="outline"
+                    size="m"
+                    [moderateEvent]="{
+                        dialogOptions: {
+                            data: {
+                                requests: event.requests_users || [],
+                            },
+                        },
+                    }"
+                >
+                    @if (event.requests_users!.length > 10) {
+                        10+ заявок
+                    } @else {
+                        {{ event.requests_users?.length }}
+                        {{
+                            event.requests_users?.length | i18nPlural: pluralMap
+                        }}
+                    }
+                </button>
+            }
+        </div>
     </div>
 </div>

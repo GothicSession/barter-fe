@@ -1,0 +1,37 @@
+<div class="dialog">
+    <span class="tui-text_h6 dialog__title">Отбор заявок</span>
+    <div class="dialog__content">
+        @for (requestUser of requestsList; track requestUser.id) {
+            <div class="request">
+                <div class="request__info">
+                    <tui-avatar [src]="requestUser.photos[0]" />
+                    <span class="tui-text_body-l">
+                        {{ requestUser.name }}
+                    </span>
+                </div>
+                <div class="request__buttons">
+                    <button
+                        tuiIconButton
+                        iconStart="@tui.check"
+                        size="s"
+                        type="button"
+                        [style.border-radius.%]="100"
+                        appearance="primary"
+                    ></button>
+                    <button
+                        tuiIconButton
+                        iconStart="@tui.x"
+                        size="s"
+                        type="button"
+                        appearance="secondary"
+                        [style.border-radius.%]="100"
+                    ></button>
+                </div>
+            </div>
+        }
+        <span class="text-secondary request__count tui-text_body-s">
+            {{ requestsList.length }}
+            {{ requestsList.length | i18nPlural: pluralMap }}
+        </span>
+    </div>
+</div>

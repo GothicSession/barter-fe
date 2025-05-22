@@ -12,4 +12,5 @@ export interface Event {
   geolocation: string;
   creator_id: number;
   participants: User[];
+  requests_users?: User[];
 }

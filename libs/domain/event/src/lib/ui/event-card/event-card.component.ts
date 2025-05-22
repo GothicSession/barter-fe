@@ -1,8 +1,11 @@
+import { I18nPluralPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Event as EventModel } from '@libs/api';
 import { EventDatePipe, LazySrcDirective } from '@libs/core';
 import { TuiButton, TuiIcon } from '@taiga-ui/core';
 import { TuiAvatar, TuiAvatarStack } from '@taiga-ui/kit';
+
+import { ModerateEventDirective } from '../../features/moderate';
 
 @Component({
   selector: 'barter-event-card',
@@ -17,9 +20,18 @@ import { TuiAvatar, TuiAvatarStack } from '@taiga-ui/kit';
     TuiAvatarStack,
     EventDatePipe,
     LazySrcDirective,
+    I18nPluralPipe,
+    ModerateEventDirective,
   ],
 })
 export class EventCardComponent {
+  protected readonly pluralMap: Record<string, string> = {
+    one: 'заявка',
+    few: 'заявки',
+    many: 'заявок',
+    other: 'заявки',
+  };
+
   @Input({ required: true })
   event!: EventModel;
 

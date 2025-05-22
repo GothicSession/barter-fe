@@ -2,6 +2,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .link-item {
@@ -14,4 +15,16 @@
   &_active {
     opacity: 1;
   }
+}
+
+.notification {
+  background-color: var(--tui-text-negative);
+  border-radius: 50%;
+  height: 16px;
+  opacity: 1;
+  position: absolute;
+  right: 1rem;
+  top: -50%;
+  transform: translateY(50%);
+  width: 16px;
 }
