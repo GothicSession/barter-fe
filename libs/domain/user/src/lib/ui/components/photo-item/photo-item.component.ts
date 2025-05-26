@@ -1,7 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { TuiIcon } from '@taiga-ui/core';
-import { TuiFileLike, TuiFiles } from '@taiga-ui/kit';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
+import { TuiIcon, TuiIconPipe } from '@taiga-ui/core';
 
 @Component({
   selector: 'barter-user-photo-item',
@@ -9,8 +13,15 @@ import { TuiFileLike, TuiFiles } from '@taiga-ui/kit';
   templateUrl: './photo-item.component.html',
   styleUrl: './photo-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TuiFiles, ReactiveFormsModule, TuiIcon],
+  imports: [TuiIconPipe, TuiIcon],
 })
 export class PhotoItemComponent {
-  protected readonly control = new FormControl<TuiFileLike | null>(null);
+  @Input()
+  photoUrl?: string;
+
+  @Input()
+  isLoading = false;
+
+  @Output()
+  removePhoto = new EventEmitter<void>();
 }

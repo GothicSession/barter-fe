@@ -6,13 +6,51 @@
             от нашего сообщества
         </span>
         <div class="photo__list">
-            @for (photo of photoList; track photo) {
-                <barter-user-photo-item class="photo__item" />
+            @for (
+                photo of createUserFeatureService.photoControls;
+                track photo;
+                let i = $index
+            ) {
+                <barter-user-photo-item
+                    class="photo__item"
+                    [photoUrl]="photo.value.previewUrl ?? undefined"
+                    [isLoading]="photo.value.isLoading()"
+                    (removePhoto)="onRemovePhoto(i)"
+                />
+            }
+            @if (canAddMorePhotos()) {
+                <label class="photo__item photo__item_upload" tuiInputFiles>
+                    <input
+                        tuiInputFiles
+                        [formControl]="uploadControl"
+                        accept="image/*"
+                        [maxFileSize]="1024 * 1024 * 5"
+                        multiple
+                    />
+                    <ng-template>
+                        <div class="tui-input-files">
+                            <tui-icon icon="@tui.plus" />
+                        </div>
+                    </ng-template>
+                </label>
+            }
+            @for (photo of getEmptySlots(); track photo) {
+                <barter-user-photo-item
+                    class="photo__item"
+                    [isLoading]="false"
+                />
             }
         </div>
     </div>
 </div>
 
-<button class="onboarding__button" tuiButton (click)="onBtnClick()">
-    Продолжить
-</button>
+<tui-loader
+    class="loader"
+    [inheritColor]="true"
+    [overlay]="true"
+    [showLoader]="userFacade.getIsLoading()"
+>
+    <button class="onboarding__button" tuiButton (click)="onBtnClick()">
+        Продолжить
+    </button>
+</tui-loader>

@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "ts-node scripts/dev.ts",
+    "start": "ng serve --port 3000",
+    "start:dev": "concurrently \"npm run dev\" \"npm run start\""
+  },
+  "devDependencies": {
+    "ngrok": "^5.0.0",
+    "concurrently": "^8.0.0",
+    "ts-node": "^10.9.0"
+  }
+}

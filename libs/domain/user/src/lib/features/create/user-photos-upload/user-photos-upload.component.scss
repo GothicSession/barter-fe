@@ -28,9 +28,39 @@
 
   &__item {
     height: 106px;
+    width: 106px;
+
+    &_upload {
+      align-items: center;
+      background-color: var(--tui-background-neutral-2);
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: var(--tui-background-neutral-2-hover);
+      }
+
+      input {
+        cursor: pointer;
+        height: 100%;
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+      }
+
+      tui-icon {
+        color: var(--tui-text-02);
+        pointer-events: none;
+      }
+    }
   }
 }
 
-.onboarding__button {
+.onboarding__button,
+.loader {
   width: 100%;
 }

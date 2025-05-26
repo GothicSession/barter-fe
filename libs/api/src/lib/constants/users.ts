@@ -1,44 +1,52 @@
 import { User } from '../types';
 /* eslint-disable max-lines */
 export const USER_DAN: User = {
-  id: 3,
+  telegramUserId: 3,
   name: 'Danila',
   city: 'Москва',
   age: 22,
-  photos: [
+  profileImages: [
     'https://sun9-61.userapi.com/s/v1/ig2/rFcGPrgs7OCnghzVgv7PqjC2y57uJrADMT5gEEY5KLfYR1SmjpGqm7mrbfpKaVj18KXVTebeEOEyTFaf3l-Vx3V2.jpg?quality=95&as=32x34,48x51,72x76,108x115,160x170,240x255,360x382,480x509,540x573,640x679,675x716&from=bu&u=oK8Eum1L1MKXSu-HH-02oalR3vE9NbLJjETPqw9lC6Y&cs=675x716',
   ],
-  additionalInfo:
+  description:
     'Играю в папк, ищу мощных тиммейтов или просто с кем можно сгонять в компы или выпить). Предупреждаю сразу! Мусорам не писать, я АУЕшник!',
   sex: 'male',
   interests: ['pubg', 'beer', 'criminal'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_ERIK: User = {
-  id: 4,
+  telegramUserId: 4,
   name: 'Erik',
   city: 'Москва',
   age: 23,
-  photos: [
+  profileImages: [
     'https://sun9-43.userapi.com/impf/c841234/v841234585/37185/fj4jx2SDfQw.jpg?size=720x1280&quality=96&sign=b0535dc99c88020437c9eba239c7d365&type=album',
   ],
-  additionalInfo:
+  description:
     'Всем привет! Я новенький в данном приложении) Надеюсь найти здесь интересные знакомства. 180/75/23. Девушки, не пишите!',
   sex: 'male',
   interests: ['frontend', 'travel', 'criminal'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_RUSIK: User = {
-  id: 2,
+  telegramUserId: 2,
   name: 'Ruslan',
   city: 'Москва',
-  photos: [
+  profileImages: [
     'https://sun9-77.userapi.com/impg/eY7J1Rj_5vfifRFeA6kJsR6_89iLW2w-oFFh0A/kRSCGJif--E.jpg?size=1620x2160&quality=95&sign=05ca8ddac7eca576dda9956ae0aa8ca5&type=album',
   ],
   age: 23,
-  additionalInfo:
+  description:
     'Топ 1 мира по шахматам в блице, рапиде, а также классике. В свободное время глажу Алексу и езжу в дорогущие туры. Работаю в ВК, манагерствую всякое.',
   sex: 'male',
   interests: ['chess', 'travel', 'dota 2'],
@@ -72,17 +80,21 @@ export const USER_RUSIK: User = {
       participants: [USER_ERIK, USER_DAN],
     },
   ],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_ARTEM: User = {
-  id: 1,
+  telegramUserId: 1,
   name: 'Artem',
   city: 'Москва',
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&w=400',
   ],
   age: 23,
-  additionalInfo:
+  description:
     'Любитель погамзить в дотку! Собираю пати, чтобы жестко тащить в рейтинге! А потом идти пить латте на безлактозном и фронтендить друг друга.',
   sex: 'male',
   interests: ['dota 2', 'frontend', 'latte'],
@@ -116,232 +128,296 @@ export const USER_ARTEM: User = {
       participants: [USER_ERIK, USER_RUSIK, USER_DAN],
     },
   ],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_5: User = {
-  id: 5,
+  telegramUserId: 5,
   name: 'Ivan',
   city: 'Москва',
   age: 25,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&w=400',
   ],
-  additionalInfo:
+  description:
     'Обожаю киберспорт, часто стримлю на Twitch. Могу играть всю ночь напролёт.',
   sex: 'male',
   interests: ['streaming', 'league of legends'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_6: User = {
-  id: 6,
+  telegramUserId: 6,
   name: 'Natalia',
   city: 'Санкт-Петербург',
   age: 30,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?auto=format&w=400',
   ],
-  additionalInfo: 'Кофе, книги и уютные вечера – моя стихия.',
+  description: 'Кофе, книги и уютные вечера – моя стихия.',
   sex: 'female',
   interests: ['coffee', 'reading', 'board games'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_7: User = {
-  id: 7,
+  telegramUserId: 7,
   name: 'Oleg',
   city: 'Казань',
   age: 35,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?auto=format&w=400',
   ],
-  additionalInfo: 'Работаю в геймдеве, люблю аниме и музыку из 80-х.',
+  description: 'Работаю в геймдеве, люблю аниме и музыку из 80-х.',
   sex: 'male',
   interests: ['anime', 'music', 'gamedev'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_8: User = {
-  id: 8,
+  telegramUserId: 8,
   name: 'Marina',
   city: 'Москва',
   age: 29,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&w=400',
   ],
-  additionalInfo: 'Фотограф, катаюсь на лонгборде, обожаю встречать рассветы.',
+  description: 'Фотограф, катаюсь на лонгборде, обожаю встречать рассветы.',
   sex: 'female',
   interests: ['photography', 'longboard', 'sunrises'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_9: User = {
-  id: 9,
+  telegramUserId: 9,
   name: 'Yuri',
   city: 'Екатеринбург',
   age: 33,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&w=400',
   ],
-  additionalInfo: 'Испытываю слабость к программированию и рок-музыке.',
+  description: 'Испытываю слабость к программированию и рок-музыке.',
   sex: 'male',
   interests: ['coding', 'rock music'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_10: User = {
-  id: 10,
+  telegramUserId: 10,
   name: 'Elena',
   city: 'Владивосток',
   age: 26,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&w=400',
   ],
-  additionalInfo: 'Люблю путешествия и всё, что связано с морем.',
+  description: 'Люблю путешествия и всё, что связано с морем.',
   sex: 'female',
   interests: ['sea', 'travelling', 'languages'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_11: User = {
-  id: 11,
+  telegramUserId: 11,
   name: 'Pavel',
   city: 'Москва',
   age: 31,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&w=400',
   ],
-  additionalInfo: 'Кручу барабаны в любительской рок-группе.',
+  description: 'Кручу барабаны в любительской рок-группе.',
   sex: 'male',
   interests: ['drums', 'rock', 'soccer'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_12: User = {
-  id: 12,
+  telegramUserId: 12,
   name: 'Igor',
   city: 'Новосибирск',
   age: 28,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&w=400',
   ],
-  additionalInfo:
+  description:
     'Разрабатываю мобильные приложения, люблю горные лыжи и адреналин.',
   sex: 'male',
   interests: ['mobile dev', 'skiing', 'adventure'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_13: User = {
-  id: 13,
+  telegramUserId: 13,
   name: 'Evgeniya',
   city: 'Омск',
   age: 27,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&w=400',
   ],
-  additionalInfo: 'По образованию художник, занимаюсь digital art.',
+  description: 'По образованию художник, занимаюсь digital art.',
   sex: 'female',
   interests: ['art', 'digital', 'cinema'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_14: User = {
-  id: 14,
+  telegramUserId: 14,
   name: 'Stanislav',
   city: 'Москва',
   age: 24,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&w=400',
   ],
-  additionalInfo: 'Футболист-любитель и начинающий стендап-комик.',
+  description: 'Футболист-любитель и начинающий стендап-комик.',
   sex: 'male',
   interests: ['football', 'standup', 'comedy'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_15: User = {
-  id: 15,
+  telegramUserId: 15,
   name: 'Svetlana',
   city: 'Сочи',
   age: 25,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&w=400',
   ],
-  additionalInfo: 'Мастер спортивных танцев, люблю шумные вечеринки.',
+  description: 'Мастер спортивных танцев, люблю шумные вечеринки.',
   sex: 'female',
   interests: ['dancing', 'gym', 'parties'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_16: User = {
-  id: 16,
+  telegramUserId: 16,
   name: 'Maxim',
   city: 'Калининград',
   age: 34,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&w=400',
   ],
-  additionalInfo:
+  description:
     'Обожаю рыбалку и спокойный отдых на природе. Стресс снимать умею.',
   sex: 'male',
   interests: ['fishing', 'nature', 'relax'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_17: User = {
-  id: 17,
+  telegramUserId: 17,
   name: 'Kristina',
   city: 'Санкт-Петербург',
   age: 29,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1491349174775-aaafddd81942?auto=format&w=400',
   ],
-  additionalInfo: 'Тату-мастер, граффити и стрит-арт – мои страсти.',
+  description: 'Тату-мастер, граффити и стрит-арт – мои страсти.',
   sex: 'female',
   interests: ['tattoo', 'graffiti', 'art'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_18: User = {
-  id: 18,
+  telegramUserId: 18,
   name: 'Andrey',
   city: 'Москва',
   age: 32,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&w=400',
   ],
-  additionalInfo:
+  description:
     'Занимаюсь маркетингом, увлекаюсь бегом на длинные дистанции, марафоны.',
   sex: 'male',
   interests: ['marketing', 'running', 'marathons'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_19: User = {
-  id: 19,
+  telegramUserId: 19,
   name: 'Valeria',
   city: 'Ижевск',
   age: 21,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1497316730643-415fac54a2af?auto=format&w=400',
   ],
-  additionalInfo:
+  description:
     'Недавно окончила колледж, начинаю карьеру в дизайне интерфейсов.',
   sex: 'female',
   interests: ['ux/ui', 'drawing', 'tiktok'],
   createdEvents: [],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 export const USER_20: User = {
-  id: 20,
+  telegramUserId: 20,
   name: 'Roma',
   city: 'Москва',
   age: 40,
-  photos: [
+  profileImages: [
     'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&w=400',
   ],
-  additionalInfo:
+  description:
     'Просто Рома. Люблю танцы, поэтому создал ивент с мастер-классом по танцам.',
   sex: 'male',
   interests: ['dance', 'hip-hop', 'k-pop'],
@@ -361,6 +437,10 @@ export const USER_20: User = {
       participants: [USER_ERIK, USER_RUSIK, USER_ARTEM, USER_DAN],
     },
   ],
+  username: '',
+  birthDate: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 // Остальной код с USERS массивом без изменений

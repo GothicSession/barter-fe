@@ -17,12 +17,12 @@
                 <tui-avatar-stack [direction]="'left'">
                     @for (
                         participant of event.participants;
-                        track participant.id
+                        track participant.telegramUserId
                     ) {
                         <tui-avatar
                             [round]="true"
                             [size]="'xs'"
-                            [src]="participant.photos[0] || ''"
+                            [src]="participant.profileImages[0] || ''"
                         />
                     }
                 </tui-avatar-stack>

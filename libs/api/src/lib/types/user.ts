@@ -3,13 +3,24 @@ import { Event } from './event';
 import { Sex } from './sex';
 
 export interface User {
-  id: number;
+  // from tg
+  telegramUserId: number;
   name: string;
+  username: string;
+  profileImages: string[];
+  birthDate: string;
+  createdAt: string;
+  updatedAt: string;
+  description?: string;
+
+  // from barter
   city: string;
   age: number;
-  photos: string[];
   sex: Sex;
   interests: string[];
-  additionalInfo?: string;
   createdEvents: Event[];
 }
+
+export type EditUserRequestData = Partial<
+  Pick<User, 'name' | 'description' | 'sex' | 'username' | 'birthDate'>
+>;

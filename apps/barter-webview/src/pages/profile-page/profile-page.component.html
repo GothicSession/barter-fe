@@ -10,7 +10,7 @@
     } @else {
         <barter-avatar
             [name]="tplData.currentUser()?.name"
-            [src]="tplData.currentUser()?.photos?.[0] || ''"
+            [src]="tplData.currentUser()?.profileImages?.[0] || ''"
         />
         <barter-edit-user-button class="edit__button" />
         <barter-profile-events-list

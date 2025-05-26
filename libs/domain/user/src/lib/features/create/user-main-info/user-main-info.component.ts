@@ -37,6 +37,14 @@ export class UserMainInfoComponent extends SlideScreen {
     CreateUserFeatureService,
   );
 
+  override onBtnClick(): void {
+    this.createUserFeatureService.userInfoForm.markAllAsTouched();
+
+    if (this.createUserFeatureService.userInfoForm.valid) {
+      this.continueEvent.emit();
+    }
+  }
+
   @tuiPure
   protected stringify(
     items: readonly SexFormData[],

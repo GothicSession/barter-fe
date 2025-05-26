@@ -47,7 +47,7 @@
             {
               "type": "initial",
               "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumError": "2mb"
             },
             {
               "type": "anyComponentStyle",
@@ -55,7 +55,13 @@
               "maximumError": "8kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/barter-webview/src/environments/environment.ts",
+              "with": "apps/barter-webview/src/environments/environment.prod.ts"
+            }
+          ]
         },
         "development": {
           "buildOptimizer": false,
@@ -75,7 +81,8 @@
           "buildTarget": "barter-webview:build:production"
         },
         "development": {
-          "buildTarget": "barter-webview:build:development"
+          "buildTarget": "barter-webview:build:development",
+          "proxyConfig": "apps/barter-webview/proxy.conf.json"
         }
       },
       "defaultConfiguration": "development"
