@@ -5,7 +5,6 @@ import { TuiButton } from '@taiga-ui/core';
   selector: 'barter-edit-user-button',
   standalone: true,
   templateUrl: './edit-user-button.component.html',
-  styleUrl: './edit-user-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TuiButton],
 })

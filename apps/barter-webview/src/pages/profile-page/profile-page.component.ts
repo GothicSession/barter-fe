@@ -14,6 +14,7 @@ import {
   AvatarComponent,
   AvatarSkeletonComponent,
   EditUserButtonComponent,
+  SubscribeUserButtonComponent,
   UserEntityFacade,
   UserEntityStore,
 } from '@libs/domain/user';
@@ -39,6 +40,7 @@ import {
     NgTemplateOutlet,
     ProfileEventsListSkeletonComponent,
     TuiSkeleton,
+    SubscribeUserButtonComponent,
   ],
   providers: [UserEntityStore, UserEntityFacade, UserService],
 })
