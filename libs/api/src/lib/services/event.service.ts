@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import { delay, Observable, of } from 'rxjs';
+import { HttpParams } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { catchError, delay, Observable, of } from 'rxjs';
 
 import { EVENTS } from '../constants';
 import { ApiHttpClient } from '../http/api-http.client';
@@ -16,6 +17,8 @@ export interface GetEventsRequest {
 
 @Injectable()
 export class EventService {
+  private readonly httpClient = inject(ApiHttpClient);
+
   getEvents(req: GetEventsRequest = {}): Observable<Event[]> {
     const { offset = 0, search = '', limit = PAGE_SIZE } = req;
     const term = search.trim().toLowerCase();
@@ -28,6 +31,16 @@ export class EventService {
 
     const page = events.slice(offset, offset + limit);
 
-    return of(page).pipe(delay(DELAY));
+    return this.httpClient
+      .get<Event[]>('/events', {
+        params: new HttpParams()
+          .set('offset', offset)
+          .set('limit', limit)
+          .set('search', term),
+      })
+      .pipe(
+        delay(DELAY),
+        catchError(() => of(page)),
+      );
   }
 }
