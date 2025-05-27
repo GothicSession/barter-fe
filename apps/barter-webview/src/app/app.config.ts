@@ -7,18 +7,12 @@ import {
 } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withRouterConfig } from '@angular/router';
-import {
-  API_BASE_URL,
-  ApiHttpClient,
-  AuthApiService,
-  UserService,
-} from '@libs/api';
+import { API_BASE_URL, ApiHttpClient, AuthApiService } from '@libs/api';
 import {
   LazyViewport,
   provideAuthenticatedUserState,
   provideRoutesState,
 } from '@libs/core';
-import { UserEntityFacade, UserEntityStore } from '@libs/domain/user';
 import { NG_EVENT_PLUGINS } from '@taiga-ui/event-plugins';
 
 import { environment } from '../environments/environment';
@@ -46,8 +40,5 @@ export const appConfig: ApplicationConfig = {
     { provide: API_BASE_URL, useValue: environment.apiUrl },
     ApiHttpClient,
     AuthApiService,
-    UserEntityFacade,
-    UserEntityStore,
-    UserService,
   ],
 };

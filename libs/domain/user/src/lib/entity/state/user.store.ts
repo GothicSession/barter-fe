@@ -18,7 +18,6 @@ export const UserEntityStore = signalStore(
     isLoading: false,
     error: null,
     currentUser: null,
-    activeUser: null,
   })),
   withMethods((store, userService = inject(UserService)) => ({
     loadUserById: rxMethod<number>(

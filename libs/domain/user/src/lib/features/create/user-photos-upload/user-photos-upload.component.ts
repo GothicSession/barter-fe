@@ -1,5 +1,4 @@
 /* eslint-disable max-lines */
-import { AsyncPipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
@@ -64,7 +63,6 @@ const MAX_PHOTO_COUNT = 6;
     TuiInputFilesDirective,
     TuiFiles,
     TuiLoader,
-    AsyncPipe,
   ],
   providers: [TuiInputFiles],
 })
@@ -117,34 +115,7 @@ export class UserPhotosUploadComponent extends SlideScreen implements OnInit {
     this.removePhoto$
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        switchMap((index) => {
-          return this.userService
-            .deleteUserPhoto(
-              this.createUserFeatureService.photoControls[index].value
-                .previewUrl,
-            )
-            .pipe(
-              tap(() => {
-                this.createUserFeatureService.userInfoForm.controls.userPhotos.removeAt(
-                  index,
-                );
-                this.cd.detectChanges();
-              }),
-              catchError((error: unknown) => {
-                this.alerts
-                  .open(
-                    error instanceof HttpErrorResponse && error.error.error,
-                    {
-                      label: 'Ошибка при удалении изображения',
-                      appearance: 'error',
-                    },
-                  )
-                  .subscribe();
-
-                return of(null);
-              }),
-            );
-        }),
+        switchMap((index) => this.deletePhoto(index)),
       )
       .subscribe();
 
@@ -250,6 +221,31 @@ export class UserPhotosUploadComponent extends SlideScreen implements OnInit {
         return of(null);
       }),
     );
+  }
+
+  private deletePhoto(index: number): Observable<void | null> {
+    return this.userService
+      .deleteUserPhoto(
+        this.createUserFeatureService.photoControls[index].value.previewUrl,
+      )
+      .pipe(
+        tap(() => {
+          this.createUserFeatureService.userInfoForm.controls.userPhotos.removeAt(
+            index,
+          );
+          this.cd.detectChanges();
+        }),
+        catchError((error: unknown) => {
+          this.alerts
+            .open(error instanceof HttpErrorResponse && error.error.error, {
+              label: 'Ошибка при удалении изображения',
+              appearance: 'error',
+            })
+            .subscribe();
+
+          return of(null);
+        }),
+      );
   }
 }
 /* eslint-enable max-lines */

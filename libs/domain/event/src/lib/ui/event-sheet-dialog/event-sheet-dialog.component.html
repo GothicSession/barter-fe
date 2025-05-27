@@ -40,7 +40,10 @@
             </div>
         </div>
         <div class="event__creator" [routerLink]="event.creatorRouterLink">
-            <tui-avatar [src]="event.participants[0].photos[0]" [size]="'l'" />
+            <tui-avatar
+                [src]="event.participants[0].profileImages[0]"
+                [size]="'l'"
+            />
             <div class="creator__info">
                 <span class="tui-text_body-l-2 tui-text_bold">{{
                     event.participants[0].name
@@ -57,7 +60,7 @@
                     <tui-avatar
                         [round]="true"
                         [size]="'m'"
-                        [src]="participant.photos[0]"
+                        [src]="participant.profileImages[0]"
                     />
                 }
             </tui-avatar-stack>

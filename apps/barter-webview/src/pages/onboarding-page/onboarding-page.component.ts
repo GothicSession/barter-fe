@@ -49,10 +49,6 @@ export class OnboardingPageComponent implements OnInit {
     const user = this.activatedRoute.snapshot.data['user'] as User;
 
     this.createUserService.initialUserInfo = user;
-
-    this.createUserService.initializePhotoControls(user.profileImages || []);
-
-    this.activePage.set(ActivePageEnum.PHOTO);
   }
 
   changeActiveScreen(activePage: ActivePageEnum) {

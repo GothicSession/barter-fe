@@ -3,8 +3,7 @@ import { Telegram, WINDOW } from '@libs/core';
 
 export const TELEGRAM = new InjectionToken<Telegram>('telegram', {
   factory: () => {
-    const window = inject(WINDOW);
-    const telegram = window.Telegram;
+    const telegram = inject(WINDOW).Telegram;
 
     if (!telegram) {
       throw new Error('Telegram is not available');

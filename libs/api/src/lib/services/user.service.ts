@@ -5,9 +5,8 @@ import { USER_ARTEM, USERS } from '../constants';
 import { ApiHttpClient } from '../http/api-http.client';
 import { EditUserRequestData, User } from '../types';
 
-const DELAY = 1500;
-
 const DELAY = 2500;
+
 @Injectable()
 export class UserService {
   private readonly httpClient = inject(ApiHttpClient);

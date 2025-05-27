@@ -17,12 +17,19 @@ export const userResolver: ResolveFn<User> = async (route) => {
   userFacade.loadUser();
 
   // Тут указываем какие поля нужны чтоб можно было скипнуть onboarding
-  const checkUserData = (user: User) =>
-    user?.telegramUserId &&
-    user?.name &&
-    user?.birthDate &&
-    user?.profileImages.length &&
-    user?.sex;
+  const checkUserData = (user: User): boolean => {
+    if (
+      user?.telegramUserId &&
+      user?.name &&
+      user?.birthDate &&
+      user?.profileImages.length &&
+      user?.sex
+    ) {
+      return true;
+    }
+
+    return false;
+  };
 
   return firstValueFrom(
     toObservable(userFacade.getUser()).pipe(

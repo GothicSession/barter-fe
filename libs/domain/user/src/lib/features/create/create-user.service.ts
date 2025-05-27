@@ -1,9 +1,12 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { EditUserRequestData, User } from '@libs/api';
 import { AuthenticatedUserFacade } from '@libs/core';
 import { TuiDay } from '@taiga-ui/cdk';
+import { TuiAlertService } from '@taiga-ui/core';
 import { TuiFileLike } from '@taiga-ui/kit';
+import { catchError, EMPTY } from 'rxjs';
 
 import { Sex } from '../../entity';
 import { SexFormData } from './types';
@@ -23,6 +26,7 @@ export interface PhotoControl extends TuiFileLike {
 export class CreateUserFeatureService {
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly userFacade = inject(AuthenticatedUserFacade);
+  private readonly alerts = inject(TuiAlertService);
   private _initialUserInfo: User | null = null;
 
   readonly sexItems: SexFormData[] = [
@@ -56,6 +60,8 @@ export class CreateUserFeatureService {
       sex: user.sex,
       about: user.description,
     });
+
+    this.initializePhotoControls(user.profileImages || []);
   }
 
   readonly userInfoForm = this.fb.group({
@@ -95,7 +101,63 @@ export class CreateUserFeatureService {
     return this.userInfoForm.controls.userPhotos.controls;
   }
 
-  initializePhotoControls(existingPhotos: string[]): void {
+  // eslint-disable-next-line complexity
+  submitForm(event?: Event): void {
+    event?.preventDefault();
+
+    this.userInfoForm.markAllAsTouched();
+
+    if (
+      this.userInfoForm.valid &&
+      this.userInfoForm.value.birthDate &&
+      this.userInfoForm.value.firstName &&
+      this.userInfoForm.value.sex
+    ) {
+      const requestData: EditUserRequestData = {};
+
+      if (
+        new Date(
+          this.userInfoForm.value.birthDate?.toLocalNativeDate() ?? '',
+        ) !== new Date(this._initialUserInfo?.birthDate ?? '')
+      ) {
+        requestData.birthDate = this.userInfoForm.value.birthDate
+          ?.toLocalNativeDate()
+          ?.toISOString();
+      }
+
+      if (
+        this.userInfoForm.value.about !== this._initialUserInfo?.description
+      ) {
+        requestData.description = this.userInfoForm.value.about;
+      }
+
+      if (this.userInfoForm.value.firstName !== this._initialUserInfo?.name) {
+        requestData.name = this.userInfoForm.value.firstName;
+      }
+
+      if (this.userInfoForm.value.sex !== this._initialUserInfo?.sex) {
+        requestData.sex = this.userInfoForm.value.sex ?? undefined;
+      }
+
+      this.userFacade
+        .editUser(requestData)
+        .pipe(
+          catchError((error: unknown) => {
+            this.alerts
+              .open(error instanceof HttpErrorResponse && error.error.error, {
+                label: 'Ошибка при попытке обновить данные',
+                appearance: 'error',
+              })
+              .subscribe();
+
+            return EMPTY;
+          }),
+        )
+        .subscribe();
+    }
+  }
+
+  private initializePhotoControls(existingPhotos: string[]): void {
     const photosControl = this.userInfoForm.controls.userPhotos;
 
     photosControl.clear();
@@ -112,43 +174,4 @@ export class CreateUserFeatureService {
       );
     });
   }
-
-  // eslint-disable-next-line complexity
-  submitForm(event?: Event): void {
-    event?.preventDefault();
-
-    this.userInfoForm.markAllAsTouched();
-
-    // if (
-    //   this.userInfoForm.valid &&
-    //   this.userInfoForm.value.birthDate &&
-    //   this.userInfoForm.value.firstName &&
-    //   this.userInfoForm.value.sex
-    // ) {
-    const requestData: EditUserRequestData = {};
-
-    if (
-      new Date(this.userInfoForm.value.birthDate?.toLocalNativeDate() ?? '') !==
-      new Date(this._initialUserInfo?.birthDate ?? '')
-    ) {
-      requestData.birthDate = this.userInfoForm.value.birthDate
-        ?.toLocalNativeDate()
-        ?.toISOString();
-    }
-
-    if (this.userInfoForm.value.about !== this._initialUserInfo?.description) {
-      requestData.description = this.userInfoForm.value.about;
-    }
-
-    if (this.userInfoForm.value.firstName !== this._initialUserInfo?.name) {
-      requestData.name = this.userInfoForm.value.firstName;
-    }
-
-    if (this.userInfoForm.value.sex !== this._initialUserInfo?.sex) {
-      requestData.sex = this.userInfoForm.value.sex ?? undefined;
-    }
-
-    this.userFacade.editUser(requestData).subscribe();
-  }
-  // }
 }
