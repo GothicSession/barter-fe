@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SlideScreen } from '@libs/core';
@@ -31,7 +30,6 @@ import { SexFormData } from '../types';
     TuiLet,
     TuiTextareaModule,
     TuiTextfieldControllerModule,
-    JsonPipe,
   ],
 })
 export class UserMainInfoComponent extends SlideScreen {

@@ -4,7 +4,7 @@ import { Sex } from './sex';
 
 export interface User {
   // from tg
-  telegramUserId: number;
+  telegramUserID: number;
   name: string;
   username: string;
   profileImages: string[];

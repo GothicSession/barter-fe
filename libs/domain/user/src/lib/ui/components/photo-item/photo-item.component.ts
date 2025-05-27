@@ -5,7 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { TuiIcon, TuiIconPipe } from '@taiga-ui/core';
+import { TuiIcon } from '@taiga-ui/core';
 
 @Component({
   selector: 'barter-user-photo-item',
@@ -13,7 +13,7 @@ import { TuiIcon, TuiIconPipe } from '@taiga-ui/core';
   templateUrl: './photo-item.component.html',
   styleUrl: './photo-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TuiIconPipe, TuiIcon],
+  imports: [TuiIcon],
 })
 export class PhotoItemComponent {
   @Input()

@@ -19,11 +19,11 @@ export const userResolver: ResolveFn<User> = async (route) => {
   // Тут указываем какие поля нужны чтоб можно было скипнуть onboarding
   const checkUserData = (user: User): boolean => {
     if (
-      user?.telegramUserId &&
-      user?.name &&
-      user?.birthDate &&
-      user?.profileImages.length &&
-      user?.sex
+      user.telegramUserID &&
+      user.name &&
+      user.birthDate &&
+      user.profileImages.length &&
+      user.sex
     ) {
       return true;
     }

@@ -1,7 +1,7 @@
 import { User } from '../types';
 /* eslint-disable max-lines */
 export const USER_DAN: User = {
-  telegramUserId: 3,
+  telegramUserID: 3,
   name: 'Danila',
   city: 'Москва',
   age: 22,
@@ -20,7 +20,7 @@ export const USER_DAN: User = {
 };
 
 export const USER_ERIK: User = {
-  telegramUserId: 4,
+  telegramUserID: 4,
   name: 'Erik',
   city: 'Москва',
   age: 23,
@@ -39,7 +39,7 @@ export const USER_ERIK: User = {
 };
 
 export const USER_RUSIK: User = {
-  telegramUserId: 2,
+  telegramUserID: 2,
   name: 'Ruslan',
   city: 'Москва',
   profileImages: [
@@ -87,7 +87,7 @@ export const USER_RUSIK: User = {
 };
 
 export const USER_ARTEM: User = {
-  telegramUserId: 1,
+  telegramUserID: 1,
   name: 'Artem',
   city: 'Москва',
   profileImages: [
@@ -135,7 +135,7 @@ export const USER_ARTEM: User = {
 };
 
 export const USER_5: User = {
-  telegramUserId: 5,
+  telegramUserID: 5,
   name: 'Ivan',
   city: 'Москва',
   age: 25,
@@ -154,7 +154,7 @@ export const USER_5: User = {
 };
 
 export const USER_6: User = {
-  telegramUserId: 6,
+  telegramUserID: 6,
   name: 'Natalia',
   city: 'Санкт-Петербург',
   age: 30,
@@ -172,7 +172,7 @@ export const USER_6: User = {
 };
 
 export const USER_7: User = {
-  telegramUserId: 7,
+  telegramUserID: 7,
   name: 'Oleg',
   city: 'Казань',
   age: 35,
@@ -190,7 +190,7 @@ export const USER_7: User = {
 };
 
 export const USER_8: User = {
-  telegramUserId: 8,
+  telegramUserID: 8,
   name: 'Marina',
   city: 'Москва',
   age: 29,
@@ -208,7 +208,7 @@ export const USER_8: User = {
 };
 
 export const USER_9: User = {
-  telegramUserId: 9,
+  telegramUserID: 9,
   name: 'Yuri',
   city: 'Екатеринбург',
   age: 33,
@@ -226,7 +226,7 @@ export const USER_9: User = {
 };
 
 export const USER_10: User = {
-  telegramUserId: 10,
+  telegramUserID: 10,
   name: 'Elena',
   city: 'Владивосток',
   age: 26,
@@ -244,7 +244,7 @@ export const USER_10: User = {
 };
 
 export const USER_11: User = {
-  telegramUserId: 11,
+  telegramUserID: 11,
   name: 'Pavel',
   city: 'Москва',
   age: 31,
@@ -262,7 +262,7 @@ export const USER_11: User = {
 };
 
 export const USER_12: User = {
-  telegramUserId: 12,
+  telegramUserID: 12,
   name: 'Igor',
   city: 'Новосибирск',
   age: 28,
@@ -281,7 +281,7 @@ export const USER_12: User = {
 };
 
 export const USER_13: User = {
-  telegramUserId: 13,
+  telegramUserID: 13,
   name: 'Evgeniya',
   city: 'Омск',
   age: 27,
@@ -299,7 +299,7 @@ export const USER_13: User = {
 };
 
 export const USER_14: User = {
-  telegramUserId: 14,
+  telegramUserID: 14,
   name: 'Stanislav',
   city: 'Москва',
   age: 24,
@@ -317,7 +317,7 @@ export const USER_14: User = {
 };
 
 export const USER_15: User = {
-  telegramUserId: 15,
+  telegramUserID: 15,
   name: 'Svetlana',
   city: 'Сочи',
   age: 25,
@@ -335,7 +335,7 @@ export const USER_15: User = {
 };
 
 export const USER_16: User = {
-  telegramUserId: 16,
+  telegramUserID: 16,
   name: 'Maxim',
   city: 'Калининград',
   age: 34,
@@ -354,7 +354,7 @@ export const USER_16: User = {
 };
 
 export const USER_17: User = {
-  telegramUserId: 17,
+  telegramUserID: 17,
   name: 'Kristina',
   city: 'Санкт-Петербург',
   age: 29,
@@ -372,7 +372,7 @@ export const USER_17: User = {
 };
 
 export const USER_18: User = {
-  telegramUserId: 18,
+  telegramUserID: 18,
   name: 'Andrey',
   city: 'Москва',
   age: 32,
@@ -391,7 +391,7 @@ export const USER_18: User = {
 };
 
 export const USER_19: User = {
-  telegramUserId: 19,
+  telegramUserID: 19,
   name: 'Valeria',
   city: 'Ижевск',
   age: 21,
@@ -410,7 +410,7 @@ export const USER_19: User = {
 };
 
 export const USER_20: User = {
-  telegramUserId: 20,
+  telegramUserID: 20,
   name: 'Roma',
   city: 'Москва',
   age: 40,

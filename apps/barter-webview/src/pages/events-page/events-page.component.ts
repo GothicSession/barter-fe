@@ -77,7 +77,7 @@ export class EventsPageComponent implements AfterViewInit {
         creatorRouterLink: [
           '/',
           Routes.PROFILE,
-          String(event.participants[0].telegramUserId),
+          String(event.participants[0].telegramUserID),
         ],
       })),
   );

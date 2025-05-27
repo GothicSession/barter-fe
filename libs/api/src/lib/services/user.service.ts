@@ -28,7 +28,7 @@ export class UserService {
 
   getUserById(id: number): Observable<User> {
     return of<User>(
-      USERS.find((user) => user.telegramUserId === id) || USER_ARTEM,
+      USERS.find((user) => user.telegramUserID === id) || USER_ARTEM,
     );
   }
 
