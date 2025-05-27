@@ -2,10 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
+  OnInit,
   signal,
   WritableSignal,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '@libs/api';
 import {
   CreateUserFeatureService,
   UserMainInfoComponent,
@@ -34,12 +36,20 @@ enum ActivePageEnum {
   ],
   providers: [CreateUserFeatureService],
 })
-export class OnboardingPageComponent {
+export class OnboardingPageComponent implements OnInit {
+  private readonly createUserService = inject(CreateUserFeatureService);
   protected readonly ActivePageEnum = ActivePageEnum;
   protected readonly router = inject(Router);
+  protected readonly activatedRoute = inject(ActivatedRoute);
   protected activePage: WritableSignal<ActivePageEnum> = signal(
     ActivePageEnum.WELCOME,
   );
+
+  ngOnInit(): void {
+    const user = this.activatedRoute.snapshot.data['user'] as User;
+
+    this.createUserService.initialUserInfo = user;
+  }
 
   changeActiveScreen(activePage: ActivePageEnum) {
     this.activePage.set(activePage);

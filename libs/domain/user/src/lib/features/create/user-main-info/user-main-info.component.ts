@@ -37,6 +37,17 @@ export class UserMainInfoComponent extends SlideScreen {
     CreateUserFeatureService,
   );
 
+  protected hasAttemptedSubmit = false;
+
+  override onBtnClick(): void {
+    this.hasAttemptedSubmit = true;
+    this.createUserFeatureService.userInfoForm.markAllAsTouched();
+
+    if (this.createUserFeatureService.userInfoForm.valid) {
+      this.continueEvent.emit();
+    }
+  }
+
   @tuiPure
   protected stringify(
     items: readonly SexFormData[],

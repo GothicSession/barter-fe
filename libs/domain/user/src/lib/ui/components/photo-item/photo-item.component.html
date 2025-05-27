@@ -1,8 +1,16 @@
-<label class="photo__item photo__item_upload" tuiInputFiles>
-    <input class="item__loader" tuiInputFiles [formControl]="control" />
-    <ng-template>
-        <div>
-            <tui-icon icon="@tui.plus" />
+@if (isLoading) {
+    <div class="photo__item photo__item_loading">
+        <div class="photo__loader">
+            <tui-icon icon="@tui.loader" />
         </div>
-    </ng-template>
-</label>
+    </div>
+} @else if (photoUrl) {
+    <div class="photo__item photo__item_existing">
+        <img [src]="photoUrl" alt="Profile photo" />
+        <button class="photo__remove" (click)="removePhoto.emit()">
+            <tui-icon icon="@tui.x" />
+        </button>
+    </div>
+} @else {
+    <div class="photo__item photo__item_empty"></div>
+}

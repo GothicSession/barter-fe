@@ -1,6 +1,10 @@
 <div class="main__info">
     <h1 tuiTitle="m">Укажите данные профиля</h1>
-    <form class="form" [formGroup]="createUserFeatureService.userInfoForm">
+    <form
+        class="form"
+        [formGroup]="createUserFeatureService.userInfoForm"
+        #userForm="ngForm"
+    >
         <div class="form__control control">
             <span class="tui-text_body-l-2 control__name"> Имя </span>
             <tui-input
@@ -18,11 +22,35 @@
                 [formControl]="
                     createUserFeatureService.userInfoForm.controls.birthDate
                 "
-                [max]="createUserFeatureService.max"
-                [min]="createUserFeatureService.min"
+                [max]="createUserFeatureService.maxBirthDate"
+                [min]="createUserFeatureService.minBirthDate"
             >
                 Укажите дату рождения
             </tui-input-date>
+            @if (
+                createUserFeatureService.userInfoForm.controls.birthDate
+                    .touched &&
+                createUserFeatureService.userInfoForm.controls.birthDate.errors
+            ) {
+                <span class="control__error">
+                    @if (
+                        createUserFeatureService.userInfoForm.controls.birthDate
+                            .errors['minDate']
+                    ) {
+                        Вы не можете быть старше
+                        {{ createUserFeatureService.minBirthDate.year }} года
+                        рождения
+                    }
+                    @if (
+                        createUserFeatureService.userInfoForm.controls.birthDate
+                            .errors['maxDate']
+                    ) {
+                        Вы не можете быть младше
+                        {{ createUserFeatureService.maxBirthDate.year }} года
+                        рождения
+                    }
+                </span>
+            }
         </div>
         <div class="form__control control">
             <span class="tui-text_body-l-2 control__name"> Пол </span>
@@ -68,6 +96,13 @@
     </form>
 </div>
 
-<button class="onboarding__button" tuiButton (click)="onBtnClick()">
+<button
+    class="onboarding__button"
+    [disabled]="
+        !createUserFeatureService.userInfoForm.valid && hasAttemptedSubmit
+    "
+    tuiButton
+    (click)="onBtnClick()"
+>
     Продолжить
 </button>
