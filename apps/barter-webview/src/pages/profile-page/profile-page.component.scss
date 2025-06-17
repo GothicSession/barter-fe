@@ -1,0 +1,20 @@
+:host {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  overflow: hidden scroll;
+  padding: 24px 18px;
+}
+
+.edit__button {
+  margin-bottom: 24px;
+  margin-top: 16px;
+
+  &--placeholder {
+    border-radius: 10px;
+    min-height: 44px;
+    width: 230px;
+  }
+}

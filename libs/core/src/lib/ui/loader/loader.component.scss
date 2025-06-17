@@ -1,0 +1,16 @@
+:host {
+  height: 32px;
+  width: 32px;
+}
+
+.loader {
+  animation: spin360 1s linear infinite;
+  display: block;
+  transform-origin: center;
+}
+
+@keyframes spin360 {
+  to {
+    transform: rotate(360deg);
+  }
+}

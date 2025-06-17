@@ -1,0 +1,56 @@
+@if (
+    {
+        events: mappedEvents,
+        isLoading: eventEntityFacade.getIsLoading(),
+        isWholeListLoaded: eventEntityFacade.getIsWholeListLoaded(),
+    };
+    as tplData
+) {
+    <div
+        class="events"
+        #eventsList
+        scrolledToBottom
+        (isNearBottom)="onNearBottom()"
+        [disabled]="tplData.isWholeListLoaded()"
+    >
+        <div class="events__list-wrapper">
+            <div class="events__top">
+                <span class="events__title tui-text_h6">
+                    Ближайшие события
+                </span>
+                <button
+                    class="events__search-button"
+                    iconStart="@tui.search"
+                    tuiIconButton
+                    appearance="flat"
+                    size="m"
+                    type="button"
+                    searchEvents
+                ></button>
+            </div>
+            <div class="events__list">
+                @if (tplData.isLoading() && !tplData.events().length) {
+                    @for (event of SKELETON_EVENTS_LIST; track event) {
+                        <barter-event-card-skeleton />
+                    }
+                } @else {
+                    @for (event of tplData.events(); track event.id) {
+                        <barter-event-card
+                            class="events__item"
+                            [event]="event"
+                            [openEvent]="{
+                                dialogOptions: {
+                                    data: event,
+                                },
+                            }"
+                        />
+                    }
+                    @if (!tplData.isWholeListLoaded()) {
+                        <barter-loader class="loader" />
+                    }
+                }
+            </div>
+        </div>
+        <barter-create-event-button />
+    </div>
+}

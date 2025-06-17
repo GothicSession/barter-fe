@@ -1,0 +1,57 @@
+<div class="dialog">
+    <form
+        class="dialog__form form"
+        [formGroup]="form"
+        (ngSubmit)="handleSubmit($event)"
+    >
+        <div class="form__top">
+            <tui-input
+                tuiTextfieldSize="s"
+                class="form__search"
+                tuiTextfieldIconLeft="@tui.search"
+                tuiAutoFocus
+                formControlName="search"
+                [tuiTextfieldCleaner]="true"
+                [tuiTextfieldLabelOutside]="true"
+            >
+                Поиск...
+                <input
+                    tuiTextfieldLegacy
+                    type="text"
+                    enterkeyhint="search"
+                    (keydown.enter)="handleSubmit($event)"
+                />
+            </tui-input>
+            <button
+                type="button"
+                tuiButton
+                appearance="flat"
+                class="form__cancel"
+                [size]="'s'"
+                (click)="handleCancel()"
+            >
+                Отмена
+            </button>
+        </div>
+        <div class="form__history">
+            @for (search of recentSearches(); track search) {
+                <tui-chip
+                    class="form__chip"
+                    (click)="handleSearchChipClick(search, $event)"
+                >
+                    <div tuiFade>
+                        {{ search }}
+                    </div>
+                    <button
+                        (click)="
+                            removeSearchChip(search); $event.stopPropagation()
+                        "
+                        iconStart="@tui.x"
+                        tuiIconButton
+                        type="button"
+                    ></button>
+                </tui-chip>
+            }
+        </div>
+    </form>
+</div>

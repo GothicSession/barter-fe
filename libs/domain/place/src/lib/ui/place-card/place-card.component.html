@@ -1,0 +1,14 @@
+<div class="place-card">
+    <span class="tui-text_body-l-2">
+        {{ place.name }}
+    </span>
+    <img class="place-card__photo" alt="'place'" [lazySrc]="place.photo" />
+    <barter-rating [rating]="place.rating" [isReadonly]="true" />
+    <span class="tui-text_body-s text-secondary">
+        <tui-icon
+            [icon]="'@tui.map-pin'"
+            [style.color]="'var(--tui-background-accent-1)'"
+        />
+        {{ place.location }}
+    </span>
+</div>

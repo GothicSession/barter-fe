@@ -1,0 +1,17 @@
+:host {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.link-item {
+  --footer-link-color: var(--tui-background-accent-1);
+
+  display: flex;
+  flex-direction: column;
+  opacity: 0.4;
+
+  &_active {
+    opacity: 1;
+  }
+}

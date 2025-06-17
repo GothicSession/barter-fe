@@ -1,1 +1,3 @@
-<router-outlet />
+<tui-root [class]="platformFacade.currentPlatform()">
+    <router-outlet />
+</tui-root>

@@ -20,9 +20,25 @@
           {
             "glob": "**/*",
             "input": "apps/barter-webview/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@taiga-ui/icons/src",
+            "output": "assets/taiga-ui/icons"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@taiga-ui/icons-fontawesome/src",
+            "output": "assets/taiga-ui/icons/"
           }
         ],
-        "styles": ["libs/styles/src/lib/index.scss"],
+        "styles": [
+          "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+          "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+          "libs/styles/src/lib/index.scss",
+          "node_modules/@taiga-ui/core/styles/taiga-ui-local.scss",
+          "node_modules/@taiga-ui/styles/taiga-ui-global.less"
+        ],
         "scripts": []
       },
       "configurations": {

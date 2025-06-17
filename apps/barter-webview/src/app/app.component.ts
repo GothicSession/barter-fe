@@ -1,12 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TuiRoot } from '@taiga-ui/core';
+
+import { PlatformSharedFacade } from './shared';
+import { TELEGRAM } from './shared/tokens';
 
 @Component({
-  imports: [RouterModule],
+  imports: [RouterModule, TuiRoot],
   selector: 'barter-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'barter-fe';
+  protected platformFacade = inject(PlatformSharedFacade);
+  protected telegram = inject(TELEGRAM);
+
+  constructor() {
+    try {
+      this.telegram?.WebApp?.requestFullscreen();
+    } catch (e) {
+      console.error('Run app via Telegram');
+    }
+  }
 }

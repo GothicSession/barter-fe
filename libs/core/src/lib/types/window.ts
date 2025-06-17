@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-export {};
+
 // https://stackoverflow.com/a/12709880
 // Расширение интерфейса Window
 declare global {
@@ -8,11 +8,11 @@ declare global {
   }
 }
 
-interface Telegram {
+export interface Telegram {
   WebApp: WebApp;
 }
 
-interface WebApp {
+export interface WebApp {
   /**
    * A string with raw data transferred to the Web App, convenient for
    * validating data. WARNING: Validate data from this field before using it
@@ -309,11 +309,11 @@ interface WebApp {
    * the bot's username will be inserted. If an optional choose_chat_types
    * parameter was passed, the client prompts the user to choose a specific
    * chat, then opens that chat and inserts the bot's username and the
-   * specified inline query in the input field. You can specify which types of
+   * specified inline query in the input field. You can specify which model of
    * chats the user will be able to choose from. It can be one or more of the
-   * following types: users, bots, groups, channels.
+   * following model: users, bots, groups, channels.
    */
-  switchInlineQuery(query: string, choose_chat_types?: any[]): void;
+  switchInlineQuery(query: string, choose_chat_types?: unknown[]): void;
   /**
    * A method that opens a link in an external browser. The Web App will not
    * be closed. If the optional options parameter is passed with the field
@@ -458,6 +458,12 @@ interface WebApp {
    * the app.
    */
   disableVerticalSwipes(): void;
+
+  requestFullscreen(): void;
+
+  exitFullscreen(): void;
+
+  isFullscreen: boolean;
 }
 
 type ThemeChangedCallback = () => void;
@@ -630,7 +636,7 @@ type PopupButton = {
   type?: 'default' | 'ok' | 'close' | 'cancel' | 'destructive';
   /**
    * The text to be displayed on the button, 0-64 characters. Required if
-   * type is default or destructive. Irrelevant for other types.
+   * type is default or destructive. Irrelevant for other model.
    */
   text?: string;
 } & (
@@ -842,7 +848,7 @@ interface CloudStorage {
    *
    * @param key The key should contain 1-128 characters, only A-Z, a-z, 0-9, _
    * and - are allowed.
-   * @param value The value should contain 0-4096 characters. You can store up
+   * @param value The value should contain 0-4096 characters. You can state up
    * to 1024 keys in the cloud storage.
    * @param callback If an optional callback parameter was passed, the
    * callback function will be called. In case of an error, the first argument

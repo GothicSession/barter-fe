@@ -1,0 +1,10 @@
+.choose-place {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+}

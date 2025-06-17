@@ -1,8 +1,72 @@
 barter-root {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-color: var(--tg-theme-bg-color);
+  background-color: var(--tg-theme-bg-color);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.dialog-sheet__footer-btn {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+  position: relative;
+
+  &::after {
+    background-color: var(--tui-border-normal);
+    content: '';
+    height: 1px;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+  }
+
+  .footer {
+    &__button {
+      width: 100%;
+    }
+  }
+}
+
+img {
+  background-color: var(--tui-background-neutral-1-hover);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+[tuiSkeleton]._skeleton {
+  border-radius: 8px;
+}
+
+tui-avatar[tuiSkeleton]._skeleton {
+  border-radius: 50%;
+}
+
+tui-avatar[data-size='xxl'] {
+  border-radius: 50%;
+  height: 134px;
+  width: 134px;
+}
+
+.t-root-content {
+  background-color: var(--tui-background-base-alt);
+}
+
+tui-root {
+  height: 100%;
 }
 
 .tg-btn {
@@ -17,20 +81,44 @@ barter-root {
 }
 
 [hidden] {
-    display: none !important;
+  display: none !important;
 }
 
 * {
-  padding: 0;
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 body {
+  height: var(--tg-viewport-height);
+  overflow: hidden;
   width: 100vw;
-  height: 100vh;
+}
+
+.text-secondary {
+  color: var(--tui-text-secondary);
+}
+
+.text-primary {
+  color: var(--tui-background-accent-1);
 }
 
 .page-container {
-  width: 100%;
+  display: block;
   height: 100%;
+  width: 100%;
+}
+
+tui-root.ios,
+tui-root.android {
+  barter-non-authenticated-layout {
+    padding-top: 64px;
+  }
+}
+
+.date__text {
+  font: var(--tui-font-text-ui-s);
+  font-weight: 700;
+  line-height: 8px;
 }
